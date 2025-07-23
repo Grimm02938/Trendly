@@ -19,6 +19,14 @@
   text-transform: uppercase;
 }
 
+/* E-commerce title inspired by major retailers like Amazon, Shopify stores */
+.ecommerce-title {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
@@ -230,7 +238,7 @@ html {
   transform: translateY(-3px) scale(1.05);
 }
 
-/* Mobile menu smooth sliding */
+/* Mobile menu smooth sliding - FIXED */
 .mobile-menu-slide {
   transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -342,5 +350,17 @@ html {
   
   .professional-mobile-spacing {
     margin-bottom: 1.5rem;
+  }
+}
+
+/* Specific mobile fixes for 3-column layout */
+@media (max-width: 640px) {
+  .grid-cols-3 > * {
+    min-width: 0; /* Prevents text overflow */
+  }
+  
+  .grid-cols-3 .text-sm {
+    font-size: 0.75rem; /* Smaller text on mobile */
+    line-height: 1.1;
   }
 }

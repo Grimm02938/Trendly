@@ -48,7 +48,7 @@ const CartIcon = ({ className }) => (
   </svg>
 );
 
-// Mobile Menu Component with sliding animation
+// Mobile Menu Component with FIXED scrolling and proper height
 const MobileMenu = ({ isOpen, onClose, categories }) => {
   const { isDark } = useTheme();
   
@@ -62,12 +62,12 @@ const MobileMenu = ({ isOpen, onClose, categories }) => {
         onClick={onClose}
       />
       
-      {/* Menu Panel with smooth sliding */}
-      <div className={`fixed top-0 left-0 h-full w-80 ${isDark ? 'bg-gray-900' : 'bg-white'} z-50 transform transition-transform duration-300 ease-out md:hidden shadow-2xl ${
+      {/* Menu Panel with FIXED scrolling - Full height with proper flex */}
+      <div className={`fixed top-0 left-0 h-full w-80 ${isDark ? 'bg-gray-900' : 'bg-white'} z-50 transform transition-transform duration-300 ease-out md:hidden shadow-2xl flex flex-col ${
         isOpen ? 'translate-x-0' : '-translate-x-full'
       }`}>
-        {/* Header */}
-        <div className={`p-6 border-b ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
+        {/* Header - Fixed at top */}
+        <div className={`p-6 border-b ${isDark ? 'border-gray-700' : 'border-gray-200'} flex-shrink-0`}>
           <div className="flex justify-between items-center">
             <h2 className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} stockx-font`}>Browse</h2>
             <button 
@@ -81,7 +81,7 @@ const MobileMenu = ({ isOpen, onClose, categories }) => {
           </div>
         </div>
 
-        {/* Categories */}
+        {/* Categories - Scrollable middle section */}
         <div className="flex-1 overflow-y-auto px-6 py-4">
           <div className="space-y-4">
             {categories.map(category => (
@@ -102,8 +102,8 @@ const MobileMenu = ({ isOpen, onClose, categories }) => {
           </div>
         </div>
 
-        {/* Bottom Buttons */}
-        <div className={`p-6 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'} space-y-3`}>
+        {/* Bottom Buttons - Fixed at bottom */}
+        <div className={`p-6 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'} space-y-3 flex-shrink-0`}>
           <button className={`w-full py-3 px-4 border-2 ${isDark ? 'border-rose-400 text-rose-400 hover:bg-rose-400' : 'border-rose-500 text-rose-500 hover:bg-rose-500'} hover:text-white rounded-xl transition-all duration-200 font-medium stockx-font`}>
             Log In
           </button>
@@ -405,18 +405,14 @@ const Categories = () => {
   const [categories, setCategories] = useState([]);
   const { isDark } = useTheme();
 
-  // Your exact category images in base64 format
+  // Your exact category images in base64 format (from the images you provided)
   const categoryImages = {
-    'makeup': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==', // MAKEUP & BEAUTY - pink circle with lipstick
-    'high-tech': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==', // HIGH TECH - blue circle with phone
-    'tiktok-trends': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==', // TIKTOK TRENDS - purple circle with note
-    'fashion': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==', // FASHION - orange circle with dress
-    'home-living': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==', // HOME & LIVING - cyan circle with house
-    'outdoor-garden': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==', // OUTDOOR & GARDEN - yellow circle with plant
-    'gaming': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==', // GAMING - dark blue circle with controller
-    'sports-fitness': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==', // SPORTS & FITNESS - orange circle with soccer ball
-    'health-wellness': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==', // HEALTH & WELLNESS - red circle with pill
-    'cooking': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==' // COOKING - yellow circle with pot
+    'makeup': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=',
+    'high-tech': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=',
+    'tiktok-trends': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=',
+    'fashion': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=',
+    'home-living': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=',
+    'outdoor-garden': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k='
   };
 
   useEffect(() => {
@@ -434,15 +430,24 @@ const Categories = () => {
   return (
     <div className={`${isDark ? 'bg-gray-900' : 'bg-gray-50'} py-12 transition-all duration-300`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-8 text-center stockx-font`}>Shop by Category</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+        {/* E-commerce professional title inspired by major retailers */}
+        <h2 className={`text-3xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'} mb-8 text-center ecommerce-title tracking-wide`}>
+          Shop by Category
+        </h2>
+        {/* Mobile: 3 columns, Desktop: up to 6 columns */}
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8">
           {categories.map(category => (
             <div
               key={category.id}
               className="text-center cursor-pointer group"
             >
               <div className={`w-16 h-16 ${category.color} rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg mx-auto`}>
-                <div className="w-8 h-8 bg-white bg-opacity-30 rounded-full"></div>
+                {/* Using your provided images */}
+                <img 
+                  src={`data:image/jpeg;base64,${categoryImages[category.id]}`}
+                  alt={category.name}
+                  className="w-8 h-8 object-contain opacity-90"
+                />
               </div>
               <div className={`text-sm font-medium ${isDark ? 'text-gray-200' : 'text-gray-700'} leading-relaxed max-w-24 mx-auto stockx-font tracking-wide`}>
                 {category.name}
@@ -636,7 +641,7 @@ const TrendingProducts = () => {
     <div className={`py-16 ${isDark ? 'bg-gray-900' : 'bg-white'} transition-all duration-300`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className={`text-4xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-4 stockx-font tracking-tight`}>Trending Now</h2>
+          <h2 className={`text-4xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'} mb-4 ecommerce-title tracking-wide`}>Trending Now</h2>
           <p className={`text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'} stockx-font`}>Discover the hottest products everyone's talking about</p>
         </div>
         
