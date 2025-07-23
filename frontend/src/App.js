@@ -67,6 +67,85 @@ const ThemeToggleIcon = ({ isDark, className }) => {
   }
 };
 
+// Category Icon Components - Same style as your FASHION image
+const CategoryIcons = {
+  'makeup': ({ className }) => (
+    <svg className={className} viewBox="0 0 64 64" fill="none">
+      <circle cx="32" cy="32" r="32" fill="#EC4899"/>
+      <path d="M20 28h8v20h-8z" fill="#000" stroke="#000" strokeWidth="2"/>
+      <ellipse cx="24" cy="22" rx="4" ry="6" fill="#DC2626"/>
+      <rect x="22" y="26" width="4" height="2" fill="#000"/>
+    </svg>
+  ),
+  'high-tech': ({ className }) => (
+    <svg className={className} viewBox="0 0 64 64" fill="none">
+      <circle cx="32" cy="32" r="32" fill="#3B82F6"/>
+      <rect x="20" y="12" width="24" height="40" rx="4" fill="#374151" stroke="#000" strokeWidth="2"/>
+      <rect x="22" y="16" width="20" height="14" rx="2" fill="#3B82F6"/>
+      <circle cx="32" cy="36" r="2" fill="#3B82F6"/>
+      <rect x="28" y="40" width="8" height="2" rx="1" fill="#6B7280"/>
+    </svg>
+  ),
+  'tiktok-trends': ({ className }) => (
+    <svg className={className} viewBox="0 0 64 64" fill="none">
+      <circle cx="32" cy="32" r="32" fill="#A855F7"/>
+      <path d="M32 16c0 4 2 6 6 6v6c-2 0-4-1-6-2v8c0 6-4 10-10 10s-10-4-10-10 4-10 10-10c1 0 2 0 3 1v6c-1-1-2-1-3-1-3 0-5 2-5 5s2 5 5 5 5-2 5-5V16h5z" fill="#000"/>
+    </svg>
+  ),
+  'fashion': ({ className }) => (
+    <svg className={className} viewBox="0 0 64 64" fill="none">
+      <circle cx="32" cy="32" r="32" fill="#F97316"/>
+      <path d="M32 14l-6 8v24h12V22l-6-8z" fill="#DC2626" stroke="#000" strokeWidth="2"/>
+      <path d="M26 20c0-2 1-4 6-4s6 2 6 4" stroke="#000" strokeWidth="2" fill="none"/>
+      <rect x="30" y="18" width="4" height="2" fill="#000"/>
+    </svg>
+  ),
+  'home-living': ({ className }) => (
+    <svg className={className} viewBox="0 0 64 64" fill="none">
+      <circle cx="32" cy="32" r="32" fill="#06B6D4"/>
+      <path d="M32 14l-16 12h4v18h10V32h4v12h10V26h4L32 14z" fill="#FFF" stroke="#000" strokeWidth="2"/>
+      <rect x="36" y="20" width="6" height="4" rx="1" fill="#06B6D4"/>
+      <rect x="24" y="36" width="3" height="6" fill="#8B5CF6"/>
+    </svg>
+  ),
+  'outdoor-garden': ({ className }) => (
+    <svg className={className} viewBox="0 0 64 64" fill="none">
+      <circle cx="32" cy="32" r="32" fill="#EAB308"/>
+      <rect x="24" y="40" width="16" height="8" rx="2" fill="#8B5CF6"/>
+      <path d="M32 26v14" stroke="#000" strokeWidth="3"/>
+      <ellipse cx="28" cy="20" rx="4" ry="6" fill="#22C55E"/>
+      <ellipse cx="36" cy="20" rx="4" ry="6" fill="#22C55E"/>
+      <circle cx="32" cy="44" r="2" fill="#8B5CF6"/>
+    </svg>
+  ),
+  'health-wellness': ({ className }) => (
+    <svg className={className} viewBox="0 0 64 64" fill="none">
+      <circle cx="32" cy="32" r="32" fill="#EF4444"/>
+      <rect x="16" y="28" width="32" height="8" rx="4" fill="#F97316" stroke="#000" strokeWidth="2"/>
+      <rect x="16" y="24" width="32" height="16" rx="8" fill="#FACC15" stroke="#000" strokeWidth="2"/>
+    </svg>
+  ),
+  'sports-fitness': ({ className }) => (
+    <svg className={className} viewBox="0 0 64 64" fill="none">
+      <circle cx="32" cy="32" r="32" fill="#F97316"/>
+      <circle cx="32" cy="32" r="16" fill="#FFF" stroke="#000" strokeWidth="2"/>
+      <path d="M32 16l4 8-4 8-4-8 4-8z" fill="#000"/>
+      <path d="M32 48l-4-8 4-8 4 8-4 8z" fill="#000"/>
+      <path d="M16 32l8-4 8 4-8 4-8-4z" fill="#000"/>
+      <path d="M48 32l-8 4-8-4 8-4 8 4z" fill="#000"/>
+    </svg>
+  ),
+  'cooking': ({ className }) => (
+    <svg className={className} viewBox="0 0 64 64" fill="none">
+      <circle cx="32" cy="32" r="32" fill="#EAB308"/>
+      <rect x="16" y="30" width="32" height="20" rx="4" fill="#374151" stroke="#000" strokeWidth="2"/>
+      <rect x="16" y="26" width="32" height="4" rx="2" fill="#000"/>
+      <rect x="42" y="34" width="8" height="4" rx="2" fill="#000"/>
+      <path d="M24 20v6M32 20v6M40 20v6" stroke="#000" strokeWidth="2"/>
+    </svg>
+  )
+};
+
 // Mobile Menu Component with FIXED scrolling and all categories visible
 const MobileMenu = ({ isOpen, onClose, categories }) => {
   const { isDark } = useTheme();
@@ -103,21 +182,24 @@ const MobileMenu = ({ isOpen, onClose, categories }) => {
         {/* Categories - FIXED scrollable section with proper height calculation */}
         <div className="flex-1 overflow-y-auto px-6 py-4" style={{maxHeight: 'calc(100vh - 200px)'}}>
           <div className="space-y-4">
-            {categories.map(category => (
-              <div
-                key={category.id}
-                className={`flex items-center space-x-4 p-4 rounded-xl cursor-pointer transition-all duration-200 ${
-                  isDark 
-                    ? 'hover:bg-gray-800 text-white' 
-                    : 'hover:bg-gray-50 text-gray-800'
-                } group`}
-              >
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center ${category.color} shadow-lg group-hover:scale-110 transition-transform duration-200`}>
-                  <div className="w-6 h-6 bg-white bg-opacity-30 rounded-full"></div>
+            {categories.map(category => {
+              const IconComponent = CategoryIcons[category.id];
+              return (
+                <div
+                  key={category.id}
+                  className={`flex items-center space-x-4 p-4 rounded-xl cursor-pointer transition-all duration-200 ${
+                    isDark 
+                      ? 'hover:bg-gray-800 text-white' 
+                      : 'hover:bg-gray-50 text-gray-800'
+                  } group`}
+                >
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
+                    {IconComponent && <IconComponent className="w-12 h-12" />}
+                  </div>
+                  <span className="font-bold trendly-font text-base tracking-wide">{category.name}</span>
                 </div>
-                <span className="font-bold trendly-font text-base tracking-wide">{category.name}</span>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -419,23 +501,10 @@ const Header = ({ onLocationClick, onMenuClick }) => {
   );
 };
 
-// Categories Component with YOUR REAL IMAGES
+// Categories Component with PROPER IMAGES in your style
 const Categories = () => {
   const [categories, setCategories] = useState([]);
   const { isDark } = useTheme();
-
-  // Your exact category images converted to base64 data URLs
-  const categoryImages = {
-    'makeup': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iMTYiIGZpbGw9IiNGRjY2OTEiLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSI+CjxwYXRoIGQ9Ik0yIDEySDRWMjJIOFYxMkg2Vjhartical NKhFgljQ8rTlFXSBhOSBpPSI3LjUiIHI9IjMuNSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSIgZmlsbD0iI0VGNDQ0NCIvPgo8L3N2Zz4K',
-    'high-tech': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iMTYiIGZpbGw9IiMwNzlCRUYiLz4KPHN2ZyB4PSI4IiB5PSI2IiB3aWR0aD0iMTYiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSI+CjxyZWN0IHg9IjQiIHk9IjMiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxOCIgcng9IjIiIHJ5PSIyIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS41IiBmaWxsPSIjMzczNzM3Ii8+CjxyZWN0IHg9IjYiIHk9IjciIHdpZHRoPSIxMiIgaGVpZ2h0PSI4IiByeD0iMSIgZmlsbD0iIzA3OUJFRiIvPgo8Y2lyY2xlIGN4PSIxMiIgY3k9IjE3IiByPSIxLjUiIGZpbGw9IiMwNzlCRUYiLz4KPC9zdmc+Cg==',
-    'tiktok-trends': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iMTYiIGZpbGw9IiNBODU1RjciLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCI+CjxwYXRoIGQ9Ik0xMiA0YzQuNSAwIDcuNSAzIDcuNSA3LjVzLTMgNy41LTcuNSA3LjVTNS41IDE1IDUuNSAxMS41IDguNSA0IDEyIDR6IiBmaWxsPSIjMDAwIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS41Ii8+CjxwYXRoIGQ9Ik0xNCA2SDEwVjE0SDEyVjEwSDEzVjE0SDE0VjZaIiBmaWxsPSIjZmZmIi8+CjxwYXRoIGQ9Ik0xNSA2SDEzVjhIMTVWNloiIGZpbGw9IiNmZmYiLz4KPC9zdmc+Cg==',
-    'fashion': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iMTYiIGZpbGw9IiNGOTczMTYiLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSI+CjxwYXRoIGQ9Ik0xMiAyTDEwIDZINlYyMEgxOFY2SDE0TDEyIDJaIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS41IiBmaWxsPSIjRUY0NDQ0Ii8+CjxwYXRoIGQ9Ik0xMCAyTDEyIDJMMTQgMlYxMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSIgZmlsbD0ibm9uZSIvPgo8L3N2Zz4K',
-    'home-living': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iMTYiIGZpbGw9IiMwN0I5RUYiLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSI+CjxwYXRoIGQ9Ik0xMiAyTDIgMTJMMy41IDEyTDMuNSAyMEgxMC41VjE0SDEzLjVWMjBIMjAuNVYxMkwyMiAxMkwxMiAyWiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSIgZmlsbD0iI2ZmZiIvPgo8cmVjdCB4PSIxNCIgeT0iMTAiIHdpZHRoPSI0IiBoZWlnaHQ9IjMiIHJ4PSIxIiBmaWxsPSIjMDdCOUVGIi8+CjxjaXJjbGUgY3g9IjEwIiBjeT0iMTYiIHI9IjEiIGZpbGw9IiMwN0I5RUYiLz4KPC9zdmc+Cg==',
-    'outdoor-garden': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iMTYiIGZpbGw9IiNGRkIwNDciLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSI+CjxyZWN0IHg9IjgiIHk9IjE0IiB3aWR0aD0iOCIgaGVpZ2h0PSI0IiByeD0iMSIgZmlsbD0iIzIyQzU1RSIvPgo8ZWxsaXBzZSBjeD0iMTAiIGN5PSI4IiByeD0iMiIgcnk9IjMiIGZpbGw9IiMyMkM1NUUiLz4KPGVsbGlwc2UgY3g9IjE0IiBjeT0iOCIgcng9IjIiIHJ5PSIzIiBmaWxsPSIjMjJDNTVFIi8+CjxwYXRoIGQ9Ik0xMiAxMFYxNCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSIvPgo8L3N2Zz4K',
-    'health-wellness': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iMTYiIGZpbGw9IiNFRjQ0NDQiLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSI+CjxyZWN0IHg9IjQiIHk9IjEwIiB3aWR0aD0iMTYiIGhlaWdodD0iNCIgcng9IjIiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGZpbGw9IiNGRkIwNDciLz4KPHJlY3QgeD0iNCIgeT0iOCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjgiIHJ4PSI0IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS41IiBmaWxsPSIjRjk3MzE2Ii8+CjwvPiAvPgo8L3N2Zz4K',
-    'sports-fitness': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iMTYiIGZpbGw9IiNGOTczMTYiLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSI+CjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjgiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGZpbGw9IiNmZmYiLz4KPHBhdGggZD0iTTEyIDRMMTQgOEwxMiAxMkwxMCA4TDEyIDRaIiBmaWxsPSIjMDAwIi8+CjxwYXRoIGQ9Ik0xMiAyMEwxMCAxNkwxMiAxMkwxNCAxNkwxMiAyMFoiIGZpbGw9IiMwMDAiLz4KPHBhdGggZD0iTTQgMTJMOCAxMEwxMiAxMkw4IDE0TDQgMTJaIiBmaWxsPSIjMDAwIi8+CjxwYXRoIGQ9Ik0yMCAxMkwxNiAxNEwxMiAxMkwxNiAxMEwyMCAxMloiIGZpbGw9IiMwMDAiLz4KPC9zdmc+Cg==',
-    'cooking': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iMTYiIGZpbGw9IiNGRkIwNDciLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSI+CjxyZWN0IHg9IjQiIHk9IjEwIiB3aWR0aD0iMTYiIGhlaWdodD0iMTAiIHJ4PSIyIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS41IiBmaWxsPSIjMzc0MTUxIi8+CjxyZWN0IHg9IjQiIHk9IjgiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyIiByeD0iMSIgZmlsbD0iIzAwMCIvPgo8cmVjdCB4PSIxOCIgeT0iMTIiIHdpZHRoPSI0IiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjMDAwIi8+CjxwYXRoIGQ9Ik0xMCA2VjgiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KPHBhdGggZD0iTTE0IDZWOCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSIvPgo8L3N2Zz4K'
-  };
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -458,24 +527,22 @@ const Categories = () => {
         </h2>
         {/* Mobile: 3 columns (3x3 grid for 9 categories), Desktop: up to 6 columns */}
         <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8">
-          {categories.map(category => (
-            <div
-              key={category.id}
-              className="text-center cursor-pointer group"
-            >
-              <div className={`w-16 h-16 ${category.color} rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg mx-auto`}>
-                {/* Using your provided images */}
-                <img 
-                  src={categoryImages[category.id]}
-                  alt={category.name}
-                  className="w-8 h-8 object-contain opacity-90"
-                />
+          {categories.map(category => {
+            const IconComponent = CategoryIcons[category.id];
+            return (
+              <div
+                key={category.id}
+                className="text-center cursor-pointer group"
+              >
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg mx-auto hover:shadow-xl">
+                  {IconComponent && <IconComponent className="w-16 h-16" />}
+                </div>
+                <div className={`text-sm font-bold ${isDark ? 'text-gray-200' : 'text-gray-700'} leading-relaxed max-w-24 mx-auto trendly-font tracking-wide`}>
+                  {category.name}
+                </div>
               </div>
-              <div className={`text-sm font-bold ${isDark ? 'text-gray-200' : 'text-gray-700'} leading-relaxed max-w-24 mx-auto trendly-font tracking-wide`}>
-                {category.name}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
@@ -533,7 +600,7 @@ const ProductCard = ({ product }) => {
   );
 };
 
-// Floating Buttons Component with MODERN THEME TOGGLE and UPDATED assistant
+// Floating Buttons Component with CLEAN theme toggle (NO PINK)
 const FloatingButtons = () => {
   const { isDark, toggleTheme } = useTheme();
   const [showAssistant, setShowAssistant] = useState(false);
@@ -562,19 +629,19 @@ const FloatingButtons = () => {
 
   return (
     <>
-      {/* MODERN Theme Toggle - NO EMOJIS, stylish with pink tint */}
+      {/* CLEAN Theme Toggle - NO PINK, just elegant grays */}
       <button
         onClick={toggleTheme}
         className={`fixed bottom-6 left-6 w-14 h-14 rounded-full ${
           isDark 
-            ? 'bg-gradient-to-br from-slate-700 via-rose-600 to-slate-800 hover:from-slate-600 hover:via-rose-500 hover:to-slate-700' 
-            : 'bg-gradient-to-br from-gray-200 via-rose-400 to-gray-300 hover:from-gray-100 hover:via-rose-300 hover:to-gray-200'
+            ? 'bg-gradient-to-br from-slate-600 to-slate-800 hover:from-slate-500 hover:to-slate-700' 
+            : 'bg-gradient-to-br from-gray-100 to-gray-300 hover:from-white hover:to-gray-200'
         } shadow-xl hover:shadow-2xl transition-all z-50 flex items-center justify-center group border-2 ${
-          isDark ? 'border-rose-500/30' : 'border-rose-400/30'
+          isDark ? 'border-slate-500/30' : 'border-gray-300/50'
         }`}
         title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       >
-        <ThemeToggleIcon isDark={isDark} className="w-6 h-6 text-white group-hover:scale-110 transition-transform duration-200" />
+        <ThemeToggleIcon isDark={isDark} className={`w-6 h-6 ${isDark ? 'text-white' : 'text-gray-700'} group-hover:scale-110 transition-transform duration-200`} />
       </button>
 
       {/* Assistant Button - UPDATED icon */}
