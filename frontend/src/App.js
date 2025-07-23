@@ -27,6 +27,70 @@ const useTheme = () => {
   return context;
 };
 
+// Mobile Menu Component
+const MobileMenu = ({ isOpen, onClose, categories }) => {
+  const { isDark } = useTheme();
+  
+  if (!isOpen) return null;
+
+  return (
+    <>
+      {/* Overlay */}
+      <div 
+        className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+        onClick={onClose}
+      />
+      
+      {/* Menu Panel */}
+      <div className={`fixed top-0 left-0 h-full w-80 ${isDark ? 'bg-gray-900' : 'bg-white'} z-50 transform transition-transform duration-300 ease-in-out md:hidden shadow-2xl`}>
+        {/* Header */}
+        <div className={`p-6 border-b ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
+          <div className="flex justify-between items-center">
+            <h2 className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} stockx-font`}>Browse</h2>
+            <button 
+              onClick={onClose}
+              className={`p-2 rounded-lg ${isDark ? 'text-gray-400 hover:text-white hover:bg-gray-800' : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'} transition-colors`}
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+
+        {/* Categories */}
+        <div className="p-6 flex-1 overflow-y-auto">
+          <div className="space-y-4">
+            {categories.map(category => (
+              <div
+                key={category.id}
+                className={`flex items-center space-x-4 p-4 rounded-xl cursor-pointer transition-all duration-200 ${
+                  isDark 
+                    ? 'hover:bg-gray-800 text-white' 
+                    : 'hover:bg-gray-50 text-gray-800'
+                } group`}
+              >
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-xl ${category.color} shadow-lg group-hover:scale-110 transition-transform duration-200`}>
+                  {category.icon}
+                </div>
+                <span className="font-medium stockx-font text-sm">{category.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom Buttons */}
+        <div className={`p-6 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'} space-y-3`}>
+          <button className={`w-full py-3 px-4 border-2 ${isDark ? 'border-rose-400 text-rose-400 hover:bg-rose-400' : 'border-rose-500 text-rose-500 hover:bg-rose-500'} hover:text-white rounded-xl transition-all duration-200 font-medium stockx-font`}>
+            Log In
+          </button>
+          <button className="w-full py-3 px-4 bg-gradient-to-r from-rose-500 to-pink-400 text-white rounded-xl hover:from-rose-600 hover:to-pink-500 transition-all duration-200 font-medium shadow-lg stockx-font">
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </>
+  );
+};
+
 // Location Selector Modal
 const LocationSelector = ({ isOpen, onClose, onSelect }) => {
   const [countries, setCountries] = useState([]);
@@ -62,12 +126,12 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
 
   const handleCountryClick = (countryCode) => {
     handleCountryChange(countryCode);
-    setCountrySearch(''); // Clear search after selection
+    setCountrySearch('');
   };
 
   const handleLanguageClick = (languageCode) => {
     setSelectedLanguage(languageCode);
-    setLanguageSearch(''); // Clear search after selection
+    setLanguageSearch('');
   };
 
   const handleConfirm = () => {
@@ -84,7 +148,6 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
     onClose();
   };
 
-  // Filter countries and languages based on search
   const filteredCountries = countries.filter(country =>
     country.name.toLowerCase().includes(countrySearch.toLowerCase()) ||
     country.code.toLowerCase().includes(countrySearch.toLowerCase())
@@ -98,16 +161,16 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className={`${isDark ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} rounded-2xl p-8 max-w-md w-full max-h-[90vh] overflow-y-auto`}>
+    <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
+      <div className={`${isDark ? 'bg-gray-900 text-white border-gray-700' : 'bg-white text-gray-800 border-gray-200'} rounded-2xl p-8 max-w-md w-full max-h-[90vh] overflow-y-auto shadow-2xl border`}>
         <div className="text-center mb-6">
-          <h2 className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-2`}>Welcome to Trendly!</h2>
-          <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Choose your location and preferences</p>
+          <h2 className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-2 stockx-font`}>Welcome to Trendly!</h2>
+          <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'} stockx-font`}>Choose your location and preferences</p>
         </div>
 
         <div className="space-y-6">
           <div>
-            <label className={`block text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'} mb-2`}>
+            <label className={`block text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'} mb-2 stockx-font`}>
               Ship to
             </label>
             <input
@@ -115,27 +178,27 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
               value={countrySearch}
               onChange={(e) => setCountrySearch(e.target.value)}
               placeholder="Search countries..."
-              className={`w-full p-3 border ${isDark ? 'border-gray-600 bg-gray-700 text-white' : 'border-gray-300 bg-white text-gray-800'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-2`}
+              className={`w-full p-3 border ${isDark ? 'border-gray-600 bg-gray-800 text-white placeholder-gray-400' : 'border-gray-300 bg-white text-gray-800 placeholder-gray-500'} rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent mb-2 transition-all`}
             />
-            <div className={`border ${isDark ? 'border-gray-600 bg-gray-700' : 'border-gray-300 bg-white'} rounded-lg max-h-40 overflow-y-auto`}>
+            <div className={`border ${isDark ? 'border-gray-600 bg-gray-800' : 'border-gray-300 bg-white'} rounded-xl max-h-40 overflow-y-auto`}>
               {filteredCountries.map(country => (
                 <div
                   key={country.code}
                   onClick={() => handleCountryClick(country.code)}
-                  className={`p-3 cursor-pointer hover:${isDark ? 'bg-gray-600' : 'bg-gray-100'} ${
-                    selectedCountry === country.code ? (isDark ? 'bg-blue-700' : 'bg-blue-100') : ''
-                  } flex items-center space-x-2`}
+                  className={`p-3 cursor-pointer hover:${isDark ? 'bg-gray-700' : 'bg-gray-50'} ${
+                    selectedCountry === country.code ? (isDark ? 'bg-rose-700' : 'bg-rose-100') : ''
+                  } flex items-center space-x-2 transition-colors`}
                 >
                   <span>{country.flag}</span>
-                  <span>{country.name}</span>
-                  {selectedCountry === country.code && <span className="ml-auto text-blue-500">✓</span>}
+                  <span className="stockx-font">{country.name}</span>
+                  {selectedCountry === country.code && <span className="ml-auto text-rose-500">✓</span>}
                 </div>
               ))}
             </div>
           </div>
 
           <div>
-            <label className={`block text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'} mb-2`}>
+            <label className={`block text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'} mb-2 stockx-font`}>
               Language
             </label>
             <input
@@ -143,40 +206,40 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
               value={languageSearch}
               onChange={(e) => setLanguageSearch(e.target.value)}
               placeholder="Search languages..."
-              className={`w-full p-3 border ${isDark ? 'border-gray-600 bg-gray-700 text-white' : 'border-gray-300 bg-white text-gray-800'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-2`}
+              className={`w-full p-3 border ${isDark ? 'border-gray-600 bg-gray-800 text-white placeholder-gray-400' : 'border-gray-300 bg-white text-gray-800 placeholder-gray-500'} rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent mb-2 transition-all`}
             />
-            <div className={`border ${isDark ? 'border-gray-600 bg-gray-700' : 'border-gray-300 bg-white'} rounded-lg max-h-40 overflow-y-auto`}>
+            <div className={`border ${isDark ? 'border-gray-600 bg-gray-800' : 'border-gray-300 bg-white'} rounded-xl max-h-40 overflow-y-auto`}>
               {filteredLanguages.map(language => (
                 <div
                   key={language.code}
                   onClick={() => handleLanguageClick(language.code)}
-                  className={`p-3 cursor-pointer hover:${isDark ? 'bg-gray-600' : 'bg-gray-100'} ${
-                    selectedLanguage === language.code ? (isDark ? 'bg-blue-700' : 'bg-blue-100') : ''
-                  }`}
+                  className={`p-3 cursor-pointer hover:${isDark ? 'bg-gray-700' : 'bg-gray-50'} ${
+                    selectedLanguage === language.code ? (isDark ? 'bg-rose-700' : 'bg-rose-100') : ''
+                  } transition-colors`}
                 >
-                  <span>{language.name}</span>
-                  {selectedLanguage === language.code && <span className="ml-auto text-blue-500">✓</span>}
+                  <span className="stockx-font">{language.name}</span>
+                  {selectedLanguage === language.code && <span className="ml-auto text-rose-500">✓</span>}
                 </div>
               ))}
             </div>
           </div>
 
           <div>
-            <label className={`block text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'} mb-2`}>
+            <label className={`block text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'} mb-2 stockx-font`}>
               Currency
             </label>
             <input
               type="text"
               value={selectedCurrency}
               readOnly
-              className={`w-full p-3 border ${isDark ? 'border-gray-600 bg-gray-600 text-gray-300' : 'border-gray-300 bg-gray-50 text-gray-600'} rounded-lg`}
+              className={`w-full p-3 border ${isDark ? 'border-gray-600 bg-gray-700 text-gray-300' : 'border-gray-300 bg-gray-50 text-gray-600'} rounded-xl stockx-font`}
             />
           </div>
         </div>
 
         <button
           onClick={handleConfirm}
-          className="w-full mt-6 bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+          className="w-full mt-6 bg-gradient-to-r from-rose-500 to-pink-400 text-white py-3 px-6 rounded-xl hover:from-rose-600 hover:to-pink-500 transition-all font-medium shadow-lg stockx-font"
         >
           Continue Shopping
         </button>
@@ -186,7 +249,7 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
 };
 
 // Header Component
-const Header = ({ onLocationClick }) => {
+const Header = ({ onLocationClick, onMenuClick }) => {
   const { userPrefs } = useUser();
   const { isDark } = useTheme();
   const [searchQuery, setSearchQuery] = useState('');
@@ -199,27 +262,39 @@ const Header = ({ onLocationClick }) => {
   };
 
   return (
-    <header className={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} shadow-sm border-b transition-colors`}>
+    <header className={`${isDark ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-200'} shadow-sm border-b transition-all duration-300 sticky top-0 z-30`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={onMenuClick}
+            className={`md:hidden p-2 rounded-lg ${isDark ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'} transition-colors`}
+          >
+            <div className="w-5 h-5 flex flex-col justify-between">
+              <span className="w-full h-0.5 bg-current"></span>
+              <span className="w-full h-0.5 bg-current"></span>
+              <span className="w-full h-0.5 bg-current"></span>
+            </div>
+          </button>
+
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-blue-600">Trendly</h1>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-rose-500 to-pink-400 bg-clip-text text-transparent stockx-font tracking-tight">Trendly</h1>
           </div>
 
-          {/* Enlarged Search Bar */}
-          <div className="flex-1 max-w-2xl mx-8">
-            <form onSubmit={handleSearch} className="relative">
+          {/* Search Bar - Hidden on mobile, visible on tablet+ */}
+          <div className="hidden sm:flex flex-1 max-w-2xl mx-8">
+            <form onSubmit={handleSearch} className="relative w-full">
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search trending products..."
-                className={`w-full pl-4 pr-12 py-3 border ${isDark ? 'border-gray-600 bg-gray-700 text-white placeholder-gray-400' : 'border-gray-300 bg-white text-gray-800 placeholder-gray-500'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors`}
+                className={`w-full pl-4 pr-12 py-3 border ${isDark ? 'border-gray-600 bg-gray-800 text-white placeholder-gray-400' : 'border-gray-300 bg-white text-gray-800 placeholder-gray-500'} rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all stockx-font`}
               />
               <button
                 type="submit"
-                className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${isDark ? 'text-gray-400 hover:text-blue-400' : 'text-gray-400 hover:text-blue-600'} transition-colors`}
+                className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${isDark ? 'text-gray-400 hover:text-rose-400' : 'text-gray-400 hover:text-rose-600'} transition-colors`}
               >
                 🔍
               </button>
@@ -227,69 +302,71 @@ const Header = ({ onLocationClick }) => {
           </div>
 
           {/* Right side */}
-          <div className="flex items-center space-x-4">
-            {/* Notifications - StockX style */}
+          <div className="flex items-center space-x-2 sm:space-x-4">
+            {/* Notifications */}
             <div className="relative">
               <button
                 onClick={() => setShowNotifications(!showNotifications)}
-                className={`p-2 rounded-lg ${isDark ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-600 hover:bg-gray-100'} transition-colors relative`}
+                className={`p-2 rounded-lg ${isDark ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'} transition-colors relative`}
               >
                 🔔
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-rose-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                   3
                 </span>
               </button>
-              {showNotifications && (
-                <div className={`absolute right-0 top-full mt-2 w-80 ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border rounded-lg shadow-lg z-50`}>
-                  <div className="p-4">
-                    <h3 className={`font-semibold ${isDark ? 'text-white' : 'text-gray-800'} mb-3`}>Notifications</h3>
-                    <div className="space-y-3">
-                      <div className={`p-3 ${isDark ? 'bg-gray-700' : 'bg-gray-50'} rounded`}>
-                        <p className={`text-sm ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>New trending product: LED Face Mask</p>
-                        <p className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>2 hours ago</p>
-                      </div>
-                      <div className={`p-3 ${isDark ? 'bg-gray-700' : 'bg-gray-50'} rounded`}>
-                        <p className={`text-sm ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>Price drop: Wireless Charging Pad</p>
-                        <p className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>1 day ago</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
 
             {/* Location */}
             <button
               onClick={onLocationClick}
-              className={`flex items-center space-x-1 text-sm ${isDark ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-600'} transition-colors`}
+              className={`hidden sm:flex items-center space-x-1 text-sm ${isDark ? 'text-gray-300 hover:text-rose-400' : 'text-gray-600 hover:text-rose-600'} transition-colors stockx-font`}
             >
               <span>{userPrefs.countryFlag}</span>
               <span>{userPrefs.currency}</span>
             </button>
 
-            {/* Cart with text */}
-            <button className={`flex items-center space-x-2 ${isDark ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-600'} transition-colors`}>
+            {/* Cart */}
+            <button className={`flex items-center space-x-2 ${isDark ? 'text-gray-300 hover:text-rose-400' : 'text-gray-600 hover:text-rose-600'} transition-colors`}>
               <div className="relative">
                 🛒
                 {cartCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  <span className="absolute -top-2 -right-2 bg-rose-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                     {cartCount}
                   </span>
                 )}
               </div>
-              <span className="text-sm font-medium">Cart</span>
+              <span className="hidden sm:inline text-sm font-medium stockx-font">Cart</span>
             </button>
 
-            {/* Auth buttons - StockX style */}
-            <div className="flex space-x-2">
-              <button className={`px-4 py-2 text-sm ${isDark ? 'text-blue-400 hover:bg-gray-700' : 'text-blue-600 hover:bg-blue-50'} rounded-lg transition-colors border-2 border-blue-600`}>
+            {/* Auth buttons - Hidden on mobile */}
+            <div className="hidden md:flex space-x-2">
+              <button className={`px-4 py-2 text-sm ${isDark ? 'text-rose-400 hover:bg-gray-800 border-rose-400' : 'text-rose-600 hover:bg-rose-50 border-rose-600'} rounded-xl transition-colors border-2 stockx-font font-medium`}>
                 Login
               </button>
-              <button className="px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+              <button className="px-4 py-2 text-sm bg-gradient-to-r from-rose-500 to-pink-400 text-white rounded-xl hover:from-rose-600 hover:to-pink-500 transition-all shadow-lg stockx-font font-medium">
                 Sign Up
               </button>
             </div>
           </div>
+        </div>
+
+        {/* Mobile Search Bar */}
+        <div className="sm:hidden pb-3">
+          <form onSubmit={handleSearch} className="relative">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search trending products..."
+              className={`w-full pl-4 pr-12 py-3 border ${isDark ? 'border-gray-600 bg-gray-800 text-white placeholder-gray-400' : 'border-gray-300 bg-white text-gray-800 placeholder-gray-500'} rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all stockx-font`}
+            />
+            <button
+              type="submit"
+              className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${isDark ? 'text-gray-400 hover:text-rose-400' : 'text-gray-400 hover:text-rose-600'} transition-colors`}
+            >
+              🔍
+            </button>
+          </form>
         </div>
       </div>
     </header>
@@ -314,25 +391,23 @@ const Categories = () => {
   }, []);
 
   return (
-    <div className={`${isDark ? 'bg-gray-800' : 'bg-gray-50'} py-8 transition-colors`}>
+    <div className={`${isDark ? 'bg-gray-900' : 'bg-gray-50'} py-12 transition-all duration-300`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-8 text-center`}>Shop by Category</h2>
-        <div className="flex justify-center">
-          <div className="grid grid-cols-5 md:grid-cols-10 gap-6">
-            {categories.map(category => (
-              <div
-                key={category.id}
-                className="text-center cursor-pointer group"
-              >
-                <div className={`w-16 h-16 ${category.color} rounded-full flex items-center justify-center text-white text-2xl mb-2 group-hover:scale-110 transition-transform shadow-lg`}>
-                  {category.icon}
-                </div>
-                <div className={`text-xs font-medium ${isDark ? 'text-gray-200' : 'text-gray-700'} leading-tight max-w-20`}>
-                  {category.name}
-                </div>
+        <h2 className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-8 text-center stockx-font`}>Shop by Category</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+          {categories.map(category => (
+            <div
+              key={category.id}
+              className="text-center cursor-pointer group"
+            >
+              <div className={`w-16 h-16 ${category.color} rounded-full flex items-center justify-center text-white text-2xl mb-3 group-hover:scale-110 transition-all duration-300 shadow-lg mx-auto`}>
+                {category.icon}
               </div>
-            ))}
-          </div>
+              <div className={`text-xs font-medium ${isDark ? 'text-gray-200' : 'text-gray-700'} leading-tight max-w-20 mx-auto stockx-font`}>
+                {category.name}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -349,7 +424,7 @@ const ProductCard = ({ product }) => {
     : 0;
 
   return (
-    <div className={`${isDark ? 'bg-gray-800 hover:bg-gray-750' : 'bg-white hover:bg-gray-50'} rounded-lg shadow-sm hover:shadow-lg transition-all overflow-hidden`}>
+    <div className={`${isDark ? 'bg-gray-800 hover:bg-gray-750' : 'bg-white hover:bg-gray-50'} rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden transform hover:-translate-y-1`}>
       <div className="relative">
         <img
           src={product.image_url}
@@ -357,31 +432,31 @@ const ProductCard = ({ product }) => {
           className="w-full h-48 object-cover"
         />
         {discountPercentage > 0 && (
-          <div className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-sm font-bold">
+          <div className="absolute top-3 left-3 bg-gradient-to-r from-red-500 to-rose-400 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
             -{discountPercentage}%
           </div>
         )}
-        <div className="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded text-xs">
+        <div className="absolute top-3 right-3 bg-gradient-to-r from-orange-500 to-amber-400 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
           🔥 Trending
         </div>
       </div>
       
       <div className="p-4">
-        <h3 className={`font-medium ${isDark ? 'text-white' : 'text-gray-800'} mb-2 line-clamp-2`}>{product.name}</h3>
-        <p className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-600'} mb-3 line-clamp-2`}>{product.description}</p>
+        <h3 className={`font-semibold ${isDark ? 'text-white' : 'text-gray-800'} mb-2 line-clamp-2 stockx-font`}>{product.name}</h3>
+        <p className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-600'} mb-3 line-clamp-2 stockx-font`}>{product.description}</p>
         
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <span className="text-lg font-bold text-blue-600">
+            <span className="text-lg font-bold bg-gradient-to-r from-rose-500 to-pink-400 bg-clip-text text-transparent stockx-font">
               {userPrefs.currency} {product.price}
             </span>
             {product.original_price && (
-              <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'} line-through`}>
+              <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'} line-through stockx-font`}>
                 {userPrefs.currency} {product.original_price}
               </span>
             )}
           </div>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm">
+          <button className="bg-gradient-to-r from-rose-500 to-pink-400 text-white px-4 py-2 rounded-xl hover:from-rose-600 hover:to-pink-500 transition-all text-sm font-medium shadow-lg stockx-font">
             Add to Cart
           </button>
         </div>
@@ -403,7 +478,6 @@ const FloatingButtons = () => {
     const newMessage = { text: inputMessage, sender: 'user' };
     setMessages(prev => [...prev, newMessage]);
     
-    // Simulate ChatGPT response
     setTimeout(() => {
       const responses = [
         "Hello! I'm here to help you with your shopping on Trendly. What can I assist you with?",
@@ -420,19 +494,19 @@ const FloatingButtons = () => {
 
   return (
     <>
-      {/* Theme Toggle - Bottom Left */}
+      {/* Theme Toggle */}
       <button
         onClick={toggleTheme}
-        className={`fixed bottom-6 left-6 w-12 h-12 rounded-full ${isDark ? 'bg-yellow-500 hover:bg-yellow-600' : 'bg-gray-800 hover:bg-gray-900'} text-white shadow-lg hover:shadow-xl transition-all z-50 flex items-center justify-center`}
+        className={`fixed bottom-6 left-6 w-14 h-14 rounded-full ${isDark ? 'bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500' : 'bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black'} text-white shadow-xl hover:shadow-2xl transition-all z-50 flex items-center justify-center text-xl`}
         title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       >
         {isDark ? '☀️' : '🌙'}
       </button>
 
-      {/* Assistant Button - Bottom Right */}
+      {/* Assistant Button */}
       <button
         onClick={() => setShowAssistant(!showAssistant)}
-        className="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl transition-all z-50 flex items-center justify-center"
+        className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-gradient-to-r from-rose-500 to-pink-400 hover:from-rose-600 hover:to-pink-500 text-white shadow-xl hover:shadow-2xl transition-all z-50 flex items-center justify-center text-xl"
         title="Chat with AI assistant"
       >
         🤖
@@ -440,42 +514,39 @@ const FloatingButtons = () => {
 
       {/* Assistant Chat Window */}
       {showAssistant && (
-        <div className={`fixed bottom-24 right-6 w-80 h-96 ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border rounded-lg shadow-xl z-50 flex flex-col`}>
-          {/* Header */}
-          <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
-            <h3 className={`font-semibold ${isDark ? 'text-white' : 'text-gray-800'}`}>AI Assistant</h3>
+        <div className={`fixed bottom-24 right-6 w-80 h-96 ${isDark ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-200'} border rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden`}>
+          <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-gradient-to-r from-rose-500 to-pink-400">
+            <h3 className="font-semibold text-white stockx-font">AI Assistant</h3>
             <button
               onClick={() => setShowAssistant(false)}
-              className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-400 hover:text-gray-600'}`}
+              className="text-white hover:text-gray-200 transition-colors"
             >
               ✕
             </button>
           </div>
 
-          {/* Messages */}
           <div className="flex-1 p-4 overflow-y-auto space-y-3">
             {messages.length === 0 && (
-              <div className={`text-center ${isDark ? 'text-gray-400' : 'text-gray-500'} text-sm`}>
+              <div className={`text-center ${isDark ? 'text-gray-400' : 'text-gray-500'} text-sm stockx-font`}>
                 Hi! I'm your shopping assistant. Ask me anything!
               </div>
             )}
             {messages.map((message, index) => (
               <div
                 key={index}
-                className={`p-3 rounded-lg max-w-xs ${
+                className={`p-3 rounded-xl max-w-xs ${
                   message.sender === 'user'
-                    ? 'bg-blue-600 text-white ml-auto'
+                    ? 'bg-gradient-to-r from-rose-500 to-pink-400 text-white ml-auto'
                     : isDark
-                    ? 'bg-gray-700 text-white'
+                    ? 'bg-gray-800 text-white'
                     : 'bg-gray-100 text-gray-800'
-                }`}
+                } stockx-font text-sm`}
               >
                 {message.text}
               </div>
             ))}
           </div>
 
-          {/* Input */}
           <div className="p-4 border-t border-gray-200 dark:border-gray-700">
             <div className="flex space-x-2">
               <input
@@ -484,11 +555,11 @@ const FloatingButtons = () => {
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                 placeholder="Ask me anything..."
-                className={`flex-1 p-2 border ${isDark ? 'border-gray-600 bg-gray-700 text-white' : 'border-gray-300 bg-white text-gray-800'} rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+                className={`flex-1 p-2 border ${isDark ? 'border-gray-600 bg-gray-800 text-white' : 'border-gray-300 bg-white text-gray-800'} rounded-xl text-sm focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all stockx-font`}
               />
               <button
                 onClick={handleSendMessage}
-                className="px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
+                className="px-3 py-2 bg-gradient-to-r from-rose-500 to-pink-400 text-white rounded-xl hover:from-rose-600 hover:to-pink-500 transition-all text-sm stockx-font"
               >
                 Send
               </button>
@@ -499,6 +570,8 @@ const FloatingButtons = () => {
     </>
   );
 };
+
+// Trending Products Component
 const TrendingProducts = () => {
   const [products, setProducts] = useState([]);
   const { userPrefs } = useUser();
@@ -517,14 +590,14 @@ const TrendingProducts = () => {
   }, [userPrefs.country]);
 
   return (
-    <div className={`py-12 ${isDark ? 'bg-gray-900' : 'bg-white'} transition-colors`}>
+    <div className={`py-16 ${isDark ? 'bg-gray-900' : 'bg-white'} transition-all duration-300`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8">
-          <h2 className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-4`}>🔥 Trending Now</h2>
-          <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Discover the hottest products everyone's talking about</p>
+        <div className="text-center mb-12">
+          <h2 className={`text-4xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-4 stockx-font`}>🔥 Trending Now</h2>
+          <p className={`text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'} stockx-font`}>Discover the hottest products everyone's talking about</p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {products.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
@@ -534,17 +607,15 @@ const TrendingProducts = () => {
   );
 };
 
-// Hero Section Component - Removed as requested
-
 // Main App Component
 function App() {
   const [showLocationSelector, setShowLocationSelector] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [categories, setCategories] = useState([]);
   const [userPrefs, setUserPrefs] = useState(() => {
-    // Load saved preferences from localStorage
     const saved = localStorage.getItem('trendly-user-prefs');
     if (saved) {
-      const parsed = JSON.parse(saved);
-      return parsed;
+      return JSON.parse(saved);
     }
     return {
       country: 'US',
@@ -556,7 +627,6 @@ function App() {
     };
   });
 
-  // Show location selector only if no saved preferences
   const [initialLoad, setInitialLoad] = useState(true);
   
   useEffect(() => {
@@ -567,10 +637,10 @@ function App() {
     setInitialLoad(false);
   }, [initialLoad]);
 
-  // Theme state
+  // Theme state - Dark mode by default
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem('trendly-theme');
-    return saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    return saved === 'light' ? false : true; // Default to dark mode
   });
 
   const toggleTheme = () => {
@@ -579,7 +649,20 @@ function App() {
     localStorage.setItem('trendly-theme', newTheme ? 'dark' : 'light');
   };
 
-  // Initialize sample data on app load
+  // Fetch categories
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get(`${API}/categories`);
+        setCategories(response.data.categories);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  // Initialize sample data
   useEffect(() => {
     const initSampleData = async () => {
       try {
@@ -594,7 +677,6 @@ function App() {
 
   const handleLocationSelect = async (preferences) => {
     setUserPrefs(preferences);
-    // Save to localStorage for persistence
     localStorage.setItem('trendly-user-prefs', JSON.stringify(preferences));
     
     try {
@@ -612,25 +694,33 @@ function App() {
   return (
     <ThemeContext.Provider value={{ isDark, toggleTheme }}>
       <UserContext.Provider value={{ userPrefs, setUserPrefs }}>
-        <div className={`App min-h-screen ${isDark ? 'bg-gray-900' : 'bg-gray-50'} transition-colors`}>
+        <div className={`App min-h-screen ${isDark ? 'bg-gray-900' : 'bg-gray-50'} transition-all duration-300`}>
           <LocationSelector
             isOpen={showLocationSelector}
             onClose={() => setShowLocationSelector(false)}
             onSelect={handleLocationSelect}
           />
           
-          <Header onLocationClick={() => setShowLocationSelector(true)} />
+          <MobileMenu 
+            isOpen={showMobileMenu}
+            onClose={() => setShowMobileMenu(false)}
+            categories={categories}
+          />
+          
+          <Header 
+            onLocationClick={() => setShowLocationSelector(true)} 
+            onMenuClick={() => setShowMobileMenu(true)}
+          />
           <Categories />
           <TrendingProducts />
           
-          {/* Floating Buttons */}
           <FloatingButtons />
           
           {/* Footer */}
-          <footer className={`${isDark ? 'bg-gray-800 text-white' : 'bg-gray-800 text-white'} py-8`}>
+          <footer className={`${isDark ? 'bg-gray-900 border-gray-700' : 'bg-gray-800'} py-12 border-t`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <h3 className="text-2xl font-bold mb-4">Trendly</h3>
-              <p className={`${isDark ? 'text-gray-300' : 'text-gray-400'}`}>Your one-stop shop for trending products worldwide</p>
+              <h3 className="text-3xl font-bold bg-gradient-to-r from-rose-500 to-pink-400 bg-clip-text text-transparent mb-4 stockx-font">Trendly</h3>
+              <p className="text-gray-400 stockx-font">Your one-stop shop for trending products worldwide</p>
             </div>
           </footer>
         </div>
