@@ -173,13 +173,13 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
 // Header Component
 const Header = ({ onLocationClick }) => {
   const { userPrefs } = useUser();
-  const { isDark, toggleTheme } = useTheme();
+  const { isDark } = useTheme();
   const [searchQuery, setSearchQuery] = useState('');
   const [cartCount, setCartCount] = useState(0);
+  const [showNotifications, setShowNotifications] = useState(false);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // Search functionality
     console.log('Searching for:', searchQuery);
   };
 
@@ -192,19 +192,19 @@ const Header = ({ onLocationClick }) => {
             <h1 className="text-2xl font-bold text-blue-600">Trendly</h1>
           </div>
 
-          {/* Search Bar */}
-          <div className="flex-1 max-w-lg mx-4">
+          {/* Enlarged Search Bar */}
+          <div className="flex-1 max-w-2xl mx-8">
             <form onSubmit={handleSearch} className="relative">
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search trending products..."
-                className={`w-full pl-4 pr-12 py-2 border ${isDark ? 'border-gray-600 bg-gray-700 text-white placeholder-gray-400' : 'border-gray-300 bg-white text-gray-800 placeholder-gray-500'} rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors`}
+                className={`w-full pl-4 pr-12 py-3 border ${isDark ? 'border-gray-600 bg-gray-700 text-white placeholder-gray-400' : 'border-gray-300 bg-white text-gray-800 placeholder-gray-500'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors`}
               />
               <button
                 type="submit"
-                className={`absolute right-2 top-1/2 transform -translate-y-1/2 ${isDark ? 'text-gray-400 hover:text-blue-400' : 'text-gray-400 hover:text-blue-600'} transition-colors`}
+                className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${isDark ? 'text-gray-400 hover:text-blue-400' : 'text-gray-400 hover:text-blue-600'} transition-colors`}
               >
                 🔍
               </button>
@@ -213,14 +213,35 @@ const Header = ({ onLocationClick }) => {
 
           {/* Right side */}
           <div className="flex items-center space-x-4">
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className={`p-2 rounded-lg ${isDark ? 'text-yellow-400 hover:bg-gray-700' : 'text-gray-600 hover:bg-gray-100'} transition-colors`}
-              title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-            >
-              {isDark ? '☀️' : '🌙'}
-            </button>
+            {/* Notifications - StockX style */}
+            <div className="relative">
+              <button
+                onClick={() => setShowNotifications(!showNotifications)}
+                className={`p-2 rounded-lg ${isDark ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-600 hover:bg-gray-100'} transition-colors relative`}
+              >
+                🔔
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  3
+                </span>
+              </button>
+              {showNotifications && (
+                <div className={`absolute right-0 top-full mt-2 w-80 ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border rounded-lg shadow-lg z-50`}>
+                  <div className="p-4">
+                    <h3 className={`font-semibold ${isDark ? 'text-white' : 'text-gray-800'} mb-3`}>Notifications</h3>
+                    <div className="space-y-3">
+                      <div className={`p-3 ${isDark ? 'bg-gray-700' : 'bg-gray-50'} rounded`}>
+                        <p className={`text-sm ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>New trending product: LED Face Mask</p>
+                        <p className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>2 hours ago</p>
+                      </div>
+                      <div className={`p-3 ${isDark ? 'bg-gray-700' : 'bg-gray-50'} rounded`}>
+                        <p className={`text-sm ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>Price drop: Wireless Charging Pad</p>
+                        <p className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>1 day ago</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
 
             {/* Location */}
             <button
@@ -231,19 +252,22 @@ const Header = ({ onLocationClick }) => {
               <span>{userPrefs.currency}</span>
             </button>
 
-            {/* Cart */}
-            <button className={`relative p-2 ${isDark ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-600'} transition-colors`}>
-              🛒
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
+            {/* Cart with text */}
+            <button className={`flex items-center space-x-2 ${isDark ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-600'} transition-colors`}>
+              <div className="relative">
+                🛒
+                {cartCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {cartCount}
+                  </span>
+                )}
+              </div>
+              <span className="text-sm font-medium">Cart</span>
             </button>
 
-            {/* Auth buttons */}
+            {/* Auth buttons - StockX style */}
             <div className="flex space-x-2">
-              <button className={`px-4 py-2 text-sm ${isDark ? 'text-blue-400 hover:bg-gray-700' : 'text-blue-600 hover:bg-blue-50'} rounded-lg transition-colors`}>
+              <button className={`px-4 py-2 text-sm ${isDark ? 'text-blue-400 hover:bg-gray-700' : 'text-blue-600 hover:bg-blue-50'} rounded-lg transition-colors border-2 border-blue-600`}>
                 Login
               </button>
               <button className="px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
