@@ -286,11 +286,9 @@ async def get_categories():
             {"id": "fashion", "name": "FASHION", "color": "bg-gradient-to-br from-orange-500 to-red-400"},
             {"id": "home-living", "name": "HOME & LIVING", "color": "bg-gradient-to-br from-cyan-500 to-blue-400"},
             {"id": "outdoor-garden", "name": "OUTDOOR & GARDEN", "color": "bg-gradient-to-br from-yellow-500 to-orange-400"},
-            {"id": "health", "name": "Health & Wellness", "icon": "💊", "color": "bg-red-500"},
-            {"id": "sports", "name": "Sports & Fitness", "icon": "⚽", "color": "bg-orange-500"},
-            {"id": "gaming", "name": "Gaming", "icon": "🎮", "color": "bg-cyan-500"},
-            {"id": "outdoor", "name": "Outdoor & Garden", "icon": "🌱", "color": "bg-teal-500"},
-            {"id": "cooking", "name": "Cooking", "icon": "🍳", "color": "bg-yellow-500"},
+            {"id": "health-wellness", "name": "HEALTH & WELLNESS", "color": "bg-gradient-to-br from-red-500 to-pink-400"},
+            {"id": "sports-fitness", "name": "SPORTS & FITNESS", "color": "bg-gradient-to-br from-orange-500 to-red-400"},
+            {"id": "cooking", "name": "COOKING", "color": "bg-gradient-to-br from-yellow-500 to-orange-400"},
         ]
     }
 
