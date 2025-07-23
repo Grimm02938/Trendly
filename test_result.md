@@ -234,10 +234,7 @@ metadata:
 
 test_plan:
   current_focus:
-    - "API endpoints for countries, languages, currencies"
-    - "Product management APIs"
-    - "User preferences and cart management"
-    - "Sample data initialization"
+    - "Frontend integration testing (if needed)"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
