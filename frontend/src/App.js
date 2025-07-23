@@ -393,15 +393,34 @@ const TrendingProducts = () => {
 
 // Main App Component
 function App() {
-  const [showLocationSelector, setShowLocationSelector] = useState(true);
-  const [userPrefs, setUserPrefs] = useState({
-    country: 'US',
-    countryName: 'United States',
-    countryFlag: '🇺🇸',
-    language: 'en',
-    languageName: 'English',
-    currency: 'USD'
+  const [showLocationSelector, setShowLocationSelector] = useState(false);
+  const [userPrefs, setUserPrefs] = useState(() => {
+    // Load saved preferences from localStorage
+    const saved = localStorage.getItem('trendly-user-prefs');
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      return parsed;
+    }
+    return {
+      country: 'US',
+      countryName: 'United States',
+      countryFlag: '🇺🇸',
+      language: 'en',
+      languageName: 'English',
+      currency: 'USD'
+    };
   });
+
+  // Show location selector only if no saved preferences
+  const [initialLoad, setInitialLoad] = useState(true);
+  
+  useEffect(() => {
+    const saved = localStorage.getItem('trendly-user-prefs');
+    if (!saved && initialLoad) {
+      setShowLocationSelector(true);
+    }
+    setInitialLoad(false);
+  }, [initialLoad]);
 
   // Theme state
   const [isDark, setIsDark] = useState(() => {
@@ -430,6 +449,8 @@ function App() {
 
   const handleLocationSelect = async (preferences) => {
     setUserPrefs(preferences);
+    // Save to localStorage for persistence
+    localStorage.setItem('trendly-user-prefs', JSON.stringify(preferences));
     
     try {
       await axios.post(`${API}/user-preferences`, {
@@ -437,6 +458,7 @@ function App() {
         language: preferences.language,
         currency: preferences.currency
       });
+      console.log('User preferences saved successfully');
     } catch (error) {
       console.error('Error saving preferences:', error);
     }
