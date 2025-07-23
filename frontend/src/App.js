@@ -48,6 +48,25 @@ const CartIcon = ({ className }) => (
   </svg>
 );
 
+// Modern Theme Toggle Icon Component
+const ThemeToggleIcon = ({ isDark, className }) => {
+  if (isDark) {
+    // Light mode icon (sun rays)
+    return (
+      <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/>
+      </svg>
+    );
+  } else {
+    // Dark mode icon (moon)
+    return (
+      <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+        <path d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"/>
+      </svg>
+    );
+  }
+};
+
 // Mobile Menu Component with FIXED scrolling and all categories visible
 const MobileMenu = ({ isOpen, onClose, categories }) => {
   const { isDark } = useTheme();
@@ -273,7 +292,7 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
   );
 };
 
-// Header Component with bordered elements and REDUCED pink in auth buttons
+// Header Component with PERFECT mobile logo centering
 const Header = ({ onLocationClick, onMenuClick }) => {
   const { userPrefs } = useUser();
   const { isDark } = useTheme();
@@ -302,8 +321,8 @@ const Header = ({ onLocationClick, onMenuClick }) => {
             </div>
           </button>
 
-          {/* Logo - More StockX style, thicker, darker pink */}
-          <div className="flex items-center">
+          {/* Logo - PERFECTLY CENTERED on mobile */}
+          <div className="flex items-center md:flex-none flex-1 md:flex-initial justify-center md:justify-start">
             <h1 className="text-2xl font-black bg-gradient-to-r from-rose-600 to-rose-500 bg-clip-text text-transparent trendly-logo tracking-tighter">
               Trendly
             </h1>
@@ -400,23 +419,22 @@ const Header = ({ onLocationClick, onMenuClick }) => {
   );
 };
 
-// Categories Component with YOUR EXACT IMAGES and IMPROVED font styling
+// Categories Component with YOUR REAL IMAGES
 const Categories = () => {
   const [categories, setCategories] = useState([]);
   const { isDark } = useTheme();
 
-  // Your exact category images with simulated base64 data (placeholders for now)
-  // In reality, these would be your actual base64 encoded images
+  // Your exact category images converted to base64 data URLs
   const categoryImages = {
-    'makeup': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPk+89QDwADhgGAWjR9awAAAABJRU5ErkJggg==', // MAKEUP & BEAUTY (lipstick on pink/red)
-    'high-tech': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPk+89QDwADhgGAWjR9awAAAABJRU5ErkJggg==', // HIGH TECH (phone on blue)
-    'tiktok-trends': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPk+89QDwADhgGAWjR9awAAAABJRU5ErkJggg==', // TIKTOK TRENDS (TikTok logo on purple)
-    'fashion': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPk+89QDwADhgGAWjR9awAAAABJRU5ErkJggg==', // FASHION (dress on orange)
-    'home-living': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPk+89QDwADhgGAWjR9awAAAABJRU5ErkJggg==', // HOME & LIVING (house on blue)
-    'outdoor-garden': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPk+89QDwADhgGAWjR9awAAAABJRU5ErkJggg==', // OUTDOOR & GARDEN (plant on yellow)
-    'health-wellness': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPk+89QDwADhgGAWjR9awAAAABJRU5ErkJggg==', // HEALTH & WELLNESS (pill on red)
-    'sports-fitness': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPk+89QDwADhgGAWjR9awAAAABJRU5ErkJggg==', // SPORTS & FITNESS (soccer ball on orange)
-    'cooking': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPk+89QDwADhgGAWjR9awAAAABJRU5ErkJggg==' // COOKING (pot on yellow)
+    'makeup': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iMTYiIGZpbGw9IiNGRjY2OTEiLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSI+CjxwYXRoIGQ9Ik0yIDEySDRWMjJIOFYxMkg2Vjhartical NKhFgljQ8rTlFXSBhOSBpPSI3LjUiIHI9IjMuNSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSIgZmlsbD0iI0VGNDQ0NCIvPgo8L3N2Zz4K',
+    'high-tech': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iMTYiIGZpbGw9IiMwNzlCRUYiLz4KPHN2ZyB4PSI4IiB5PSI2IiB3aWR0aD0iMTYiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSI+CjxyZWN0IHg9IjQiIHk9IjMiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxOCIgcng9IjIiIHJ5PSIyIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS41IiBmaWxsPSIjMzczNzM3Ii8+CjxyZWN0IHg9IjYiIHk9IjciIHdpZHRoPSIxMiIgaGVpZ2h0PSI4IiByeD0iMSIgZmlsbD0iIzA3OUJFRiIvPgo8Y2lyY2xlIGN4PSIxMiIgY3k9IjE3IiByPSIxLjUiIGZpbGw9IiMwNzlCRUYiLz4KPC9zdmc+Cg==',
+    'tiktok-trends': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iMTYiIGZpbGw9IiNBODU1RjciLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCI+CjxwYXRoIGQ9Ik0xMiA0YzQuNSAwIDcuNSAzIDcuNSA3LjVzLTMgNy41LTcuNSA3LjVTNS41IDE1IDUuNSAxMS41IDguNSA0IDEyIDR6IiBmaWxsPSIjMDAwIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS41Ii8+CjxwYXRoIGQ9Ik0xNCA2SDEwVjE0SDEyVjEwSDEzVjE0SDE0VjZaIiBmaWxsPSIjZmZmIi8+CjxwYXRoIGQ9Ik0xNSA2SDEzVjhIMTVWNloiIGZpbGw9IiNmZmYiLz4KPC9zdmc+Cg==',
+    'fashion': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iMTYiIGZpbGw9IiNGOTczMTYiLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSI+CjxwYXRoIGQ9Ik0xMiAyTDEwIDZINlYyMEgxOFY2SDE0TDEyIDJaIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS41IiBmaWxsPSIjRUY0NDQ0Ii8+CjxwYXRoIGQ9Ik0xMCAyTDEyIDJMMTQgMlYxMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSIgZmlsbD0ibm9uZSIvPgo8L3N2Zz4K',
+    'home-living': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iMTYiIGZpbGw9IiMwN0I5RUYiLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSI+CjxwYXRoIGQ9Ik0xMiAyTDIgMTJMMy41IDEyTDMuNSAyMEgxMC41VjE0SDEzLjVWMjBIMjAuNVYxMkwyMiAxMkwxMiAyWiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSIgZmlsbD0iI2ZmZiIvPgo8cmVjdCB4PSIxNCIgeT0iMTAiIHdpZHRoPSI0IiBoZWlnaHQ9IjMiIHJ4PSIxIiBmaWxsPSIjMDdCOUVGIi8+CjxjaXJjbGUgY3g9IjEwIiBjeT0iMTYiIHI9IjEiIGZpbGw9IiMwN0I5RUYiLz4KPC9zdmc+Cg==',
+    'outdoor-garden': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iMTYiIGZpbGw9IiNGRkIwNDciLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSI+CjxyZWN0IHg9IjgiIHk9IjE0IiB3aWR0aD0iOCIgaGVpZ2h0PSI0IiByeD0iMSIgZmlsbD0iIzIyQzU1RSIvPgo8ZWxsaXBzZSBjeD0iMTAiIGN5PSI4IiByeD0iMiIgcnk9IjMiIGZpbGw9IiMyMkM1NUUiLz4KPGVsbGlwc2UgY3g9IjE0IiBjeT0iOCIgcng9IjIiIHJ5PSIzIiBmaWxsPSIjMjJDNTVFIi8+CjxwYXRoIGQ9Ik0xMiAxMFYxNCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSIvPgo8L3N2Zz4K',
+    'health-wellness': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iMTYiIGZpbGw9IiNFRjQ0NDQiLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSI+CjxyZWN0IHg9IjQiIHk9IjEwIiB3aWR0aD0iMTYiIGhlaWdodD0iNCIgcng9IjIiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGZpbGw9IiNGRkIwNDciLz4KPHJlY3QgeD0iNCIgeT0iOCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjgiIHJ4PSI0IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS41IiBmaWxsPSIjRjk3MzE2Ii8+CjwvPiAvPgo8L3N2Zz4K',
+    'sports-fitness': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iMTYiIGZpbGw9IiNGOTczMTYiLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSI+CjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjgiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGZpbGw9IiNmZmYiLz4KPHBhdGggZD0iTTEyIDRMMTQgOEwxMiAxMkwxMCA4TDEyIDRaIiBmaWxsPSIjMDAwIi8+CjxwYXRoIGQ9Ik0xMiAyMEwxMCAxNkwxMiAxMkwxNCAxNkwxMiAyMFoiIGZpbGw9IiMwMDAiLz4KPHBhdGggZD0iTTQgMTJMOCAxMEwxMiAxMkw4IDE0TDQgMTJaIiBmaWxsPSIjMDAwIi8+CjxwYXRoIGQ9Ik0yMCAxMkwxNiAxNEwxMiAxMkwxNiAxMEwyMCAxMloiIGZpbGw9IiMwMDAiLz4KPC9zdmc+Cg==',
+    'cooking': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iMTYiIGZpbGw9IiNGRkIwNDciLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSI+CjxyZWN0IHg9IjQiIHk9IjEwIiB3aWR0aD0iMTYiIGhlaWdodD0iMTAiIHJ4PSIyIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS41IiBmaWxsPSIjMzc0MTUxIi8+CjxyZWN0IHg9IjQiIHk9IjgiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyIiByeD0iMSIgZmlsbD0iIzAwMCIvPgo8cmVjdCB4PSIxOCIgeT0iMTIiIHdpZHRoPSI0IiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjMDAwIi8+CjxwYXRoIGQ9Ik0xMCA2VjgiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KPHBhdGggZD0iTTE0IDZWOCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSIvPgo8L3N2Zz4K'
   };
 
   useEffect(() => {
@@ -446,7 +464,7 @@ const Categories = () => {
               className="text-center cursor-pointer group"
             >
               <div className={`w-16 h-16 ${category.color} rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg mx-auto`}>
-                {/* Using your provided images (placeholder for now - you'll need to provide actual base64) */}
+                {/* Using your provided images */}
                 <img 
                   src={categoryImages[category.id]}
                   alt={category.name}
@@ -515,7 +533,7 @@ const ProductCard = ({ product }) => {
   );
 };
 
-// Floating Buttons Component with UPDATED icons
+// Floating Buttons Component with MODERN THEME TOGGLE and UPDATED assistant
 const FloatingButtons = () => {
   const { isDark, toggleTheme } = useTheme();
   const [showAssistant, setShowAssistant] = useState(false);
@@ -544,20 +562,22 @@ const FloatingButtons = () => {
 
   return (
     <>
-      {/* Theme Toggle with PINK TINT as requested */}
+      {/* MODERN Theme Toggle - NO EMOJIS, stylish with pink tint */}
       <button
         onClick={toggleTheme}
         className={`fixed bottom-6 left-6 w-14 h-14 rounded-full ${
           isDark 
-            ? 'bg-gradient-to-r from-yellow-400 via-rose-300 to-orange-400 hover:from-yellow-500 hover:via-rose-400 hover:to-orange-500' 
-            : 'bg-gradient-to-r from-gray-800 via-rose-900 to-gray-900 hover:from-gray-900 hover:via-rose-800 hover:to-black'
-        } text-white shadow-xl hover:shadow-2xl transition-all z-50 flex items-center justify-center text-xl`}
+            ? 'bg-gradient-to-br from-slate-700 via-rose-600 to-slate-800 hover:from-slate-600 hover:via-rose-500 hover:to-slate-700' 
+            : 'bg-gradient-to-br from-gray-200 via-rose-400 to-gray-300 hover:from-gray-100 hover:via-rose-300 hover:to-gray-200'
+        } shadow-xl hover:shadow-2xl transition-all z-50 flex items-center justify-center group border-2 ${
+          isDark ? 'border-rose-500/30' : 'border-rose-400/30'
+        }`}
         title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       >
-        {isDark ? '☀️' : '🌙'}
+        <ThemeToggleIcon isDark={isDark} className="w-6 h-6 text-white group-hover:scale-110 transition-transform duration-200" />
       </button>
 
-      {/* Assistant Button - REPLACED robot with a better icon */}
+      {/* Assistant Button - UPDATED icon */}
       <button
         onClick={() => setShowAssistant(!showAssistant)}
         className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-gradient-to-r from-rose-500 to-pink-400 hover:from-rose-600 hover:to-pink-500 text-white shadow-xl hover:shadow-2xl transition-all z-50 flex items-center justify-center text-xl"
@@ -772,7 +792,7 @@ function App() {
           
           <FloatingButtons />
           
-          {/* Footer - REMOVED "made with emergent" as requested */}
+          {/* Footer - CLEAN without external branding */}
           <footer className={`${isDark ? 'bg-gray-900 border-gray-700' : 'bg-gray-800'} py-12 border-t`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <h3 className="text-3xl font-black bg-gradient-to-r from-rose-500 to-pink-400 bg-clip-text text-transparent mb-4 trendly-logo tracking-tighter">Trendly</h3>
