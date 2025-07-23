@@ -231,6 +231,7 @@ const Header = ({ onLocationClick }) => {
 // Categories Component
 const Categories = () => {
   const [categories, setCategories] = useState([]);
+  const { isDark } = useTheme();
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -245,17 +246,17 @@ const Categories = () => {
   }, []);
 
   return (
-    <div className="bg-gray-50 py-6">
+    <div className={`${isDark ? 'bg-gray-800' : 'bg-gray-50'} py-6 transition-colors`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Shop by Category</h2>
+        <h2 className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-6 text-center`}>Shop by Category</h2>
         <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-4">
           {categories.map(category => (
             <div
               key={category.id}
-              className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center"
+              className={`${isDark ? 'bg-gray-700 hover:bg-gray-600 text-white' : 'bg-white hover:bg-gray-50 text-gray-800'} p-4 rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer text-center`}
             >
               <div className="text-2xl mb-2">{category.icon}</div>
-              <div className="text-sm font-medium text-gray-700">{category.name}</div>
+              <div className={`text-sm font-medium ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>{category.name}</div>
             </div>
           ))}
         </div>
