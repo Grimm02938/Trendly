@@ -354,23 +354,25 @@ const TrendingProducts = () => {
 
 // Hero Section Component
 const HeroSection = () => {
+  const { isDark } = useTheme();
+  
   return (
-    <div className="relative bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+    <div className={`relative ${isDark ? 'bg-gradient-to-r from-gray-800 to-gray-900' : 'bg-gradient-to-r from-blue-600 to-purple-600'} text-white py-16 transition-colors`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Discover What's
-              <span className="block text-yellow-300">Trending</span>
+              <span className={`block ${isDark ? 'text-blue-400' : 'text-yellow-300'}`}>Trending</span>
             </h1>
-            <p className="text-xl mb-8 text-blue-100">
+            <p className={`text-xl mb-8 ${isDark ? 'text-gray-300' : 'text-blue-100'}`}>
               From viral TikTok finds to must-have gadgets - shop the latest trends at unbeatable prices
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+              <button className={`${isDark ? 'bg-blue-600 hover:bg-blue-700' : 'bg-white text-blue-600 hover:bg-gray-100'} px-8 py-3 rounded-lg font-medium transition-colors`}>
                 Shop Now
               </button>
-              <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-600 transition-colors">
+              <button className={`border-2 ${isDark ? 'border-gray-400 text-gray-300 hover:bg-gray-700 hover:text-white' : 'border-white text-white hover:bg-white hover:text-blue-600'} px-8 py-3 rounded-lg font-medium transition-colors`}>
                 View Trending
               </button>
             </div>
