@@ -19,6 +19,14 @@ const useUser = () => {
   return context;
 };
 
+const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+  return context;
+};
+
 // Location Selector Modal
 const LocationSelector = ({ isOpen, onClose, onSelect }) => {
   const [countries, setCountries] = useState([]);
