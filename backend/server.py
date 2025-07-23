@@ -280,16 +280,16 @@ async def get_languages():
 async def get_categories():
     return {
         "categories": [
-            {"id": "makeup", "name": "Makeup & Beauty", "image": "https://images.unsplash.com/photo-1531986362435-16b427eb9c26?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwyfHxjYXRlZ29yeSUyMGljb25zfGVufDB8fHx8MTc1MzI0MzE5MHww&ixlib=rb-4.1.0&q=85"},
-            {"id": "tiktok-trends", "name": "TikTok Trends", "image": "https://images.unsplash.com/photo-1730692504752-c411cf0306ac?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwzfHxjYXRlZ29yeSUyMGljb25zfGVufDB8fHx8MTc1MzI0MzE5MHww&ixlib=rb-4.1.0&q=85"},
-            {"id": "high-tech", "name": "High Tech", "image": "https://images.unsplash.com/photo-1558655146-9f40138edfeb?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwxfHxjYXRlZ29yeSUyMGljb25zfGVufDB8fHx8MTc1MzI0MzE5MHww&ixlib=rb-4.1.0&q=85"},
-            {"id": "fashion", "name": "Fashion", "image": "https://images.unsplash.com/photo-1627953331399-64b87ec81313?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHwyfHxwcm9kdWN0JTIwY2F0ZWdvcmllc3xlbnwwfHx8fDE3NTMyNDMyMTB8MA&ixlib=rb-4.1.0&q=85"},
-            {"id": "home", "name": "Home & Living", "image": "https://images.unsplash.com/photo-1672363547647-8fad02572412?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHwxfHxwcm9kdWN0JTIwY2F0ZWdvcmllc3xlbnwwfHx8fDE3NTMyNDMyMTB8MA&ixlib=rb-4.1.0&q=85"},
-            {"id": "health", "name": "Health & Wellness", "image": "https://images.unsplash.com/photo-1722639096454-1fc2448e5c15?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHwzfHxwcm9kdWN0JTIwY2F0ZWdvcmllc3xlbnwwfHx8fDE3NTMyNDMyMTB8MA&ixlib=rb-4.1.0&q=85"},
-            {"id": "sports", "name": "Sports & Fitness", "image": "https://images.unsplash.com/photo-1663124178667-28b3776d7c15?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwxfHxzaG9wcGluZyUyMGljb25zfGVufDB8fHx8MTc1MzI0MzIxN3ww&ixlib=rb-4.1.0&q=85"},
-            {"id": "gaming", "name": "Gaming", "image": "https://images.unsplash.com/photo-1644984875410-e11486d2b94f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwyfHxzaG9wcGluZyUyMGljb25zfGVufDB8fHx8MTc1MzI0MzIxN3ww&ixlib=rb-4.1.0&q=85"},
-            {"id": "accessories", "name": "Accessories", "image": "https://images.unsplash.com/photo-1531986362435-16b427eb9c26?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwyfHxjYXRlZ29yeSUyMGljb25zfGVufDB8fHx8MTc1MzI0MzE5MHww&ixlib=rb-4.1.0&q=85"},
-            {"id": "outdoor", "name": "Outdoor & Garden", "image": "https://images.unsplash.com/photo-1672363547647-8fad02572412?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHwxfHxwcm9kdWN0JTIwY2F0ZWdvcmllc3xlbnwwfHx8fDE3NTMyNDMyMTB8MA&ixlib=rb-4.1.0&q=85"},
+            {"id": "makeup", "name": "Makeup & Beauty", "icon": "💄", "color": "bg-pink-500"},
+            {"id": "tiktok-trends", "name": "TikTok Trends", "icon": "🎵", "color": "bg-purple-500"},
+            {"id": "high-tech", "name": "High Tech", "icon": "📱", "color": "bg-blue-500"},
+            {"id": "fashion", "name": "Fashion", "icon": "👗", "color": "bg-indigo-500"},
+            {"id": "home", "name": "Home & Living", "icon": "🏠", "color": "bg-green-500"},
+            {"id": "health", "name": "Health & Wellness", "icon": "💊", "color": "bg-red-500"},
+            {"id": "sports", "name": "Sports & Fitness", "icon": "⚽", "color": "bg-orange-500"},
+            {"id": "gaming", "name": "Gaming", "icon": "🎮", "color": "bg-cyan-500"},
+            {"id": "outdoor", "name": "Outdoor & Garden", "icon": "🌱", "color": "bg-teal-500"},
+            {"id": "cooking", "name": "Cooking", "icon": "🍳", "color": "bg-yellow-500"},
         ]
     }
 
