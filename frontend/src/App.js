@@ -408,8 +408,8 @@ const Header = ({ onLocationClick, onMenuClick }) => {
             </div>
           </button>
 
-          {/* Logo - PERFECTLY CENTERED on mobile */}
-          <div className="flex items-center md:flex-none flex-1 md:flex-initial justify-center md:justify-start">
+          {/* Logo - PERFECTLY CENTERED on all screen sizes */}
+          <div className="flex items-center flex-1 justify-center">
             <h1 className="text-2xl font-black bg-gradient-to-r from-rose-600 to-rose-500 bg-clip-text text-transparent trendly-logo tracking-tighter">
               Trendly
             </h1>
