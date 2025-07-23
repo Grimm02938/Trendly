@@ -67,86 +67,84 @@ const ThemeToggleIcon = ({ isDark, className }) => {
   }
 };
 
-// Category Icon Components - Exact style matching user's images
+// Category Icon Components - Simple and clear icons
 const CategoryIcons = {
   'makeup': ({ className }) => (
     <svg className={className} viewBox="0 0 200 200" fill="none">
       <circle cx="100" cy="100" r="100" fill="#FF6B6B"/>
-      <path d="M70 80h20v60h-20z" fill="#000" stroke="#000" strokeWidth="4"/>
-      <ellipse cx="80" cy="65" rx="10" ry="15" fill="#E53E3E"/>
-      <rect x="75" y="75" width="10" height="5" fill="#E53E3E"/>
+      {/* Simple lipstick */}
+      <rect x="85" y="70" width="30" height="80" rx="15" fill="#000" stroke="#000" strokeWidth="3"/>
+      <rect x="85" y="70" width="30" height="50" rx="15" fill="#E53E3E"/>
+      <rect x="92" y="60" width="16" height="15" rx="8" fill="#000"/>
     </svg>
   ),
   'high-tech': ({ className }) => (
     <svg className={className} viewBox="0 0 200 200" fill="none">
       <circle cx="100" cy="100" r="100" fill="#4DABF7"/>
-      <rect x="70" y="40" width="60" height="120" rx="10" fill="#000" stroke="#000" strokeWidth="4"/>
-      <rect x="75" y="50" width="50" height="35" rx="5" fill="#4DABF7"/>
-      <rect x="75" y="90" width="50" height="35" rx="5" fill="#4DABF7"/>
-      <rect x="75" y="130" width="50" height="35" rx="5" fill="#4DABF7"/>
-      <circle cx="100" cy="140" r="6" fill="#4DABF7"/>
-      <rect x="85" y="150" width="30" height="8" rx="4" fill="#6C757D"/>
+      {/* Simple smartphone */}
+      <rect x="75" y="50" width="50" height="100" rx="8" fill="#000" stroke="#000" strokeWidth="3"/>
+      <rect x="80" y="60" width="40" height="70" rx="3" fill="#4DABF7"/>
+      <circle cx="100" cy="140" r="4" fill="#4DABF7"/>
     </svg>
   ),
   'tiktok-trends': ({ className }) => (
     <svg className={className} viewBox="0 0 200 200" fill="none">
       <circle cx="100" cy="100" r="100" fill="#B794F6"/>
-      <path d="M100 50c-4 0-8 2-10 6l-4 8c-2 4-2 8 0 12l20 40c2 4 6 6 10 6s8-2 10-6l20-40c2-4 2-8 0-12l-4-8c-2-4-6-6-10-6h-32z" fill="#000" stroke="#000" strokeWidth="4"/>
-      <circle cx="85" cy="70" r="8" fill="#B794F6"/>
-      <circle cx="115" cy="70" r="8" fill="#B794F6"/>
-      <path d="M85 90c5 10 15 10 30 0" stroke="#B794F6" strokeWidth="4" fill="none"/>
+      {/* TikTok logo style */}
+      <path d="M115 65v50c8-5 15-5 20 0v-15c-5-8-15-8-20 0V75c0-8-8-15-15-15v15c8 0 15 7 15 15v25c0 8-7 15-15 15s-15-7-15-15c0-5 2-10 8-12v-15c-12 3-20 15-20 27 0 17 13 30 30 30s30-13 30-30V65h-18z" fill="#000"/>
     </svg>
   ),
   'fashion': ({ className }) => (
     <svg className={className} viewBox="0 0 200 200" fill="none">
       <circle cx="100" cy="100" r="100" fill="#FF9500"/>
-      <path d="M100 45l-15 20v80h30V65l-15-20z" fill="#E53E3E" stroke="#000" strokeWidth="4"/>
-      <path d="M85 62c0-5 3-10 15-10s15 5 15 10" stroke="#000" strokeWidth="4" fill="none"/>
-      <rect x="95" y="55" width="10" height="5" fill="#000"/>
+      {/* Simple dress */}
+      <path d="M100 50l-20 25v75h40V75l-20-25z" fill="#000" stroke="#000" strokeWidth="3"/>
+      <path d="M80 70c0-8 9-15 20-15s20 7 20 15" stroke="#000" strokeWidth="3" fill="none"/>
     </svg>
   ),
   'home-living': ({ className }) => (
     <svg className={className} viewBox="0 0 200 200" fill="none">
       <circle cx="100" cy="100" r="100" fill="#17C3B2"/>
-      <path d="M100 45l-40 30h10v45h25V95h10v25h25V75h10L100 45z" fill="#000" stroke="#000" strokeWidth="4"/>
-      <rect x="110" y="60" width="15" height="10" rx="2" fill="#17C3B2"/>
-      <rect x="75" y="110" width="8" height="15" fill="#FFC107"/>
+      {/* Simple house */}
+      <path d="M100 50l-40 35v60h80V85l-40-35z" fill="#000" stroke="#000" strokeWidth="3"/>
+      <rect x="85" y="125" width="15" height="20" fill="#17C3B2"/>
+      <rect x="110" y="105" width="12" height="12" fill="#17C3B2"/>
     </svg>
   ),
   'outdoor-garden': ({ className }) => (
     <svg className={className} viewBox="0 0 200 200" fill="none">
       <circle cx="100" cy="100" r="100" fill="#95D5B2"/>
-      <path d="M100 80v40" stroke="#000" strokeWidth="6"/>
-      <ellipse cx="85" cy="60" rx="10" ry="15" fill="#52B788"/>
-      <ellipse cx="115" cy="60" rx="10" ry="15" fill="#52B788"/>
-      <rect x="75" y="120" width="50" height="20" rx="5" fill="#8B4513" stroke="#000" strokeWidth="3"/>
-      <circle cx="100" cy="135" r="4" fill="#52B788"/>
+      {/* Simple tree */}
+      <rect x="95" y="120" width="10" height="30" fill="#8B4513"/>
+      <circle cx="100" cy="90" r="25" fill="#22C55E" stroke="#000" strokeWidth="3"/>
+      <circle cx="85" cy="85" r="18" fill="#22C55E" stroke="#000" strokeWidth="2"/>
+      <circle cx="115" cy="85" r="18" fill="#22C55E" stroke="#000" strokeWidth="2"/>
     </svg>
   ),
   'health-wellness': ({ className }) => (
     <svg className={className} viewBox="0 0 200 200" fill="none">
       <circle cx="100" cy="100" r="100" fill="#FF6B9D"/>
-      <path d="M100 70v60M70 100h60" stroke="#000" strokeWidth="8"/>
-      <circle cx="100" cy="100" r="35" fill="none" stroke="#000" strokeWidth="4"/>
+      {/* Medical cross */}
+      <rect x="90" y="70" width="20" height="60" rx="10" fill="#000"/>
+      <rect x="70" y="90" width="60" height="20" rx="10" fill="#000"/>
     </svg>
   ),
   'sports-fitness': ({ className }) => (
     <svg className={className} viewBox="0 0 200 200" fill="none">
       <circle cx="100" cy="100" r="100" fill="#FFB74D"/>
+      {/* Simple dumbbell */}
       <rect x="60" y="95" width="80" height="10" rx="5" fill="#000"/>
-      <circle cx="70" cy="100" r="12" fill="#000"/>
-      <circle cx="130" cy="100" r="12" fill="#000"/>
-      <circle cx="50" cy="100" r="8" fill="#000"/>
-      <circle cx="150" cy="100" r="8" fill="#000"/>
+      <rect x="50" y="85" width="20" height="30" rx="10" fill="#000"/>
+      <rect x="130" y="85" width="20" height="30" rx="10" fill="#000"/>
     </svg>
   ),
   'cooking': ({ className }) => (
     <svg className={className} viewBox="0 0 200 200" fill="none">
       <circle cx="100" cy="100" r="100" fill="#FFCE56"/>
-      <ellipse cx="100" cy="110" rx="40" ry="30" fill="#000" stroke="#000" strokeWidth="4"/>
-      <rect x="60" y="80" width="80" height="8" rx="4" fill="#000"/>
-      <rect x="130" y="100" width="20" height="10" rx="5" fill="#000"/>
-      <path d="M75 65v10M90 65v10M110 65v10M125 65v10" stroke="#000" strokeWidth="3"/>
+      {/* Chef's hat */}
+      <ellipse cx="100" cy="110" rx="35" ry="25" fill="#000" stroke="#000" strokeWidth="3"/>
+      <circle cx="100" cy="85" r="30" fill="#FFF" stroke="#000" strokeWidth="3"/>
+      <rect x="70" y="85" width="60" height="8" rx="4" fill="#000"/>
     </svg>
   )
 };
