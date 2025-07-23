@@ -320,6 +320,7 @@ const ProductCard = ({ product }) => {
 const TrendingProducts = () => {
   const [products, setProducts] = useState([]);
   const { userPrefs } = useUser();
+  const { isDark } = useTheme();
 
   useEffect(() => {
     const fetchTrendingProducts = async () => {
@@ -334,11 +335,11 @@ const TrendingProducts = () => {
   }, [userPrefs.country]);
 
   return (
-    <div className="py-12">
+    <div className={`py-12 ${isDark ? 'bg-gray-900' : 'bg-white'} transition-colors`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">🔥 Trending Now</h2>
-          <p className="text-gray-600">Discover the hottest products everyone's talking about</p>
+          <h2 className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-4`}>🔥 Trending Now</h2>
+          <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Discover the hottest products everyone's talking about</p>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
