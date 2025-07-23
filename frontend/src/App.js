@@ -144,6 +144,7 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
 // Header Component
 const Header = ({ onLocationClick }) => {
   const { userPrefs } = useUser();
+  const { isDark, toggleTheme } = useTheme();
   const [searchQuery, setSearchQuery] = useState('');
   const [cartCount, setCartCount] = useState(0);
 
@@ -154,7 +155,7 @@ const Header = ({ onLocationClick }) => {
   };
 
   return (
-    <header className="bg-white shadow-sm border-b">
+    <header className={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} shadow-sm border-b transition-colors`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -170,11 +171,11 @@ const Header = ({ onLocationClick }) => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search trending products..."
-                className="w-full pl-4 pr-12 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className={`w-full pl-4 pr-12 py-2 border ${isDark ? 'border-gray-600 bg-gray-700 text-white placeholder-gray-400' : 'border-gray-300 bg-white text-gray-800 placeholder-gray-500'} rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors`}
               />
               <button
                 type="submit"
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-blue-600"
+                className={`absolute right-2 top-1/2 transform -translate-y-1/2 ${isDark ? 'text-gray-400 hover:text-blue-400' : 'text-gray-400 hover:text-blue-600'} transition-colors`}
               >
                 🔍
               </button>
@@ -183,17 +184,26 @@ const Header = ({ onLocationClick }) => {
 
           {/* Right side */}
           <div className="flex items-center space-x-4">
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className={`p-2 rounded-lg ${isDark ? 'text-yellow-400 hover:bg-gray-700' : 'text-gray-600 hover:bg-gray-100'} transition-colors`}
+              title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {isDark ? '☀️' : '🌙'}
+            </button>
+
             {/* Location */}
             <button
               onClick={onLocationClick}
-              className="flex items-center space-x-1 text-sm text-gray-600 hover:text-blue-600"
+              className={`flex items-center space-x-1 text-sm ${isDark ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-600'} transition-colors`}
             >
               <span>{userPrefs.countryFlag}</span>
               <span>{userPrefs.currency}</span>
             </button>
 
             {/* Cart */}
-            <button className="relative p-2 text-gray-600 hover:text-blue-600">
+            <button className={`relative p-2 ${isDark ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-600'} transition-colors`}>
               🛒
               {cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
@@ -204,10 +214,10 @@ const Header = ({ onLocationClick }) => {
 
             {/* Auth buttons */}
             <div className="flex space-x-2">
-              <button className="px-4 py-2 text-sm text-blue-600 hover:bg-blue-50 rounded-lg">
+              <button className={`px-4 py-2 text-sm ${isDark ? 'text-blue-400 hover:bg-gray-700' : 'text-blue-600 hover:bg-blue-50'} rounded-lg transition-colors`}>
                 Login
               </button>
-              <button className="px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+              <button className="px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                 Sign Up
               </button>
             </div>
