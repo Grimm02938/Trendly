@@ -67,81 +67,86 @@ const ThemeToggleIcon = ({ isDark, className }) => {
   }
 };
 
-// Category Icon Components - Same style as your FASHION image
+// Category Icon Components - Exact style matching user's images
 const CategoryIcons = {
   'makeup': ({ className }) => (
-    <svg className={className} viewBox="0 0 64 64" fill="none">
-      <circle cx="32" cy="32" r="32" fill="#EC4899"/>
-      <path d="M20 28h8v20h-8z" fill="#000" stroke="#000" strokeWidth="2"/>
-      <ellipse cx="24" cy="22" rx="4" ry="6" fill="#DC2626"/>
-      <rect x="22" y="26" width="4" height="2" fill="#000"/>
+    <svg className={className} viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="100" fill="#FF6B6B"/>
+      <path d="M70 80h20v60h-20z" fill="#000" stroke="#000" strokeWidth="4"/>
+      <ellipse cx="80" cy="65" rx="10" ry="15" fill="#E53E3E"/>
+      <rect x="75" y="75" width="10" height="5" fill="#E53E3E"/>
     </svg>
   ),
   'high-tech': ({ className }) => (
-    <svg className={className} viewBox="0 0 64 64" fill="none">
-      <circle cx="32" cy="32" r="32" fill="#3B82F6"/>
-      <rect x="20" y="12" width="24" height="40" rx="4" fill="#374151" stroke="#000" strokeWidth="2"/>
-      <rect x="22" y="16" width="20" height="14" rx="2" fill="#3B82F6"/>
-      <circle cx="32" cy="36" r="2" fill="#3B82F6"/>
-      <rect x="28" y="40" width="8" height="2" rx="1" fill="#6B7280"/>
+    <svg className={className} viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="100" fill="#4DABF7"/>
+      <rect x="70" y="40" width="60" height="120" rx="10" fill="#000" stroke="#000" strokeWidth="4"/>
+      <rect x="75" y="50" width="50" height="35" rx="5" fill="#4DABF7"/>
+      <rect x="75" y="90" width="50" height="35" rx="5" fill="#4DABF7"/>
+      <rect x="75" y="130" width="50" height="35" rx="5" fill="#4DABF7"/>
+      <circle cx="100" cy="140" r="6" fill="#4DABF7"/>
+      <rect x="85" y="150" width="30" height="8" rx="4" fill="#6C757D"/>
     </svg>
   ),
   'tiktok-trends': ({ className }) => (
-    <svg className={className} viewBox="0 0 64 64" fill="none">
-      <circle cx="32" cy="32" r="32" fill="#A855F7"/>
-      <path d="M32 16c0 4 2 6 6 6v6c-2 0-4-1-6-2v8c0 6-4 10-10 10s-10-4-10-10 4-10 10-10c1 0 2 0 3 1v6c-1-1-2-1-3-1-3 0-5 2-5 5s2 5 5 5 5-2 5-5V16h5z" fill="#000"/>
+    <svg className={className} viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="100" fill="#B794F6"/>
+      <path d="M100 50c-4 0-8 2-10 6l-4 8c-2 4-2 8 0 12l20 40c2 4 6 6 10 6s8-2 10-6l20-40c2-4 2-8 0-12l-4-8c-2-4-6-6-10-6h-32z" fill="#000" stroke="#000" strokeWidth="4"/>
+      <circle cx="85" cy="70" r="8" fill="#B794F6"/>
+      <circle cx="115" cy="70" r="8" fill="#B794F6"/>
+      <path d="M85 90c5 10 15 10 30 0" stroke="#B794F6" strokeWidth="4" fill="none"/>
     </svg>
   ),
   'fashion': ({ className }) => (
-    <svg className={className} viewBox="0 0 64 64" fill="none">
-      <circle cx="32" cy="32" r="32" fill="#F97316"/>
-      <path d="M32 14l-6 8v24h12V22l-6-8z" fill="#DC2626" stroke="#000" strokeWidth="2"/>
-      <path d="M26 20c0-2 1-4 6-4s6 2 6 4" stroke="#000" strokeWidth="2" fill="none"/>
-      <rect x="30" y="18" width="4" height="2" fill="#000"/>
+    <svg className={className} viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="100" fill="#FF9500"/>
+      <path d="M100 45l-15 20v80h30V65l-15-20z" fill="#E53E3E" stroke="#000" strokeWidth="4"/>
+      <path d="M85 62c0-5 3-10 15-10s15 5 15 10" stroke="#000" strokeWidth="4" fill="none"/>
+      <rect x="95" y="55" width="10" height="5" fill="#000"/>
     </svg>
   ),
   'home-living': ({ className }) => (
-    <svg className={className} viewBox="0 0 64 64" fill="none">
-      <circle cx="32" cy="32" r="32" fill="#06B6D4"/>
-      <path d="M32 14l-16 12h4v18h10V32h4v12h10V26h4L32 14z" fill="#FFF" stroke="#000" strokeWidth="2"/>
-      <rect x="36" y="20" width="6" height="4" rx="1" fill="#06B6D4"/>
-      <rect x="24" y="36" width="3" height="6" fill="#8B5CF6"/>
+    <svg className={className} viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="100" fill="#17C3B2"/>
+      <path d="M100 45l-40 30h10v45h25V95h10v25h25V75h10L100 45z" fill="#000" stroke="#000" strokeWidth="4"/>
+      <rect x="110" y="60" width="15" height="10" rx="2" fill="#17C3B2"/>
+      <rect x="75" y="110" width="8" height="15" fill="#FFC107"/>
     </svg>
   ),
   'outdoor-garden': ({ className }) => (
-    <svg className={className} viewBox="0 0 64 64" fill="none">
-      <circle cx="32" cy="32" r="32" fill="#EAB308"/>
-      <rect x="24" y="40" width="16" height="8" rx="2" fill="#8B5CF6"/>
-      <path d="M32 26v14" stroke="#000" strokeWidth="3"/>
-      <ellipse cx="28" cy="20" rx="4" ry="6" fill="#22C55E"/>
-      <ellipse cx="36" cy="20" rx="4" ry="6" fill="#22C55E"/>
-      <circle cx="32" cy="44" r="2" fill="#8B5CF6"/>
+    <svg className={className} viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="100" fill="#95D5B2"/>
+      <path d="M100 80v40" stroke="#000" strokeWidth="6"/>
+      <ellipse cx="85" cy="60" rx="10" ry="15" fill="#52B788"/>
+      <ellipse cx="115" cy="60" rx="10" ry="15" fill="#52B788"/>
+      <rect x="75" y="120" width="50" height="20" rx="5" fill="#8B4513" stroke="#000" strokeWidth="3"/>
+      <circle cx="100" cy="135" r="4" fill="#52B788"/>
     </svg>
   ),
   'health-wellness': ({ className }) => (
-    <svg className={className} viewBox="0 0 64 64" fill="none">
-      <circle cx="32" cy="32" r="32" fill="#EF4444"/>
-      <rect x="16" y="28" width="32" height="8" rx="4" fill="#F97316" stroke="#000" strokeWidth="2"/>
-      <rect x="16" y="24" width="32" height="16" rx="8" fill="#FACC15" stroke="#000" strokeWidth="2"/>
+    <svg className={className} viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="100" fill="#FF6B9D"/>
+      <path d="M100 70v60M70 100h60" stroke="#000" strokeWidth="8"/>
+      <circle cx="100" cy="100" r="35" fill="none" stroke="#000" strokeWidth="4"/>
     </svg>
   ),
   'sports-fitness': ({ className }) => (
-    <svg className={className} viewBox="0 0 64 64" fill="none">
-      <circle cx="32" cy="32" r="32" fill="#F97316"/>
-      <circle cx="32" cy="32" r="16" fill="#FFF" stroke="#000" strokeWidth="2"/>
-      <path d="M32 16l4 8-4 8-4-8 4-8z" fill="#000"/>
-      <path d="M32 48l-4-8 4-8 4 8-4 8z" fill="#000"/>
-      <path d="M16 32l8-4 8 4-8 4-8-4z" fill="#000"/>
-      <path d="M48 32l-8 4-8-4 8-4 8 4z" fill="#000"/>
+    <svg className={className} viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="100" fill="#FFB74D"/>
+      <rect x="60" y="95" width="80" height="10" rx="5" fill="#000"/>
+      <circle cx="70" cy="100" r="12" fill="#000"/>
+      <circle cx="130" cy="100" r="12" fill="#000"/>
+      <circle cx="50" cy="100" r="8" fill="#000"/>
+      <circle cx="150" cy="100" r="8" fill="#000"/>
     </svg>
   ),
   'cooking': ({ className }) => (
-    <svg className={className} viewBox="0 0 64 64" fill="none">
-      <circle cx="32" cy="32" r="32" fill="#EAB308"/>
-      <rect x="16" y="30" width="32" height="20" rx="4" fill="#374151" stroke="#000" strokeWidth="2"/>
-      <rect x="16" y="26" width="32" height="4" rx="2" fill="#000"/>
-      <rect x="42" y="34" width="8" height="4" rx="2" fill="#000"/>
-      <path d="M24 20v6M32 20v6M40 20v6" stroke="#000" strokeWidth="2"/>
+    <svg className={className} viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="100" fill="#FFCE56"/>
+      <ellipse cx="100" cy="110" rx="40" ry="30" fill="#000" stroke="#000" strokeWidth="4"/>
+      <rect x="60" y="80" width="80" height="8" rx="4" fill="#000"/>
+      <rect x="130" y="100" width="20" height="10" rx="5" fill="#000"/>
+      <path d="M75 65v10M90 65v10M110 65v10M125 65v10" stroke="#000" strokeWidth="3"/>
     </svg>
   )
 };
