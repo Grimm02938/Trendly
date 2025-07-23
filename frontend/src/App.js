@@ -8,6 +8,9 @@ const API = `${BACKEND_URL}/api`;
 // Context for user preferences
 const UserContext = createContext();
 
+// Context for theme
+const ThemeContext = createContext();
+
 const useUser = () => {
   const context = useContext(UserContext);
   if (!context) {
