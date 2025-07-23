@@ -6,6 +6,14 @@
   text-align: left;
 }
 
+/* Dark mode colors */
+.dark {
+  --bg-primary: #1f2937;
+  --bg-secondary: #374151;
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+}
+
 /* Custom utilities */
 .line-clamp-2 {
   display: -webkit-box;
@@ -19,7 +27,7 @@
   transition: all 0.2s ease-in-out;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar for dark mode */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -28,13 +36,25 @@
   background: #f1f1f1;
 }
 
+.dark ::-webkit-scrollbar-track {
+  background: #374151;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #c1c1c1;
   border-radius: 4px;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+  background: #6b7280;
+}
+
 ::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
 }
 
 /* Modal backdrop blur */
@@ -60,6 +80,11 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
+/* Dark mode card hover */
+.dark .hover-lift:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
 /* Button animations */
 .btn-pulse {
   animation: pulse 2s infinite;
@@ -82,6 +107,11 @@
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
+}
+
+.dark .loading-skeleton {
+  background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+  background-size: 200% 100%;
 }
 
 @keyframes loading {
@@ -121,9 +151,18 @@
   transition: all 0.3s ease;
 }
 
+.dark .product-card {
+  background: #374151;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
 .product-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.dark .product-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 .product-image {
@@ -131,6 +170,10 @@
   height: 200px;
   object-fit: cover;
   background: #f8f9fa;
+}
+
+.dark .product-image {
+  background: #4b5563;
 }
 
 /* Hero section animations */
@@ -155,6 +198,25 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Dark mode specific gradients */
+.dark-gradient-hero {
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
 }
 
 /* Responsive design */
@@ -198,6 +260,11 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
+.dark .location-content {
+  background: #374151;
+  color: white;
+}
+
 /* Search enhancements */
 .search-container {
   position: relative;
@@ -214,6 +281,11 @@
   z-index: 50;
   max-height: 400px;
   overflow-y: auto;
+}
+
+.dark .search-results {
+  background: #374151;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* Price display */
@@ -236,6 +308,30 @@
   background: currentColor;
 }
 
+/* Dark mode form elements */
+.dark input:focus,
+.dark select:focus,
+.dark textarea:focus {
+  ring-color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+/* Dark mode button hover states */
+.dark .btn-secondary:hover {
+  background-color: #374151;
+}
+
+/* Enhanced category cards for dark mode */
+.category-card {
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.dark .category-card:hover {
+  border-color: #4b5563;
+  background-color: #4b5563;
+}
+
 /* Mobile optimizations */
 @media (max-width: 640px) {
   .mobile-hidden {
@@ -249,4 +345,32 @@
   .mobile-text-sm {
     font-size: 0.875rem;
   }
+  
+  /* Dark mode mobile adjustments */
+  .dark .mobile-card {
+    background: #374151;
+  }
+}
+
+/* Dark mode transition for the entire app */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Focus states for accessibility in dark mode */
+.dark *:focus {
+  outline-color: #60a5fa;
+}
+
+/* Improved contrast for dark mode text */
+.dark .text-contrast {
+  color: #e5e7eb;
+}
+
+.dark .text-contrast-medium {
+  color: #d1d5db;
+}
+
+.dark .text-contrast-low {
+  color: #9ca3af;
 }
