@@ -82,7 +82,7 @@ const MobileMenu = ({ isOpen, onClose, categories }) => {
         </div>
 
         {/* Categories */}
-        <div className="p-6 flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto px-6 py-4">
           <div className="space-y-4">
             {categories.map(category => (
               <div
