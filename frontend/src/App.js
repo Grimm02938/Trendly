@@ -453,7 +453,6 @@ function App() {
           />
           
           <Header onLocationClick={() => setShowLocationSelector(true)} />
-          <HeroSection />
           <Categories />
           <TrendingProducts />
           
