@@ -594,6 +594,7 @@ class TrendlyAPITester:
         # Test in order of priority
         self.test_countries_api()
         self.test_languages_api()
+        self.test_categories_api()  # NEW: Test the 9 category structure
         self.test_sample_data_initialization()
         self.test_products_api()
         self.test_trending_products_api()
