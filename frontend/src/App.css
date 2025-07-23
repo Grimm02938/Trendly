@@ -4,27 +4,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* StockX-like font */
-.stockx-font {
+/* Trendly font - same as the logo */
+.trendly-font {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.015em;
 }
 
-/* StockX Logo Style - Bold and Thick */
-.stockx-logo {
+/* Trendly Logo Style - Bold and Thick */
+.trendly-logo {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 900;
   letter-spacing: -0.05em;
   text-transform: uppercase;
 }
 
-/* E-commerce title inspired by major retailers like Amazon, Shopify stores */
-.ecommerce-title {
+/* E-commerce category title inspired by major retailers (Amazon, Shopify, etc.) */
+.trendly-category-title {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  letter-spacing: -0.025em;
   line-height: 1.2;
+  text-transform: uppercase;
 }
 
 /* Smooth scrolling */
@@ -353,7 +354,7 @@ html {
   }
 }
 
-/* Specific mobile fixes for 3-column layout */
+/* Specific mobile fixes for 3-column layout - PERFECT 3x3 grid for 9 categories */
 @media (max-width: 640px) {
   .grid-cols-3 > * {
     min-width: 0; /* Prevents text overflow */
@@ -362,5 +363,10 @@ html {
   .grid-cols-3 .text-sm {
     font-size: 0.75rem; /* Smaller text on mobile */
     line-height: 1.1;
+  }
+  
+  /* Ensure perfect 3x3 grid spacing on mobile */
+  .grid-cols-3 {
+    gap: 1rem; /* Balanced spacing for mobile */
   }
 }
