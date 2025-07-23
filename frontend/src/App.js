@@ -402,6 +402,18 @@ function App() {
     currency: 'USD'
   });
 
+  // Theme state
+  const [isDark, setIsDark] = useState(() => {
+    const saved = localStorage.getItem('trendly-theme');
+    return saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  });
+
+  const toggleTheme = () => {
+    const newTheme = !isDark;
+    setIsDark(newTheme);
+    localStorage.setItem('trendly-theme', newTheme ? 'dark' : 'light');
+  };
+
   // Initialize sample data on app load
   useEffect(() => {
     const initSampleData = async () => {
@@ -430,28 +442,30 @@ function App() {
   };
 
   return (
-    <UserContext.Provider value={{ userPrefs, setUserPrefs }}>
-      <div className="App min-h-screen bg-gray-50">
-        <LocationSelector
-          isOpen={showLocationSelector}
-          onClose={() => setShowLocationSelector(false)}
-          onSelect={handleLocationSelect}
-        />
-        
-        <Header onLocationClick={() => setShowLocationSelector(true)} />
-        <HeroSection />
-        <Categories />
-        <TrendingProducts />
-        
-        {/* Footer */}
-        <footer className="bg-gray-800 text-white py-8">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h3 className="text-2xl font-bold mb-4">Trendly</h3>
-            <p className="text-gray-400">Your one-stop shop for trending products worldwide</p>
-          </div>
-        </footer>
-      </div>
-    </UserContext.Provider>
+    <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+      <UserContext.Provider value={{ userPrefs, setUserPrefs }}>
+        <div className={`App min-h-screen ${isDark ? 'bg-gray-900' : 'bg-gray-50'} transition-colors`}>
+          <LocationSelector
+            isOpen={showLocationSelector}
+            onClose={() => setShowLocationSelector(false)}
+            onSelect={handleLocationSelect}
+          />
+          
+          <Header onLocationClick={() => setShowLocationSelector(true)} />
+          <HeroSection />
+          <Categories />
+          <TrendingProducts />
+          
+          {/* Footer */}
+          <footer className={`${isDark ? 'bg-gray-800 text-white' : 'bg-gray-800 text-white'} py-8`}>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <h3 className="text-2xl font-bold mb-4">Trendly</h3>
+              <p className={`${isDark ? 'text-gray-300' : 'text-gray-400'}`}>Your one-stop shop for trending products worldwide</p>
+            </div>
+          </footer>
+        </div>
+      </UserContext.Provider>
+    </ThemeContext.Provider>
   );
 }
 
