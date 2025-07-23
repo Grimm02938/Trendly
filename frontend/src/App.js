@@ -302,24 +302,22 @@ const Categories = () => {
     <div className={`${isDark ? 'bg-gray-800' : 'bg-gray-50'} py-8 transition-colors`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-8 text-center`}>Shop by Category</h2>
-        <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-4">
-          {categories.map(category => (
-            <div
-              key={category.id}
-              className={`${isDark ? 'bg-gray-700 hover:bg-gray-600 text-white' : 'bg-white hover:bg-gray-50 text-gray-800'} p-4 rounded-xl shadow-sm hover:shadow-lg transition-all cursor-pointer text-center group`}
-            >
-              <div className="mb-3 overflow-hidden rounded-lg">
-                <img
-                  src={category.image}
-                  alt={category.name}
-                  className="w-full h-16 object-cover group-hover:scale-110 transition-transform duration-300"
-                />
+        <div className="flex justify-center">
+          <div className="grid grid-cols-5 md:grid-cols-10 gap-6">
+            {categories.map(category => (
+              <div
+                key={category.id}
+                className="text-center cursor-pointer group"
+              >
+                <div className={`w-16 h-16 ${category.color} rounded-full flex items-center justify-center text-white text-2xl mb-2 group-hover:scale-110 transition-transform shadow-lg`}>
+                  {category.icon}
+                </div>
+                <div className={`text-xs font-medium ${isDark ? 'text-gray-200' : 'text-gray-700'} leading-tight max-w-20`}>
+                  {category.name}
+                </div>
               </div>
-              <div className={`text-xs font-medium ${isDark ? 'text-gray-200' : 'text-gray-700'} leading-tight`}>
-                {category.name}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
