@@ -34,6 +34,8 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
   const [selectedCountry, setSelectedCountry] = useState('US');
   const [selectedLanguage, setSelectedLanguage] = useState('en');
   const [selectedCurrency, setSelectedCurrency] = useState('USD');
+  const [countrySearch, setCountrySearch] = useState('');
+  const [languageSearch, setLanguageSearch] = useState('');
   const { isDark } = useTheme();
 
   useEffect(() => {
@@ -72,6 +74,17 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
     onClose();
   };
 
+  // Filter countries and languages based on search
+  const filteredCountries = countries.filter(country =>
+    country.name.toLowerCase().includes(countrySearch.toLowerCase()) ||
+    country.code.toLowerCase().includes(countrySearch.toLowerCase())
+  );
+
+  const filteredLanguages = languages.filter(language =>
+    language.name.toLowerCase().includes(languageSearch.toLowerCase()) ||
+    language.code.toLowerCase().includes(languageSearch.toLowerCase())
+  );
+
   if (!isOpen) return null;
 
   return (
@@ -87,12 +100,20 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
             <label className={`block text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'} mb-2`}>
               Ship to
             </label>
+            <input
+              type="text"
+              value={countrySearch}
+              onChange={(e) => setCountrySearch(e.target.value)}
+              placeholder="Search countries..."
+              className={`w-full p-3 border ${isDark ? 'border-gray-600 bg-gray-700 text-white' : 'border-gray-300 bg-white text-gray-800'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-2`}
+            />
             <select
               value={selectedCountry}
               onChange={(e) => handleCountryChange(e.target.value)}
-              className={`w-full p-3 border ${isDark ? 'border-gray-600 bg-gray-700 text-white' : 'border-gray-300 bg-white text-gray-800'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+              className={`w-full p-3 border ${isDark ? 'border-gray-600 bg-gray-700 text-white' : 'border-gray-300 bg-white text-gray-800'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent max-h-40 overflow-y-auto`}
+              size="6"
             >
-              {countries.map(country => (
+              {filteredCountries.map(country => (
                 <option key={country.code} value={country.code}>
                   {country.flag} {country.name}
                 </option>
@@ -104,12 +125,20 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
             <label className={`block text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'} mb-2`}>
               Language
             </label>
+            <input
+              type="text"
+              value={languageSearch}
+              onChange={(e) => setLanguageSearch(e.target.value)}
+              placeholder="Search languages..."
+              className={`w-full p-3 border ${isDark ? 'border-gray-600 bg-gray-700 text-white' : 'border-gray-300 bg-white text-gray-800'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-2`}
+            />
             <select
               value={selectedLanguage}
               onChange={(e) => setSelectedLanguage(e.target.value)}
-              className={`w-full p-3 border ${isDark ? 'border-gray-600 bg-gray-700 text-white' : 'border-gray-300 bg-white text-gray-800'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+              className={`w-full p-3 border ${isDark ? 'border-gray-600 bg-gray-700 text-white' : 'border-gray-300 bg-white text-gray-800'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent max-h-40 overflow-y-auto`}
+              size="6"
             >
-              {languages.map(language => (
+              {filteredLanguages.map(language => (
                 <option key={language.code} value={language.code}>
                   {language.name}
                 </option>
