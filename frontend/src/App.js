@@ -60,6 +60,16 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
     setSelectedCurrency(country?.currency || 'USD');
   };
 
+  const handleCountryClick = (countryCode) => {
+    handleCountryChange(countryCode);
+    setCountrySearch(''); // Clear search after selection
+  };
+
+  const handleLanguageClick = (languageCode) => {
+    setSelectedLanguage(languageCode);
+    setLanguageSearch(''); // Clear search after selection
+  };
+
   const handleConfirm = () => {
     const country = countries.find(c => c.code === selectedCountry);
     const language = languages.find(l => l.code === selectedLanguage);
@@ -107,18 +117,21 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
               placeholder="Search countries..."
               className={`w-full p-3 border ${isDark ? 'border-gray-600 bg-gray-700 text-white' : 'border-gray-300 bg-white text-gray-800'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-2`}
             />
-            <select
-              value={selectedCountry}
-              onChange={(e) => handleCountryChange(e.target.value)}
-              className={`w-full p-3 border ${isDark ? 'border-gray-600 bg-gray-700 text-white' : 'border-gray-300 bg-white text-gray-800'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent max-h-40 overflow-y-auto`}
-              size="6"
-            >
+            <div className={`border ${isDark ? 'border-gray-600 bg-gray-700' : 'border-gray-300 bg-white'} rounded-lg max-h-40 overflow-y-auto`}>
               {filteredCountries.map(country => (
-                <option key={country.code} value={country.code}>
-                  {country.flag} {country.name}
-                </option>
+                <div
+                  key={country.code}
+                  onClick={() => handleCountryClick(country.code)}
+                  className={`p-3 cursor-pointer hover:${isDark ? 'bg-gray-600' : 'bg-gray-100'} ${
+                    selectedCountry === country.code ? (isDark ? 'bg-blue-700' : 'bg-blue-100') : ''
+                  } flex items-center space-x-2`}
+                >
+                  <span>{country.flag}</span>
+                  <span>{country.name}</span>
+                  {selectedCountry === country.code && <span className="ml-auto text-blue-500">✓</span>}
+                </div>
               ))}
-            </select>
+            </div>
           </div>
 
           <div>
@@ -132,18 +145,20 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
               placeholder="Search languages..."
               className={`w-full p-3 border ${isDark ? 'border-gray-600 bg-gray-700 text-white' : 'border-gray-300 bg-white text-gray-800'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-2`}
             />
-            <select
-              value={selectedLanguage}
-              onChange={(e) => setSelectedLanguage(e.target.value)}
-              className={`w-full p-3 border ${isDark ? 'border-gray-600 bg-gray-700 text-white' : 'border-gray-300 bg-white text-gray-800'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent max-h-40 overflow-y-auto`}
-              size="6"
-            >
+            <div className={`border ${isDark ? 'border-gray-600 bg-gray-700' : 'border-gray-300 bg-white'} rounded-lg max-h-40 overflow-y-auto`}>
               {filteredLanguages.map(language => (
-                <option key={language.code} value={language.code}>
-                  {language.name}
-                </option>
+                <div
+                  key={language.code}
+                  onClick={() => handleLanguageClick(language.code)}
+                  className={`p-3 cursor-pointer hover:${isDark ? 'bg-gray-600' : 'bg-gray-100'} ${
+                    selectedLanguage === language.code ? (isDark ? 'bg-blue-700' : 'bg-blue-100') : ''
+                  }`}
+                >
+                  <span>{language.name}</span>
+                  {selectedLanguage === language.code && <span className="ml-auto text-blue-500">✓</span>}
+                </div>
               ))}
-            </select>
+            </div>
           </div>
 
           <div>
