@@ -390,7 +390,115 @@ const ProductCard = ({ product }) => {
   );
 };
 
-// Trending Products Component
+// Floating Buttons Component
+const FloatingButtons = () => {
+  const { isDark, toggleTheme } = useTheme();
+  const [showAssistant, setShowAssistant] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [inputMessage, setInputMessage] = useState('');
+
+  const handleSendMessage = () => {
+    if (!inputMessage.trim()) return;
+    
+    const newMessage = { text: inputMessage, sender: 'user' };
+    setMessages(prev => [...prev, newMessage]);
+    
+    // Simulate ChatGPT response
+    setTimeout(() => {
+      const responses = [
+        "Hello! I'm here to help you with your shopping on Trendly. What can I assist you with?",
+        "I'd be happy to help you find trending products or answer questions about our categories!",
+        "Looking for something specific? I can help you search through our product catalog.",
+        "Feel free to ask me about product recommendations, shipping, or any other questions!"
+      ];
+      const response = { text: responses[Math.floor(Math.random() * responses.length)], sender: 'assistant' };
+      setMessages(prev => [...prev, response]);
+    }, 1000);
+    
+    setInputMessage('');
+  };
+
+  return (
+    <>
+      {/* Theme Toggle - Bottom Left */}
+      <button
+        onClick={toggleTheme}
+        className={`fixed bottom-6 left-6 w-12 h-12 rounded-full ${isDark ? 'bg-yellow-500 hover:bg-yellow-600' : 'bg-gray-800 hover:bg-gray-900'} text-white shadow-lg hover:shadow-xl transition-all z-50 flex items-center justify-center`}
+        title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      >
+        {isDark ? '☀️' : '🌙'}
+      </button>
+
+      {/* Assistant Button - Bottom Right */}
+      <button
+        onClick={() => setShowAssistant(!showAssistant)}
+        className="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl transition-all z-50 flex items-center justify-center"
+        title="Chat with AI assistant"
+      >
+        🤖
+      </button>
+
+      {/* Assistant Chat Window */}
+      {showAssistant && (
+        <div className={`fixed bottom-24 right-6 w-80 h-96 ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border rounded-lg shadow-xl z-50 flex flex-col`}>
+          {/* Header */}
+          <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+            <h3 className={`font-semibold ${isDark ? 'text-white' : 'text-gray-800'}`}>AI Assistant</h3>
+            <button
+              onClick={() => setShowAssistant(false)}
+              className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-400 hover:text-gray-600'}`}
+            >
+              ✕
+            </button>
+          </div>
+
+          {/* Messages */}
+          <div className="flex-1 p-4 overflow-y-auto space-y-3">
+            {messages.length === 0 && (
+              <div className={`text-center ${isDark ? 'text-gray-400' : 'text-gray-500'} text-sm`}>
+                Hi! I'm your shopping assistant. Ask me anything!
+              </div>
+            )}
+            {messages.map((message, index) => (
+              <div
+                key={index}
+                className={`p-3 rounded-lg max-w-xs ${
+                  message.sender === 'user'
+                    ? 'bg-blue-600 text-white ml-auto'
+                    : isDark
+                    ? 'bg-gray-700 text-white'
+                    : 'bg-gray-100 text-gray-800'
+                }`}
+              >
+                {message.text}
+              </div>
+            ))}
+          </div>
+
+          {/* Input */}
+          <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex space-x-2">
+              <input
+                type="text"
+                value={inputMessage}
+                onChange={(e) => setInputMessage(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                placeholder="Ask me anything..."
+                className={`flex-1 p-2 border ${isDark ? 'border-gray-600 bg-gray-700 text-white' : 'border-gray-300 bg-white text-gray-800'} rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+              />
+              <button
+                onClick={handleSendMessage}
+                className="px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
+              >
+                Send
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
 const TrendingProducts = () => {
   const [products, setProducts] = useState([]);
   const { userPrefs } = useUser();
