@@ -35,6 +35,7 @@ class TrendlyAPITester:
         self.session = requests.Session()
         self.test_results = {
             "countries_languages": {"passed": 0, "failed": 0, "details": []},
+            "categories": {"passed": 0, "failed": 0, "details": []},
             "product_management": {"passed": 0, "failed": 0, "details": []},
             "user_preferences": {"passed": 0, "failed": 0, "details": []},
             "cart_management": {"passed": 0, "failed": 0, "details": []},
