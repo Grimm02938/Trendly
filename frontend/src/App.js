@@ -34,6 +34,7 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
   const [selectedCountry, setSelectedCountry] = useState('US');
   const [selectedLanguage, setSelectedLanguage] = useState('en');
   const [selectedCurrency, setSelectedCurrency] = useState('USD');
+  const { isDark } = useTheme();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -75,21 +76,21 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl p-8 max-w-md w-full max-h-[90vh] overflow-y-auto">
+      <div className={`${isDark ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} rounded-2xl p-8 max-w-md w-full max-h-[90vh] overflow-y-auto`}>
         <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">Welcome to Trendly!</h2>
-          <p className="text-gray-600">Choose your location and preferences</p>
+          <h2 className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-2`}>Welcome to Trendly!</h2>
+          <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Choose your location and preferences</p>
         </div>
 
         <div className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className={`block text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'} mb-2`}>
               Ship to
             </label>
             <select
               value={selectedCountry}
               onChange={(e) => handleCountryChange(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className={`w-full p-3 border ${isDark ? 'border-gray-600 bg-gray-700 text-white' : 'border-gray-300 bg-white text-gray-800'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
             >
               {countries.map(country => (
                 <option key={country.code} value={country.code}>
@@ -100,13 +101,13 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className={`block text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'} mb-2`}>
               Language
             </label>
             <select
               value={selectedLanguage}
               onChange={(e) => setSelectedLanguage(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className={`w-full p-3 border ${isDark ? 'border-gray-600 bg-gray-700 text-white' : 'border-gray-300 bg-white text-gray-800'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
             >
               {languages.map(language => (
                 <option key={language.code} value={language.code}>
@@ -117,14 +118,14 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className={`block text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'} mb-2`}>
               Currency
             </label>
             <input
               type="text"
               value={selectedCurrency}
               readOnly
-              className="w-full p-3 border border-gray-300 rounded-lg bg-gray-50"
+              className={`w-full p-3 border ${isDark ? 'border-gray-600 bg-gray-600 text-gray-300' : 'border-gray-300 bg-gray-50 text-gray-600'} rounded-lg`}
             />
           </div>
         </div>
