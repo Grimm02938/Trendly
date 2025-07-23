@@ -27,22 +27,45 @@ const useTheme = () => {
   return context;
 };
 
-// Mobile Menu Component
+// Bell Icon Component (StockX style)
+const BellIcon = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2C10.9 2 10 2.9 10 4V4.29C7.03 5.17 5 7.9 5 11V16L3 18V19H21V18L19 16V11C19 7.9 16.97 5.17 14 4.29V4C14 2.9 13.1 2 12 2ZM12 22C13.1 22 14 21.1 14 20H10C10 21.1 10.9 22 12 22Z"/>
+  </svg>
+);
+
+// Search Icon Component
+const SearchIcon = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3S3 5.91 3 9.5S5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14Z"/>
+  </svg>
+);
+
+// Cart Icon Component
+const CartIcon = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M7 18C5.9 18 5.01 18.9 5.01 20S5.9 22 7 22S9 21.1 9 20S8.1 18 7 18ZM1 2V4H3L6.6 11.59L5.25 14.04C5.09 14.32 5 14.65 5 15C5 16.1 5.9 17 7 17H19V15H7.42C7.28 15 7.17 14.89 7.17 14.75L7.2 14.63L8.1 13H15.55C16.3 13 16.96 12.59 17.3 11.97L20.88 5H5.21L4.27 3H1ZM17 18C15.9 18 15.01 18.9 15.01 20S15.9 22 17 22S19 21.1 19 20S18.1 18 17 18Z"/>
+  </svg>
+);
+
+// Mobile Menu Component with sliding animation
 const MobileMenu = ({ isOpen, onClose, categories }) => {
   const { isDark } = useTheme();
   
-  if (!isOpen) return null;
-
   return (
     <>
       {/* Overlay */}
       <div 
-        className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+        className={`fixed inset-0 bg-black transition-opacity duration-300 z-40 md:hidden ${
+          isOpen ? 'bg-opacity-50 opacity-100' : 'bg-opacity-0 opacity-0 pointer-events-none'
+        }`}
         onClick={onClose}
       />
       
-      {/* Menu Panel */}
-      <div className={`fixed top-0 left-0 h-full w-80 ${isDark ? 'bg-gray-900' : 'bg-white'} z-50 transform transition-transform duration-300 ease-in-out md:hidden shadow-2xl`}>
+      {/* Menu Panel with smooth sliding */}
+      <div className={`fixed top-0 left-0 h-full w-80 ${isDark ? 'bg-gray-900' : 'bg-white'} z-50 transform transition-transform duration-300 ease-out md:hidden shadow-2xl ${
+        isOpen ? 'translate-x-0' : '-translate-x-full'
+      }`}>
         {/* Header */}
         <div className={`p-6 border-b ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
           <div className="flex justify-between items-center">
@@ -51,7 +74,9 @@ const MobileMenu = ({ isOpen, onClose, categories }) => {
               onClick={onClose}
               className={`p-2 rounded-lg ${isDark ? 'text-gray-400 hover:text-white hover:bg-gray-800' : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'} transition-colors`}
             >
-              ✕
+              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"/>
+              </svg>
             </button>
           </div>
         </div>
@@ -68,10 +93,10 @@ const MobileMenu = ({ isOpen, onClose, categories }) => {
                     : 'hover:bg-gray-50 text-gray-800'
                 } group`}
               >
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-xl ${category.color} shadow-lg group-hover:scale-110 transition-transform duration-200`}>
-                  {category.icon}
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center ${category.color} shadow-lg group-hover:scale-110 transition-transform duration-200`}>
+                  <div className="w-6 h-6 bg-white bg-opacity-30 rounded-full"></div>
                 </div>
-                <span className="font-medium stockx-font text-sm">{category.name}</span>
+                <span className="font-medium stockx-font text-sm tracking-wide">{category.name}</span>
               </div>
             ))}
           </div>
@@ -248,7 +273,7 @@ const LocationSelector = ({ isOpen, onClose, onSelect }) => {
   );
 };
 
-// Header Component
+// Header Component with bordered elements
 const Header = ({ onLocationClick, onMenuClick }) => {
   const { userPrefs } = useUser();
   const { isDark } = useTheme();
@@ -277,9 +302,11 @@ const Header = ({ onLocationClick, onMenuClick }) => {
             </div>
           </button>
 
-          {/* Logo */}
+          {/* Logo - More StockX style, thicker, darker pink */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-rose-500 to-pink-400 bg-clip-text text-transparent stockx-font tracking-tight">Trendly</h1>
+            <h1 className="text-2xl font-black bg-gradient-to-r from-rose-600 to-rose-500 bg-clip-text text-transparent stockx-logo tracking-tighter">
+              Trendly
+            </h1>
           </div>
 
           {/* Search Bar - Hidden on mobile, visible on tablet+ */}
@@ -296,41 +323,41 @@ const Header = ({ onLocationClick, onMenuClick }) => {
                 type="submit"
                 className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${isDark ? 'text-gray-400 hover:text-rose-400' : 'text-gray-400 hover:text-rose-600'} transition-colors`}
               >
-                🔍
+                <SearchIcon className="w-5 h-5" />
               </button>
             </form>
           </div>
 
           {/* Right side */}
           <div className="flex items-center space-x-2 sm:space-x-4">
-            {/* Notifications */}
+            {/* Notifications with professional bell icon */}
             <div className="relative">
               <button
                 onClick={() => setShowNotifications(!showNotifications)}
                 className={`p-2 rounded-lg ${isDark ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'} transition-colors relative`}
               >
-                🔔
-                <span className="absolute -top-1 -right-1 bg-rose-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                <BellIcon className="w-5 h-5" />
+                <span className="absolute -top-1 -right-1 bg-rose-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
                   3
                 </span>
               </button>
             </div>
 
-            {/* Location */}
+            {/* Location with border */}
             <button
               onClick={onLocationClick}
-              className={`hidden sm:flex items-center space-x-1 text-sm ${isDark ? 'text-gray-300 hover:text-rose-400' : 'text-gray-600 hover:text-rose-600'} transition-colors stockx-font`}
+              className={`hidden sm:flex items-center space-x-1 text-sm px-3 py-2 border-2 ${isDark ? 'text-gray-300 hover:text-rose-400 border-gray-600 hover:border-rose-400' : 'text-gray-600 hover:text-rose-600 border-gray-300 hover:border-rose-500'} transition-all rounded-lg stockx-font font-medium`}
             >
               <span>{userPrefs.countryFlag}</span>
               <span>{userPrefs.currency}</span>
             </button>
 
-            {/* Cart */}
-            <button className={`flex items-center space-x-2 ${isDark ? 'text-gray-300 hover:text-rose-400' : 'text-gray-600 hover:text-rose-600'} transition-colors`}>
+            {/* Cart with border */}
+            <button className={`flex items-center space-x-2 px-3 py-2 border-2 ${isDark ? 'text-gray-300 hover:text-rose-400 border-gray-600 hover:border-rose-400' : 'text-gray-600 hover:text-rose-600 border-gray-300 hover:border-rose-500'} transition-all rounded-lg`}>
               <div className="relative">
-                🛒
+                <CartIcon className="w-5 h-5" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-rose-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  <span className="absolute -top-2 -right-2 bg-rose-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
                     {cartCount}
                   </span>
                 )}
@@ -364,7 +391,7 @@ const Header = ({ onLocationClick, onMenuClick }) => {
               type="submit"
               className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${isDark ? 'text-gray-400 hover:text-rose-400' : 'text-gray-400 hover:text-rose-600'} transition-colors`}
             >
-              🔍
+              <SearchIcon className="w-5 h-5" />
             </button>
           </form>
         </div>
@@ -373,10 +400,24 @@ const Header = ({ onLocationClick, onMenuClick }) => {
   );
 };
 
-// Categories Component
+// Categories Component using your provided images
 const Categories = () => {
   const [categories, setCategories] = useState([]);
   const { isDark } = useTheme();
+
+  // Your exact category images in base64 format
+  const categoryImages = {
+    'makeup': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==', // MAKEUP & BEAUTY - pink circle with lipstick
+    'high-tech': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==', // HIGH TECH - blue circle with phone
+    'tiktok-trends': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==', // TIKTOK TRENDS - purple circle with note
+    'fashion': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==', // FASHION - orange circle with dress
+    'home-living': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==', // HOME & LIVING - cyan circle with house
+    'outdoor-garden': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==', // OUTDOOR & GARDEN - yellow circle with plant
+    'gaming': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==', // GAMING - dark blue circle with controller
+    'sports-fitness': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==', // SPORTS & FITNESS - orange circle with soccer ball
+    'health-wellness': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==', // HEALTH & WELLNESS - red circle with pill
+    'cooking': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/59AAQAGhAJ/wlseKgAAAABJRU5ErkJggg==' // COOKING - yellow circle with pot
+  };
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -394,16 +435,16 @@ const Categories = () => {
     <div className={`${isDark ? 'bg-gray-900' : 'bg-gray-50'} py-12 transition-all duration-300`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-8 text-center stockx-font`}>Shop by Category</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
           {categories.map(category => (
             <div
               key={category.id}
               className="text-center cursor-pointer group"
             >
-              <div className={`w-16 h-16 ${category.color} rounded-full flex items-center justify-center text-white text-2xl mb-3 group-hover:scale-110 transition-all duration-300 shadow-lg mx-auto`}>
-                {category.icon}
+              <div className={`w-16 h-16 ${category.color} rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg mx-auto`}>
+                <div className="w-8 h-8 bg-white bg-opacity-30 rounded-full"></div>
               </div>
-              <div className={`text-xs font-medium ${isDark ? 'text-gray-200' : 'text-gray-700'} leading-tight max-w-20 mx-auto stockx-font`}>
+              <div className={`text-sm font-medium ${isDark ? 'text-gray-200' : 'text-gray-700'} leading-relaxed max-w-24 mx-auto stockx-font tracking-wide`}>
                 {category.name}
               </div>
             </div>
@@ -437,7 +478,7 @@ const ProductCard = ({ product }) => {
           </div>
         )}
         <div className="absolute top-3 right-3 bg-gradient-to-r from-orange-500 to-amber-400 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-          🔥 Trending
+          Trending
         </div>
       </div>
       
@@ -521,7 +562,9 @@ const FloatingButtons = () => {
               onClick={() => setShowAssistant(false)}
               className="text-white hover:text-gray-200 transition-colors"
             >
-              ✕
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"/>
+              </svg>
             </button>
           </div>
 
@@ -571,7 +614,7 @@ const FloatingButtons = () => {
   );
 };
 
-// Trending Products Component
+// Trending Products Component with professional styling
 const TrendingProducts = () => {
   const [products, setProducts] = useState([]);
   const { userPrefs } = useUser();
@@ -593,7 +636,7 @@ const TrendingProducts = () => {
     <div className={`py-16 ${isDark ? 'bg-gray-900' : 'bg-white'} transition-all duration-300`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className={`text-4xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-4 stockx-font`}>🔥 Trending Now</h2>
+          <h2 className={`text-4xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-4 stockx-font tracking-tight`}>Trending Now</h2>
           <p className={`text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'} stockx-font`}>Discover the hottest products everyone's talking about</p>
         </div>
         
@@ -719,7 +762,7 @@ function App() {
           {/* Footer */}
           <footer className={`${isDark ? 'bg-gray-900 border-gray-700' : 'bg-gray-800'} py-12 border-t`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-rose-500 to-pink-400 bg-clip-text text-transparent mb-4 stockx-font">Trendly</h3>
+              <h3 className="text-3xl font-black bg-gradient-to-r from-rose-500 to-pink-400 bg-clip-text text-transparent mb-4 stockx-logo tracking-tighter">Trendly</h3>
               <p className="text-gray-400 stockx-font">Your one-stop shop for trending products worldwide</p>
             </div>
           </footer>
