@@ -268,13 +268,14 @@ const Categories = () => {
 // Product Card Component
 const ProductCard = ({ product }) => {
   const { userPrefs } = useUser();
+  const { isDark } = useTheme();
   
   const discountPercentage = product.original_price 
     ? Math.round(((product.original_price - product.price) / product.original_price) * 100)
     : 0;
 
   return (
-    <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
+    <div className={`${isDark ? 'bg-gray-800 hover:bg-gray-750' : 'bg-white hover:bg-gray-50'} rounded-lg shadow-sm hover:shadow-lg transition-all overflow-hidden`}>
       <div className="relative">
         <img
           src={product.image_url}
@@ -292,8 +293,8 @@ const ProductCard = ({ product }) => {
       </div>
       
       <div className="p-4">
-        <h3 className="font-medium text-gray-800 mb-2 line-clamp-2">{product.name}</h3>
-        <p className="text-sm text-gray-600 mb-3 line-clamp-2">{product.description}</p>
+        <h3 className={`font-medium ${isDark ? 'text-white' : 'text-gray-800'} mb-2 line-clamp-2`}>{product.name}</h3>
+        <p className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-600'} mb-3 line-clamp-2`}>{product.description}</p>
         
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
@@ -301,7 +302,7 @@ const ProductCard = ({ product }) => {
               {userPrefs.currency} {product.price}
             </span>
             {product.original_price && (
-              <span className="text-sm text-gray-500 line-through">
+              <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'} line-through`}>
                 {userPrefs.currency} {product.original_price}
               </span>
             )}
