@@ -162,6 +162,115 @@ class TrendlyAPITester:
         except Exception as e:
             self.log_test("countries_languages", "Languages API Response", False, str(e))
 
+    def test_categories_api(self):
+        """Test /api/categories endpoint - NEW 9 CATEGORY STRUCTURE"""
+        print("\n📂 Testing Categories API (9 Category Structure)...")
+        
+        # Expected categories from the review request
+        expected_categories = [
+            {"id": "makeup", "name": "MAKEUP & BEAUTY"},
+            {"id": "high-tech", "name": "HIGH TECH"},
+            {"id": "tiktok-trends", "name": "TIKTOK TRENDS"},
+            {"id": "fashion", "name": "FASHION"},
+            {"id": "home-living", "name": "HOME & LIVING"},
+            {"id": "outdoor-garden", "name": "OUTDOOR & GARDEN"},
+            {"id": "health-wellness", "name": "HEALTH & WELLNESS"},
+            {"id": "sports-fitness", "name": "SPORTS & FITNESS"},
+            {"id": "cooking", "name": "COOKING"}
+        ]
+        
+        try:
+            response = self.session.get(f"{API_BASE}/categories")
+            
+            if response.status_code != 200:
+                self.log_test("categories", "Categories API Response", False, 
+                            f"Status code: {response.status_code}")
+                return
+            
+            data = response.json()
+            
+            # Check structure
+            if "categories" not in data:
+                self.log_test("categories", "Categories API Structure", False, 
+                            "Missing 'categories' key")
+                return
+            
+            categories = data["categories"]
+            
+            # Verify exactly 9 categories
+            if len(categories) != 9:
+                self.log_test("categories", "Categories Count (9 Expected)", False, 
+                            f"Expected 9 categories, got {len(categories)}")
+            else:
+                self.log_test("categories", "Categories Count (9 Expected)", True)
+            
+            self.log_test("categories", "Categories API Response", True)
+            
+            # Check required fields for each category
+            required_fields = ["id", "name", "color"]
+            all_fields_present = True
+            missing_field_details = []
+            
+            for i, category in enumerate(categories):
+                missing_fields = [field for field in required_fields if field not in category]
+                if missing_fields:
+                    all_fields_present = False
+                    missing_field_details.append(f"Category {i}: missing {missing_fields}")
+            
+            self.log_test("categories", "Categories Required Fields", all_fields_present,
+                         "; ".join(missing_field_details) if missing_field_details else "")
+            
+            # Verify expected category IDs and names are present
+            actual_categories = {cat["id"]: cat["name"] for cat in categories}
+            expected_ids = {cat["id"] for cat in expected_categories}
+            actual_ids = set(actual_categories.keys())
+            
+            missing_ids = expected_ids - actual_ids
+            extra_ids = actual_ids - expected_ids
+            
+            if missing_ids or extra_ids:
+                error_msg = []
+                if missing_ids:
+                    error_msg.append(f"Missing IDs: {missing_ids}")
+                if extra_ids:
+                    error_msg.append(f"Extra IDs: {extra_ids}")
+                self.log_test("categories", "Categories Expected IDs", False, "; ".join(error_msg))
+            else:
+                self.log_test("categories", "Categories Expected IDs", True)
+            
+            # Verify category names match expected names
+            name_mismatches = []
+            for expected_cat in expected_categories:
+                cat_id = expected_cat["id"]
+                expected_name = expected_cat["name"]
+                if cat_id in actual_categories:
+                    actual_name = actual_categories[cat_id]
+                    if actual_name != expected_name:
+                        name_mismatches.append(f"{cat_id}: expected '{expected_name}', got '{actual_name}'")
+            
+            self.log_test("categories", "Categories Expected Names", len(name_mismatches) == 0,
+                         "; ".join(name_mismatches) if name_mismatches else "")
+            
+            # Verify color field format (should be CSS classes)
+            color_format_valid = True
+            invalid_colors = []
+            
+            for category in categories:
+                color = category.get("color", "")
+                if not color.startswith("bg-gradient-to-br"):
+                    color_format_valid = False
+                    invalid_colors.append(f"{category.get('id', 'unknown')}: {color}")
+            
+            self.log_test("categories", "Categories Color Format", color_format_valid,
+                         f"Invalid color formats: {invalid_colors}" if invalid_colors else "")
+            
+            print(f"   📊 Found {len(categories)} categories:")
+            for cat in categories:
+                print(f"      • {cat.get('id', 'N/A')}: {cat.get('name', 'N/A')}")
+            
+        except Exception as e:
+            self.log_test("categories", "Categories API Response", False, str(e))
+
     def test_sample_data_initialization(self):
         """Test /api/init-sample-data endpoint"""
         print("\n🔄 Testing Sample Data Initialization...")
