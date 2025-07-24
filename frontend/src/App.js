@@ -745,8 +745,7 @@ function App() {
   useEffect(() => {
     const saved = localStorage.getItem('trendly-user-prefs');
     if (!saved && initialLoad) {
-      // Temporarily disable location modal to show new icons
-      // setShowLocationSelector(true);
+      setShowLocationSelector(true);
     }
     setInitialLoad(false);
   }, [initialLoad]);
