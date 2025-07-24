@@ -87,7 +87,7 @@ const CategoryIcons = {
   'high-tech': ({ className }) => (
     <img 
       className={className} 
-      src="https://drive.google.com/thumbnail?id=1o3i63Hw9fdqtbSOVkZyKrwKfSSYOmHiA&sz=w400-h400"
+      src="https://drive.google.com/uc?id=13DTAuUXl9k_OzRoAC7PTr5Q2hgeopKnr"
       alt="HIGH TECH"
       style={{ 
         width: '100%', 
@@ -102,7 +102,7 @@ const CategoryIcons = {
   'tiktok-trends': ({ className }) => (
     <img 
       className={className} 
-      src="https://drive.google.com/thumbnail?id=1o3i63Hw9fdqtbSOVkZyKrwKfSSYOmHiA&sz=w400-h400"
+      src="https://drive.google.com/uc?id=1GYqd3gI55T3vgjSgBiljCN6DFLknXdL7"
       alt="TIKTOK TRENDS"
       style={{ 
         width: '100%', 
@@ -117,7 +117,7 @@ const CategoryIcons = {
   'fashion': ({ className }) => (
     <img 
       className={className} 
-      src="https://drive.google.com/thumbnail?id=1o3i63Hw9fdqtbSOVkZyKrwKfSSYOmHiA&sz=w400-h400"
+      src="https://drive.google.com/uc?id=1htnVQ9Nk5EQRltDpMqRWPRZ2Q6N7Cx_f"
       alt="FASHION"
       style={{ 
         width: '100%', 
@@ -132,7 +132,7 @@ const CategoryIcons = {
   'home-living': ({ className }) => (
     <img 
       className={className} 
-      src="https://drive.google.com/thumbnail?id=1o3i63Hw9fdqtbSOVkZyKrwKfSSYOmHiA&sz=w400-h400"
+      src="https://drive.google.com/uc?id=1cdTpPxHPnbAQ7aBHjyR8gsPM_J_jYF4q"
       alt="HOME & LIVING"
       style={{ 
         width: '100%', 
@@ -147,7 +147,7 @@ const CategoryIcons = {
   'outdoor-garden': ({ className }) => (
     <img 
       className={className} 
-      src="https://drive.google.com/thumbnail?id=1o3i63Hw9fdqtbSOVkZyKrwKfSSYOmHiA&sz=w400-h400"
+      src="https://drive.google.com/uc?id=1cSTLsABsyl1BtNlADGMZ_bJMhBQzVKFQ"
       alt="OUTDOOR & GARDEN"
       style={{ 
         width: '100%', 
@@ -162,7 +162,7 @@ const CategoryIcons = {
   'health-wellness': ({ className }) => (
     <img 
       className={className} 
-      src="https://drive.google.com/thumbnail?id=1o3i63Hw9fdqtbSOVkZyKrwKfSSYOmHiA&sz=w400-h400"
+      src="https://drive.google.com/uc?id=1PhSk3yrXkDfhIZJCs10nMwB_jIl-kC4W"
       alt="HEALTH & WELLNESS"
       style={{ 
         width: '100%', 
@@ -177,7 +177,7 @@ const CategoryIcons = {
   'sports-fitness': ({ className }) => (
     <img 
       className={className} 
-      src="https://drive.google.com/thumbnail?id=1o3i63Hw9fdqtbSOVkZyKrwKfSSYOmHiA&sz=w400-h400"
+      src="https://drive.google.com/uc?id=1zfhXpzTfJtm-obtGjkuVPe3FoxkedjUx"
       alt="SPORTS & FITNESS"
       style={{ 
         width: '100%', 
@@ -192,7 +192,7 @@ const CategoryIcons = {
   'cooking': ({ className }) => (
     <img 
       className={className} 
-      src="https://drive.google.com/thumbnail?id=1o3i63Hw9fdqtbSOVkZyKrwKfSSYOmHiA&sz=w400-h400"
+      src="https://drive.google.com/uc?id=1fhtZPa1ug73avzbFrxj4EKQMqWMnNE1P"
       alt="COOKING"
       style={{ 
         width: '100%', 
