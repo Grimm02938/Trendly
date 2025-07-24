@@ -67,85 +67,124 @@ const ThemeToggleIcon = ({ isDark, className }) => {
   }
 };
 
-// Category Icon Components - Simple and clear icons (restored)
+// Category Icon Components - Using real ChatGPT images
 const CategoryIcons = {
   'makeup': ({ className }) => (
-    <svg className={className} viewBox="0 0 200 200" fill="none">
-      <circle cx="100" cy="100" r="100" fill="#FF6B6B"/>
-      {/* Simple lipstick */}
-      <rect x="85" y="70" width="30" height="80" rx="15" fill="#000" stroke="#000" strokeWidth="3"/>
-      <rect x="85" y="70" width="30" height="50" rx="15" fill="#E53E3E"/>
-      <rect x="92" y="60" width="16" height="15" rx="8" fill="#000"/>
-    </svg>
+    <img 
+      className={className} 
+      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/if5vsfmk_ChatGPT%20Image%2023%20juil.%202025%2C%2012_18_04.png"
+      alt="MAKEUP & BEAUTY"
+      style={{ 
+        width: '100%', 
+        height: '100%', 
+        objectFit: 'cover',
+        borderRadius: '50%'
+      }}
+    />
   ),
   'high-tech': ({ className }) => (
-    <svg className={className} viewBox="0 0 200 200" fill="none">
-      <circle cx="100" cy="100" r="100" fill="#4DABF7"/>
-      {/* Simple smartphone */}
-      <rect x="75" y="50" width="50" height="100" rx="8" fill="#000" stroke="#000" strokeWidth="3"/>
-      <rect x="80" y="60" width="40" height="70" rx="3" fill="#4DABF7"/>
-      <circle cx="100" cy="140" r="4" fill="#4DABF7"/>
-    </svg>
+    <img 
+      className={className} 
+      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/gf7tiuh0_ChatGPT%20Image%2023%20juil.%202025%2C%2012_26_35.png"
+      alt="HIGH TECH"
+      style={{ 
+        width: '100%', 
+        height: '100%', 
+        objectFit: 'cover',
+        borderRadius: '50%'
+      }}
+    />
   ),
   'tiktok-trends': ({ className }) => (
-    <svg className={className} viewBox="0 0 200 200" fill="none">
-      <circle cx="100" cy="100" r="100" fill="#B794F6"/>
-      {/* TikTok logo style */}
-      <path d="M115 65v50c8-5 15-5 20 0v-15c-5-8-15-8-20 0V75c0-8-8-15-15-15v15c8 0 15 7 15 15v25c0 8-7 15-15 15s-15-7-15-15c0-5 2-10 8-12v-15c-12 3-20 15-20 27 0 17 13 30 30 30s30-13 30-30V65h-18z" fill="#000"/>
-    </svg>
+    <img 
+      className={className} 
+      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/q1d4pya7_ChatGPT%20Image%2023%20juil.%202025%2C%2012_27_16.png"
+      alt="TIKTOK TRENDS"
+      style={{ 
+        width: '100%', 
+        height: '100%', 
+        objectFit: 'cover',
+        borderRadius: '50%'
+      }}
+    />
   ),
   'fashion': ({ className }) => (
-    <svg className={className} viewBox="0 0 200 200" fill="none">
-      <circle cx="100" cy="100" r="100" fill="#FF9500"/>
-      {/* Simple dress */}
-      <path d="M100 50l-20 25v75h40V75l-20-25z" fill="#000" stroke="#000" strokeWidth="3"/>
-      <path d="M80 70c0-8 9-15 20-15s20 7 20 15" stroke="#000" strokeWidth="3" fill="none"/>
-    </svg>
+    <img 
+      className={className} 
+      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/iany69vf_ChatGPT%20Image%2023%20juil.%202025%2C%2012_30_08.png"
+      alt="FASHION"
+      style={{ 
+        width: '100%', 
+        height: '100%', 
+        objectFit: 'cover',
+        borderRadius: '50%'
+      }}
+    />
   ),
   'home-living': ({ className }) => (
-    <svg className={className} viewBox="0 0 200 200" fill="none">
-      <circle cx="100" cy="100" r="100" fill="#17C3B2"/>
-      {/* Simple house */}
-      <path d="M100 50l-40 35v60h80V85l-40-35z" fill="#000" stroke="#000" strokeWidth="3"/>
-      <rect x="85" y="125" width="15" height="20" fill="#17C3B2"/>
-      <rect x="110" y="105" width="12" height="12" fill="#17C3B2"/>
-    </svg>
+    <img 
+      className={className} 
+      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/rjyms4zw_ChatGPT%20Image%2023%20juil.%202025%2C%2012_41_59.png"
+      alt="HOME & LIVING"
+      style={{ 
+        width: '100%', 
+        height: '100%', 
+        objectFit: 'cover',
+        borderRadius: '50%'
+      }}
+    />
   ),
   'outdoor-garden': ({ className }) => (
-    <svg className={className} viewBox="0 0 200 200" fill="none">
-      <circle cx="100" cy="100" r="100" fill="#95D5B2"/>
-      {/* Simple tree */}
-      <rect x="95" y="120" width="10" height="30" fill="#8B4513"/>
-      <circle cx="100" cy="90" r="25" fill="#22C55E" stroke="#000" strokeWidth="3"/>
-      <circle cx="85" cy="85" r="18" fill="#22C55E" stroke="#000" strokeWidth="2"/>
-      <circle cx="115" cy="85" r="18" fill="#22C55E" stroke="#000" strokeWidth="2"/>
-    </svg>
+    <img 
+      className={className} 
+      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/6msne2wv_ChatGPT%20Image%2023%20juil.%202025%2C%2012_15_25.png"
+      alt="OUTDOOR & GARDEN"
+      style={{ 
+        width: '100%', 
+        height: '100%', 
+        objectFit: 'cover',
+        borderRadius: '50%'
+      }}
+    />
   ),
   'health-wellness': ({ className }) => (
-    <svg className={className} viewBox="0 0 200 200" fill="none">
-      <circle cx="100" cy="100" r="100" fill="#FF6B9D"/>
-      {/* Medical cross */}
-      <rect x="90" y="70" width="20" height="60" rx="10" fill="#000"/>
-      <rect x="70" y="90" width="60" height="20" rx="10" fill="#000"/>
-    </svg>
+    <img 
+      className={className} 
+      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/5toar1u1_ChatGPT%20Image%2023%20juil.%202025%2C%2012_11_03.png"
+      alt="HEALTH & WELLNESS"
+      style={{ 
+        width: '100%', 
+        height: '100%', 
+        objectFit: 'cover',
+        borderRadius: '50%'
+      }}
+    />
   ),
   'sports-fitness': ({ className }) => (
-    <svg className={className} viewBox="0 0 200 200" fill="none">
-      <circle cx="100" cy="100" r="100" fill="#FFB74D"/>
-      {/* Simple dumbbell */}
-      <rect x="60" y="95" width="80" height="10" rx="5" fill="#000"/>
-      <rect x="50" y="85" width="20" height="30" rx="10" fill="#000"/>
-      <rect x="130" y="85" width="20" height="30" rx="10" fill="#000"/>
-    </svg>
+    <img 
+      className={className} 
+      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/frgu6ypv_ChatGPT%20Image%2023%20juil.%202025%2C%2012_09_45.png"
+      alt="SPORTS & FITNESS"
+      style={{ 
+        width: '100%', 
+        height: '100%', 
+        objectFit: 'cover',
+        borderRadius: '50%'
+      }}
+    />
   ),
   'cooking': ({ className }) => (
-    <svg className={className} viewBox="0 0 200 200" fill="none">
-      <circle cx="100" cy="100" r="100" fill="#FFCE56"/>
-      {/* Chef's hat */}
-      <ellipse cx="100" cy="110" rx="35" ry="25" fill="#000" stroke="#000" strokeWidth="3"/>
-      <circle cx="100" cy="85" r="30" fill="#FFF" stroke="#000" strokeWidth="3"/>
-      <rect x="70" y="85" width="60" height="8" rx="4" fill="#000"/>
-    </svg>
+    <img 
+      className={className} 
+      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/2r9bu705_ChatGPT%20Image%2023%20juil.%202025%2C%2012_08_47.png"
+      alt="COOKING"
+      style={{ 
+        width: '100%', 
+        height: '100%', 
+        objectFit: 'cover',
+        borderRadius: '50%'
+      }}
+    />
   )
 };
 
