@@ -67,91 +67,225 @@ const ThemeToggleIcon = ({ isDark, className }) => {
   }
 };
 
-// Category Icon Components - Modern geometric/stylized icons
+// Category Icon Components - OddityMall inspired playful & quirky icons
 const CategoryIcons = {
   'makeup': ({ className }) => (
-    <div className={`${className} relative bg-gradient-to-br from-pink-400 to-purple-500 rounded-full flex items-center justify-center`}>
-      <div className="w-6 h-6 bg-white rounded-full relative">
-        <div className="absolute top-1 left-1 w-4 h-4 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full"></div>
-        <div className="absolute bottom-0 right-0 w-2 h-2 bg-white rounded-full"></div>
-      </div>
+    <div className={`${className} relative bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center`}>
+      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+        <g transform="translate(2, 2)">
+          {/* Lipstick tube */}
+          <rect x="8" y="10" width="4" height="8" rx="2" fill="#FFB6C1" stroke="#FF69B4" strokeWidth="0.5"/>
+          {/* Lipstick top */}
+          <ellipse cx="10" cy="8" rx="2" ry="3" fill="#FF1493"/>
+          {/* Highlight */}
+          <ellipse cx="9.5" cy="7" rx="0.5" ry="1" fill="#FFB6C1" opacity="0.8"/>
+          {/* Sparkles */}
+          <circle cx="6" cy="6" r="1" fill="#FFD700" opacity="0.9"/>
+          <circle cx="14" cy="5" r="0.8" fill="#FF69B4" opacity="0.8"/>
+          <circle cx="4" cy="12" r="0.6" fill="#FFB6C1" opacity="0.7"/>
+        </g>
+      </svg>
     </div>
   ),
   'high-tech': ({ className }) => (
-    <div className={`${className} relative bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full flex items-center justify-center`}>
-      <div className="w-8 h-12 bg-white rounded-sm relative">
-        <div className="absolute top-1 left-1 right-1 h-8 bg-gradient-to-b from-blue-400 to-cyan-500 rounded-sm"></div>
-        <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-4 h-1 bg-gray-300 rounded"></div>
-      </div>
+    <div className={`${className} relative bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center`}>
+      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+        <g transform="translate(2, 1)">
+          {/* Phone body */}
+          <rect x="6" y="2" width="8" height="14" rx="2" fill="#E8F4F8" stroke="#1E90FF" strokeWidth="0.5"/>
+          {/* Screen */}
+          <rect x="7" y="4" width="6" height="9" rx="1" fill="#87CEEB"/>
+          {/* Home button */}
+          <circle cx="10" cy="15" r="0.8" fill="#4169E1"/>
+          {/* Signal bars */}
+          <rect x="8" y="6" width="0.8" height="2" fill="#32CD32"/>
+          <rect x="9.2" y="5.5" width="0.8" height="2.5" fill="#32CD32"/>
+          <rect x="10.4" y="5" width="0.8" height="3" fill="#32CD32"/>
+          <rect x="11.6" y="4.5" width="0.8" height="3.5" fill="#32CD32"/>
+          {/* Sparkles */}
+          <circle cx="4" cy="4" r="0.8" fill="#00BFFF" opacity="0.8"/>
+          <circle cx="16" cy="6" r="0.6" fill="#1E90FF" opacity="0.9"/>
+        </g>
+      </svg>
     </div>
   ),
   'tiktok-trends': ({ className }) => (
-    <div className={`${className} relative bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center`}>
-      <div className="relative">
-        <div className="w-3 h-3 bg-white rounded-full"></div>
-        <div className="absolute -top-1 -right-1 w-2 h-6 bg-white rounded-full transform rotate-12"></div>
-        <div className="absolute -top-1 -left-1 w-2 h-6 bg-white rounded-full transform -rotate-12"></div>
-        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-4 h-1 bg-white rounded"></div>
-      </div>
+    <div className={`${className} relative bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center`}>
+      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+        <g transform="translate(2, 2)">
+          {/* Musical note */}
+          <circle cx="8" cy="14" r="2.5" fill="#FFB6C1"/>
+          <rect x="10.2" y="6" width="1.5" height="8" fill="#FF69B4"/>
+          <path d="M 10.5 6 Q 14 4 16 7" stroke="#FF1493" strokeWidth="1.5" fill="none"/>
+          {/* TikTok style effects */}
+          <circle cx="5" cy="8" r="1.2" fill="#FF69B4" opacity="0.7"/>
+          <circle cx="15" cy="10" r="1" fill="#9370DB" opacity="0.8"/>
+          <circle cx="13" cy="15" r="0.8" fill="#FFB6C1" opacity="0.6"/>
+          {/* Sparkle effects */}
+          <polygon points="6,4 6.5,5.5 8,6 6.5,6.5 6,8 5.5,6.5 4,6 5.5,5.5" fill="#FFD700"/>
+          <polygon points="15,4 15.3,4.7 16,5 15.3,5.3 15,6 14.7,5.3 14,5 14.7,4.7" fill="#FF69B4"/>
+        </g>
+      </svg>
     </div>
   ),
   'fashion': ({ className }) => (
-    <div className={`${className} relative bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center`}>
-      <div className="relative">
-        <div className="w-6 h-4 bg-white rounded-t-full"></div>
-        <div className="w-8 h-6 bg-white rounded-b-full -mt-1"></div>
-        <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-1 h-2 bg-gradient-to-b from-orange-500 to-red-600"></div>
-      </div>
+    <div className={`${className} relative bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center`}>
+      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+        <g transform="translate(2, 2)">
+          {/* T-shirt */}
+          <path d="M 6 6 L 6 4 Q 6 2 8 2 L 12 2 Q 14 2 14 4 L 14 6 L 16 8 L 16 18 L 4 18 L 4 8 Z" fill="#FFE4E1" stroke="#FF6347" strokeWidth="0.5"/>
+          {/* Sleeves */}
+          <ellipse cx="3" cy="9" rx="1.5" ry="3" fill="#FFA07A"/>
+          <ellipse cx="17" cy="9" rx="1.5" ry="3" fill="#FFA07A"/>
+          {/* Design on shirt */}
+          <circle cx="10" cy="10" r="1.5" fill="#FF69B4" opacity="0.8"/>
+          <polygon points="10,8 10.5,9 12,9 10.8,9.8 11.2,11.2 10,10.5 8.8,11.2 9.2,9.8 8,9 9.5,9" fill="#FFD700"/>
+          {/* Fashion sparkles */}
+          <circle cx="5" cy="5" r="0.6" fill="#FF1493" opacity="0.8"/>
+          <circle cx="15" cy="4" r="0.8" fill="#FF69B4" opacity="0.7"/>
+        </g>
+      </svg>
     </div>
   ),
   'home-living': ({ className }) => (
-    <div className={`${className} relative bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center`}>
-      <div className="relative">
-        <div className="w-8 h-6 bg-white relative">
-          <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-b-4 border-transparent border-b-white"></div>
-          <div className="absolute top-2 left-1 w-2 h-3 bg-gradient-to-b from-green-500 to-blue-600"></div>
-          <div className="absolute top-1 right-1 w-1.5 h-1.5 bg-gradient-to-br from-green-400 to-blue-500"></div>
-        </div>
-      </div>
+    <div className={`${className} relative bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center`}>
+      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+        <g transform="translate(2, 2)">
+          {/* House */}
+          <polygon points="10,2 4,8 4,17 16,17 16,8" fill="#FFE4E1" stroke="#228B22" strokeWidth="0.5"/>
+          {/* Roof */}
+          <polygon points="10,2 3,9 17,9" fill="#FF6347"/>
+          {/* Door */}
+          <rect x="8.5" y="12" width="3" height="5" rx="0.5" fill="#8B4513"/>
+          <circle cx="10.8" cy="14.5" r="0.3" fill="#FFD700"/>
+          {/* Windows */}
+          <rect x="6" y="10" width="2.5" height="2.5" rx="0.3" fill="#87CEEB" stroke="#4169E1" strokeWidth="0.3"/>
+          <rect x="11.5" y="10" width="2.5" height="2.5" rx="0.3" fill="#87CEEB" stroke="#4169E1" strokeWidth="0.3"/>
+          {/* Window crosses */}
+          <line x1="7.25" y1="10" x2="7.25" y2="12.5" stroke="#4169E1" strokeWidth="0.2"/>
+          <line x1="6" y1="11.25" x2="8.5" y2="11.25" stroke="#4169E1" strokeWidth="0.2"/>
+          <line x1="12.75" y1="10" x2="12.75" y2="12.5" stroke="#4169E1" strokeWidth="0.2"/>
+          <line x1="11.5" y1="11.25" x2="14" y2="11.25" stroke="#4169E1" strokeWidth="0.2"/>
+          {/* Chimney */}
+          <rect x="13" y="4" width="2" height="4" fill="#8B4513"/>
+          {/* Smoke */}
+          <circle cx="14.5" cy="3" r="0.5" fill="#D3D3D3" opacity="0.8"/>
+          <circle cx="15" cy="2" r="0.4" fill="#D3D3D3" opacity="0.7"/>
+        </g>
+      </svg>
     </div>
   ),
   'outdoor-garden': ({ className }) => (
-    <div className={`${className} relative bg-gradient-to-br from-green-400 to-teal-500 rounded-full flex items-center justify-center`}>
-      <div className="relative">
-        <div className="w-1 h-6 bg-white"></div>
-        <div className="absolute -top-1 -left-2 w-4 h-3 bg-white rounded-full transform -rotate-12"></div>
-        <div className="absolute -top-1 -right-2 w-4 h-3 bg-white rounded-full transform rotate-12"></div>
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-2 bg-white rounded-t-full"></div>
-      </div>
+    <div className={`${className} relative bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center`}>
+      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+        <g transform="translate(2, 2)">
+          {/* Tree trunk */}
+          <rect x="9" y="12" width="2" height="6" rx="1" fill="#8B4513"/>
+          {/* Tree crown */}
+          <circle cx="10" cy="10" r="4" fill="#32CD32"/>
+          <circle cx="8" cy="8" r="2.5" fill="#228B22" opacity="0.8"/>
+          <circle cx="12" cy="9" r="2.8" fill="#90EE90" opacity="0.9"/>
+          {/* Flowers */}
+          <g transform="translate(4, 15)">
+            <circle cx="0" cy="0" r="0.8" fill="#FF69B4"/>
+            <circle cx="0" cy="0" r="0.4" fill="#FFD700"/>
+          </g>
+          <g transform="translate(14, 16)">
+            <circle cx="0" cy="0" r="0.6" fill="#FF1493"/>
+            <circle cx="0" cy="0" r="0.3" fill="#FFA500"/>
+          </g>
+          <g transform="translate(6, 17)">
+            <circle cx="0" cy="0" r="0.5" fill="#9370DB"/>
+            <circle cx="0" cy="0" r="0.2" fill="#FFD700"/>
+          </g>
+          {/* Grass */}
+          <path d="M 2 18 Q 3 16 4 18" stroke="#228B22" strokeWidth="0.8" fill="none"/>
+          <path d="M 5 18 Q 6 16 7 18" stroke="#32CD32" strokeWidth="0.8" fill="none"/>
+          <path d="M 13 18 Q 14 16 15 18" stroke="#228B22" strokeWidth="0.8" fill="none"/>
+          <path d="M 16 18 Q 17 16 18 18" stroke="#32CD32" strokeWidth="0.8" fill="none"/>
+        </g>
+      </svg>
     </div>
   ),
   'health-wellness': ({ className }) => (
-    <div className={`${className} relative bg-gradient-to-br from-red-400 to-pink-500 rounded-full flex items-center justify-center`}>
-      <div className="relative">
-        <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
-          <div className="w-4 h-1 bg-gradient-to-r from-red-500 to-pink-600"></div>
-          <div className="absolute w-1 h-4 bg-gradient-to-b from-red-500 to-pink-600"></div>
-        </div>
-      </div>
+    <div className={`${className} relative bg-gradient-to-br from-red-500 to-pink-600 rounded-full flex items-center justify-center`}>
+      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+        <g transform="translate(2, 2)">
+          {/* Medical cross background */}
+          <circle cx="10" cy="10" r="8" fill="#FFE4E1" opacity="0.9"/>
+          {/* Medical cross */}
+          <rect x="8.5" y="5" width="3" height="10" rx="1" fill="#DC143C"/>
+          <rect x="5" y="8.5" width="10" height="3" rx="1" fill="#DC143C"/>
+          {/* Heart symbols */}
+          <g transform="translate(5, 6)">
+            <path d="M 1 1.5 C 1 0.5 2 0 2.5 0.5 C 3 0 4 0.5 4 1.5 C 4 2.5 2.5 4 2.5 4 S 1 2.5 1 1.5 Z" fill="#FF69B4"/>
+          </g>
+          <g transform="translate(13, 13)">
+            <path d="M 1 1.5 C 1 0.5 2 0 2.5 0.5 C 3 0 4 0.5 4 1.5 C 4 2.5 2.5 4 2.5 4 S 1 2.5 1 1.5 Z" fill="#FF1493"/>
+          </g>
+          {/* Sparkles */}
+          <polygon points="3,3 3.3,4 4,4 3.5,4.5 3.7,5.3 3,5 2.3,5.3 2.5,4.5 2,4 2.7,4" fill="#FFD700" opacity="0.8"/>
+          <polygon points="16,3 16.2,3.5 17,3.5 16.6,4 16.8,4.8 16,4.5 15.2,4.8 15.4,4 15,3.5 15.8,3.5" fill="#FF69B4" opacity="0.7"/>
+        </g>
+      </svg>
     </div>
   ),
   'sports-fitness': ({ className }) => (
-    <div className={`${className} relative bg-gradient-to-br from-orange-400 to-yellow-500 rounded-full flex items-center justify-center`}>
-      <div className="w-6 h-6 bg-white rounded-full relative">
-        <div className="absolute top-1 left-1 w-2 h-2 bg-gradient-to-br from-orange-500 to-yellow-600 rounded-full"></div>
-        <div className="absolute top-1 right-1 w-2 h-2 bg-gradient-to-br from-orange-500 to-yellow-600 rounded-full"></div>
-        <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-3 h-2 bg-gradient-to-b from-orange-500 to-yellow-600 rounded-b-full"></div>
-      </div>
+    <div className={`${className} relative bg-gradient-to-br from-orange-500 to-yellow-600 rounded-full flex items-center justify-center`}>
+      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+        <g transform="translate(2, 2)">
+          {/* Dumbbell */}
+          <rect x="8.5" y="9.5" width="3" height="1" fill="#696969"/>
+          {/* Left weight */}
+          <circle cx="7" cy="10" r="2" fill="#FFE4E1" stroke="#FF6347" strokeWidth="0.5"/>
+          <circle cx="7" cy="10" r="1.2" fill="#FFA500"/>
+          {/* Right weight */}
+          <circle cx="13" cy="10" r="2" fill="#FFE4E1" stroke="#FF6347" strokeWidth="0.5"/>
+          <circle cx="13" cy="10" r="1.2" fill="#FFA500"/>
+          {/* Muscle/strength indicators */}
+          <g transform="translate(4, 5)">
+            <path d="M 0 0 Q 1 -1 2 0 Q 1 1 0 0" fill="#FF69B4" opacity="0.8"/>
+          </g>
+          <g transform="translate(14, 5)">
+            <path d="M 0 0 Q 1 -1 2 0 Q 1 1 0 0" fill="#FF1493" opacity="0.8"/>
+          </g>
+          {/* Energy bursts */}
+          <polygon points="10,4 10.5,5.5 12,6 10.5,6.5 10,8 9.5,6.5 8,6 9.5,5.5" fill="#FFD700" opacity="0.9"/>
+          <circle cx="5" cy="15" r="0.8" fill="#FF4500" opacity="0.7"/>
+          <circle cx="15" cy="15" r="0.6" fill="#FFA500" opacity="0.8"/>
+          {/* Sweat drops */}
+          <ellipse cx="6" cy="7" rx="0.3" ry="0.6" fill="#87CEEB" opacity="0.6"/>
+          <ellipse cx="14" cy="7" rx="0.3" ry="0.6" fill="#87CEEB" opacity="0.6"/>
+        </g>
+      </svg>
     </div>
   ),
   'cooking': ({ className }) => (
-    <div className={`${className} relative bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center`}>
-      <div className="relative">
-        <div className="w-8 h-4 bg-white rounded-full"></div>
-        <div className="absolute top-0 right-0 w-2 h-2 bg-white rounded-full"></div>
-        <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-0.5 h-2 bg-white"></div>
-        <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 translate-x-0.5 w-0.5 h-1 bg-white"></div>
-      </div>
+    <div className={`${className} relative bg-gradient-to-br from-yellow-500 to-orange-600 rounded-full flex items-center justify-center`}>
+      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+        <g transform="translate(2, 2)">
+          {/* Pan */}
+          <ellipse cx="10" cy="12" rx="6" ry="2.5" fill="#FFE4E1" stroke="#D2691E" strokeWidth="0.5"/>
+          <ellipse cx="10" cy="11" rx="5.5" ry="2" fill="#F5DEB3"/>
+          {/* Handle */}
+          <rect x="16" y="10.5" width="3" height="1" rx="0.5" fill="#8B4513"/>
+          {/* Chef hat */}
+          <ellipse cx="10" cy="6" rx="4" ry="2.5" fill="#FFFAFA"/>
+          <rect x="6" y="6" width="8" height="2" fill="#FFFAFA"/>
+          <ellipse cx="10" cy="8" rx="4" ry="0.8" fill="#F0F0F0"/>
+          {/* Food in pan */}
+          <circle cx="8" cy="11" r="0.8" fill="#FF6347" opacity="0.9"/>
+          <circle cx="12" cy="10.5" r="0.6" fill="#32CD32" opacity="0.8"/>
+          <circle cx="10" cy="12" r="0.5" fill="#FFD700" opacity="0.9"/>
+          {/* Steam */}
+          <path d="M 8 8 Q 8.5 6 9 8" stroke="#E0E0E0" strokeWidth="0.8" fill="none" opacity="0.7"/>
+          <path d="M 10 8 Q 10.5 6 11 8" stroke="#E0E0E0" strokeWidth="0.8" fill="none" opacity="0.7"/>
+          <path d="M 12 8 Q 12.5 6 13 8" stroke="#E0E0E0" strokeWidth="0.8" fill="none" opacity="0.7"/>
+          {/* Sparkles */}
+          <polygon points="5,4 5.3,4.8 6,5 5.3,5.2 5,6 4.7,5.2 4,5 4.7,4.8" fill="#FFD700" opacity="0.8"/>
+          <polygon points="15,4 15.2,4.5 16,4.5 15.6,5 15.8,5.8 15,5.5 14.2,5.8 14.4,5 14,4.5 14.8,4.5" fill="#FFA500" opacity="0.7"/>
+        </g>
+      </svg>
     </div>
   )
 };
