@@ -67,23 +67,23 @@ const ThemeToggleIcon = ({ isDark, className }) => {
   }
 };
 
-// Category Icon Components - OddityMall inspired playful & quirky icons (ENLARGED & IMPROVED)
+// Category Icon Components - OddityMall inspired playful & quirky icons (FIXED CONTRAST & CENTERED)
 const CategoryIcons = {
   'makeup': ({ className }) => (
     <div className={`${className} relative bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center`}>
       <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none">
-        <g transform="translate(1, 1)">
+        <g transform="translate(12, 12)">
           {/* Lipstick tube - more prominent */}
-          <rect x="7" y="12" width="5" height="9" rx="2.5" fill="#FFB6C1" stroke="#FF69B4" strokeWidth="0.8"/>
+          <rect x="-2.5" y="0" width="5" height="9" rx="2.5" fill="#FFB6C1" stroke="#FF69B4" strokeWidth="0.8"/>
           {/* Lipstick tip - bigger and more visible */}
-          <ellipse cx="9.5" cy="9" rx="2.5" ry="4" fill="#DC143C"/>
+          <ellipse cx="0" cy="-3" rx="2.5" ry="4" fill="#DC143C"/>
           {/* Lipstick highlight */}
-          <ellipse cx="9" cy="8" rx="0.8" ry="2" fill="#FF69B4" opacity="0.9"/>
+          <ellipse cx="-0.5" cy="-4" rx="0.8" ry="2" fill="#FF69B4" opacity="0.9"/>
           {/* More sparkles */}
-          <circle cx="5" cy="5" r="1.2" fill="#FFD700" opacity="0.9"/>
-          <circle cx="14" cy="4" r="1" fill="#FF69B4" opacity="0.8"/>
-          <circle cx="3" cy="14" r="0.8" fill="#FFB6C1" opacity="0.7"/>
-          <circle cx="16" cy="16" r="0.9" fill="#FF1493" opacity="0.8"/>
+          <circle cx="-7" cy="-7" r="1.2" fill="#FFD700" opacity="0.9"/>
+          <circle cx="2" cy="-8" r="1" fill="#FF69B4" opacity="0.8"/>
+          <circle cx="-9" cy="2" r="0.8" fill="#FFB6C1" opacity="0.7"/>
+          <circle cx="4" cy="4" r="0.9" fill="#FF1493" opacity="0.8"/>
         </g>
       </svg>
     </div>
@@ -91,21 +91,21 @@ const CategoryIcons = {
   'high-tech': ({ className }) => (
     <div className={`${className} relative bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center`}>
       <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none">
-        <g transform="translate(1, 0.5)">
-          {/* Phone body - larger */}
-          <rect x="5" y="1" width="10" height="16" rx="2.5" fill="#E8F4F8" stroke="#1E90FF" strokeWidth="0.8"/>
+        <g transform="translate(12, 12)">
+          {/* Phone body - larger and centered */}
+          <rect x="-5" y="-8" width="10" height="16" rx="2.5" fill="#E8F4F8" stroke="#1E90FF" strokeWidth="0.8"/>
           {/* Screen - bigger */}
-          <rect x="6" y="3" width="8" height="11" rx="1.5" fill="#87CEEB"/>
+          <rect x="-4" y="-5" width="8" height="11" rx="1.5" fill="#87CEEB"/>
           {/* Home button */}
-          <circle cx="10" cy="16" r="1" fill="#4169E1"/>
+          <circle cx="0" cy="4" r="1" fill="#4169E1"/>
           {/* Signal bars - bigger */}
-          <rect x="7.5" y="5.5" width="1" height="2.5" fill="#32CD32"/>
-          <rect x="9" y="5" width="1" height="3" fill="#32CD32"/>
-          <rect x="10.5" y="4.5" width="1" height="3.5" fill="#32CD32"/>
-          <rect x="12" y="4" width="1" height="4" fill="#32CD32"/>
+          <rect x="-2.5" y="-2.5" width="1" height="2.5" fill="#32CD32"/>
+          <rect x="-1" y="-3" width="1" height="3" fill="#32CD32"/>
+          <rect x="0.5" y="-3.5" width="1" height="3.5" fill="#32CD32"/>
+          <rect x="2" y="-4" width="1" height="4" fill="#32CD32"/>
           {/* Sparkles */}
-          <circle cx="3" cy="3" r="1" fill="#00BFFF" opacity="0.8"/>
-          <circle cx="17" cy="5" r="0.8" fill="#1E90FF" opacity="0.9"/>
+          <circle cx="-9" cy="-9" r="1" fill="#00BFFF" opacity="0.8"/>
+          <circle cx="5" cy="-7" r="0.8" fill="#1E90FF" opacity="0.9"/>
         </g>
       </svg>
     </div>
@@ -113,18 +113,18 @@ const CategoryIcons = {
   'tiktok-trends': ({ className }) => (
     <div className={`${className} relative bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center`}>
       <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none">
-        <g transform="translate(1, 1)">
-          {/* Musical note - bigger */}
-          <circle cx="8" cy="15" r="3" fill="#F0F8FF"/>
-          <rect x="10.5" y="5" width="2" height="10" fill="#20B2AA"/>
-          <path d="M 11 5 Q 15 3 17 6.5" stroke="#008B8B" strokeWidth="2" fill="none"/>
-          {/* TikTok style effects - changed colors */}
-          <circle cx="4" cy="7" r="1.5" fill="#20B2AA" opacity="0.8"/>
-          <circle cx="16" cy="9" r="1.2" fill="#48D1CC" opacity="0.9"/>
-          <circle cx="14" cy="16" r="1" fill="#00CED1" opacity="0.7"/>
+        <g transform="translate(12, 12)">
+          {/* Musical note - WHITE for contrast against green background */}
+          <circle cx="-4" cy="3" r="3" fill="#FFFFFF" stroke="#20B2AA" strokeWidth="1"/>
+          <rect x="-1.5" y="-7" width="2" height="10" fill="#FFFFFF" stroke="#20B2AA" strokeWidth="0.5"/>
+          <path d="M -1 -7 Q 3 -9 5 -5.5" stroke="#FFFFFF" strokeWidth="2" fill="none"/>
+          {/* TikTok style effects - contrasting colors */}
+          <circle cx="-8" cy="-5" r="1.5" fill="#FFD700" opacity="0.9"/>
+          <circle cx="4" cy="-3" r="1.2" fill="#FF69B4" opacity="0.9"/>
+          <circle cx="2" cy="4" r="1" fill="#FFFFFF" opacity="0.8"/>
           {/* Sparkle effects */}
-          <polygon points="5,3 5.8,5 7,5.5 5.8,6 5,8 4.2,6 3,5.5 4.2,5" fill="#FFD700"/>
-          <polygon points="16,3 16.5,4.5 18,5 16.5,5.5 16,7 15.5,5.5 14,5 15.5,4.5" fill="#20B2AA"/>
+          <polygon points="-7,-9 -6.2,-7 -5,-6.5 -6.2,-6 -7,-4 -7.8,-6 -9,-6.5 -7.8,-7" fill="#FFD700"/>
+          <polygon points="4,-9 4.5,-7.5 6,-7 4.5,-6.5 4,-5 3.5,-6.5 2,-7 3.5,-7.5" fill="#FF69B4"/>
         </g>
       </svg>
     </div>
@@ -132,19 +132,19 @@ const CategoryIcons = {
   'fashion': ({ className }) => (
     <div className={`${className} relative bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center`}>
       <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none">
-        <g transform="translate(1, 1)">
-          {/* Dress - elegant shape */}
-          <path d="M 9 4 L 9 2 Q 9 1 10.5 1 Q 12 1 12 2 L 12 4 L 14 6 Q 16 8 16 10 L 16 18 Q 16 19 15 19 L 6 19 Q 5 19 5 18 L 5 10 Q 5 8 7 6 Z" fill="#FFE4E1" stroke="#FF6347" strokeWidth="0.8"/>
+        <g transform="translate(12, 12)">
+          {/* Dress - elegant shape centered */}
+          <path d="M -1.5 -8 L -1.5 -10 Q -1.5 -11 0 -11 Q 1.5 -11 1.5 -10 L 1.5 -8 L 3.5 -6 Q 5.5 -4 5.5 -2 L 5.5 6 Q 5.5 7 4.5 7 L -4.5 7 Q -5.5 7 -5.5 6 L -5.5 -2 Q -5.5 -4 -3.5 -6 Z" fill="#FFE4E1" stroke="#FF6347" strokeWidth="0.8"/>
           {/* Dress waist */}
-          <ellipse cx="10.5" cy="10" rx="5.5" ry="1" fill="#FFA07A" opacity="0.8"/>
+          <ellipse cx="0" cy="-2" rx="5.5" ry="1" fill="#FFA07A" opacity="0.8"/>
           {/* Dress pattern */}
-          <circle cx="8" cy="13" r="0.8" fill="#FF69B4" opacity="0.9"/>
-          <circle cx="13" cy="12" r="0.6" fill="#FFD700" opacity="0.8"/>
-          <circle cx="10" cy="15" r="0.7" fill="#FF1493" opacity="0.8"/>
+          <circle cx="-2" cy="1" r="0.8" fill="#FF69B4" opacity="0.9"/>
+          <circle cx="3" cy="0" r="0.6" fill="#FFD700" opacity="0.8"/>
+          <circle cx="0" cy="3" r="0.7" fill="#FF1493" opacity="0.8"/>
           {/* Fashion sparkles */}
-          <circle cx="4" cy="4" r="0.8" fill="#FF1493" opacity="0.8"/>
-          <circle cx="17" cy="3" r="1" fill="#FF69B4" opacity="0.7"/>
-          <circle cx="3" cy="16" r="0.6" fill="#FFD700" opacity="0.9"/>
+          <circle cx="-8" cy="-8" r="0.8" fill="#FF1493" opacity="0.8"/>
+          <circle cx="5" cy="-9" r="1" fill="#FF69B4" opacity="0.7"/>
+          <circle cx="-9" cy="4" r="0.6" fill="#FFD700" opacity="0.9"/>
         </g>
       </svg>
     </div>
@@ -152,27 +152,27 @@ const CategoryIcons = {
   'home-living': ({ className }) => (
     <div className={`${className} relative bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center`}>
       <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none">
-        <g transform="translate(1, 1)">
-          {/* House - bigger */}
-          <polygon points="10,1 3,8 3,18 17,18 17,8" fill="#FFE4E1" stroke="#228B22" strokeWidth="0.8"/>
+        <g transform="translate(12, 12)">
+          {/* House - bigger and centered */}
+          <polygon points="0,-11 -7,-4 -7,6 7,6 7,-4" fill="#FFE4E1" stroke="#228B22" strokeWidth="0.8"/>
           {/* Roof */}
-          <polygon points="10,1 2,9.5 18,9.5" fill="#FF6347"/>
+          <polygon points="0,-11 -8,-2.5 8,-2.5" fill="#FF6347"/>
           {/* Door - bigger */}
-          <rect x="8" y="12" width="4" height="6" rx="0.8" fill="#8B4513"/>
-          <circle cx="11" cy="15" r="0.4" fill="#FFD700"/>
+          <rect x="-2" y="0" width="4" height="6" rx="0.8" fill="#8B4513"/>
+          <circle cx="1" cy="3" r="0.4" fill="#FFD700"/>
           {/* Windows - bigger */}
-          <rect x="5" y="10" width="3" height="3" rx="0.5" fill="#87CEEB" stroke="#4169E1" strokeWidth="0.4"/>
-          <rect x="12" y="10" width="3" height="3" rx="0.5" fill="#87CEEB" stroke="#4169E1" strokeWidth="0.4"/>
+          <rect x="-5.5" y="-2" width="3" height="3" rx="0.5" fill="#87CEEB" stroke="#4169E1" strokeWidth="0.4"/>
+          <rect x="2.5" y="-2" width="3" height="3" rx="0.5" fill="#87CEEB" stroke="#4169E1" strokeWidth="0.4"/>
           {/* Window crosses */}
-          <line x1="6.5" y1="10" x2="6.5" y2="13" stroke="#4169E1" strokeWidth="0.3"/>
-          <line x1="5" y1="11.5" x2="8" y2="11.5" stroke="#4169E1" strokeWidth="0.3"/>
-          <line x1="13.5" y1="10" x2="13.5" y2="13" stroke="#4169E1" strokeWidth="0.3"/>
-          <line x1="12" y1="11.5" x2="15" y2="11.5" stroke="#4169E1" strokeWidth="0.3"/>
+          <line x1="-4" y1="-2" x2="-4" y2="1" stroke="#4169E1" strokeWidth="0.3"/>
+          <line x1="-5.5" y1="-0.5" x2="-2.5" y2="-0.5" stroke="#4169E1" strokeWidth="0.3"/>
+          <line x1="4" y1="-2" x2="4" y2="1" stroke="#4169E1" strokeWidth="0.3"/>
+          <line x1="2.5" y1="-0.5" x2="5.5" y2="-0.5" stroke="#4169E1" strokeWidth="0.3"/>
           {/* Chimney */}
-          <rect x="13.5" y="3" width="2.5" height="5" fill="#8B4513"/>
+          <rect x="3.5" y="-9" width="2.5" height="5" fill="#8B4513"/>
           {/* Smoke */}
-          <circle cx="15" cy="2" r="0.6" fill="#D3D3D3" opacity="0.8"/>
-          <circle cx="15.8" cy="1" r="0.5" fill="#D3D3D3" opacity="0.7"/>
+          <circle cx="5" cy="-10" r="0.6" fill="#D3D3D3" opacity="0.8"/>
+          <circle cx="5.8" cy="-11" r="0.5" fill="#D3D3D3" opacity="0.7"/>
         </g>
       </svg>
     </div>
@@ -180,31 +180,31 @@ const CategoryIcons = {
   'outdoor-garden': ({ className }) => (
     <div className={`${className} relative bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center`}>
       <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none">
-        <g transform="translate(1, 1)">
-          {/* Tree trunk - bigger */}
-          <rect x="9" y="13" width="2.5" height="7" rx="1.25" fill="#8B4513"/>
+        <g transform="translate(12, 12)">
+          {/* Tree trunk - bigger and centered */}
+          <rect x="-1.25" y="1" width="2.5" height="7" rx="1.25" fill="#8B4513"/>
           {/* Tree crown - larger */}
-          <circle cx="10.25" cy="9" r="5" fill="#32CD32"/>
-          <circle cx="7.5" cy="7" r="3" fill="#228B22" opacity="0.8"/>
-          <circle cx="13" cy="8.5" r="3.5" fill="#90EE90" opacity="0.9"/>
+          <circle cx="0" cy="-3" r="5" fill="#32CD32"/>
+          <circle cx="-2.5" cy="-5" r="3" fill="#228B22" opacity="0.8"/>
+          <circle cx="3" cy="-3.5" r="3.5" fill="#90EE90" opacity="0.9"/>
           {/* Flowers - bigger */}
-          <g transform="translate(3, 16)">
+          <g transform="translate(-9, 4)">
             <circle cx="0" cy="0" r="1" fill="#FF69B4"/>
             <circle cx="0" cy="0" r="0.5" fill="#FFD700"/>
           </g>
-          <g transform="translate(15, 17)">
+          <g transform="translate(3, 5)">
             <circle cx="0" cy="0" r="0.8" fill="#FF1493"/>
             <circle cx="0" cy="0" r="0.4" fill="#FFA500"/>
           </g>
-          <g transform="translate(5, 18)">
+          <g transform="translate(-7, 6)">
             <circle cx="0" cy="0" r="0.6" fill="#9370DB"/>
             <circle cx="0" cy="0" r="0.3" fill="#FFD700"/>
           </g>
           {/* Grass - more prominent */}
-          <path d="M 1 19 Q 2 17 3 19" stroke="#228B22" strokeWidth="1" fill="none"/>
-          <path d="M 4 19 Q 5 17 6 19" stroke="#32CD32" strokeWidth="1" fill="none"/>
-          <path d="M 14 19 Q 15 17 16 19" stroke="#228B22" strokeWidth="1" fill="none"/>
-          <path d="M 17 19 Q 18 17 19 19" stroke="#32CD32" strokeWidth="1" fill="none"/>
+          <path d="M -11 7 Q -10 5 -9 7" stroke="#228B22" strokeWidth="1" fill="none"/>
+          <path d="M -8 7 Q -7 5 -6 7" stroke="#32CD32" strokeWidth="1" fill="none"/>
+          <path d="M 2 7 Q 3 5 4 7" stroke="#228B22" strokeWidth="1" fill="none"/>
+          <path d="M 5 7 Q 6 5 7 7" stroke="#32CD32" strokeWidth="1" fill="none"/>
         </g>
       </svg>
     </div>
@@ -212,22 +212,22 @@ const CategoryIcons = {
   'health-wellness': ({ className }) => (
     <div className={`${className} relative bg-gradient-to-br from-red-500 to-pink-600 rounded-full flex items-center justify-center`}>
       <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none">
-        <g transform="translate(1, 1)">
-          {/* Medical cross background - bigger */}
-          <circle cx="10" cy="10" r="9" fill="#FFE4E1" opacity="0.9"/>
+        <g transform="translate(12, 12)">
+          {/* Medical cross background - bigger and centered */}
+          <circle cx="0" cy="0" r="9" fill="#FFE4E1" opacity="0.9"/>
           {/* Medical cross - larger */}
-          <rect x="8" y="4" width="4" height="12" rx="1.5" fill="#DC143C"/>
-          <rect x="4" y="8" width="12" height="4" rx="1.5" fill="#DC143C"/>
+          <rect x="-2" y="-6" width="4" height="12" rx="1.5" fill="#DC143C"/>
+          <rect x="-6" y="-2" width="12" height="4" rx="1.5" fill="#DC143C"/>
           {/* Heart symbols - bigger */}
-          <g transform="translate(4, 5)">
+          <g transform="translate(-6, -5)">
             <path d="M 1.5 2 C 1.5 0.8 2.5 0 3.5 1 C 4.5 0 5.5 0.8 5.5 2 C 5.5 3.5 3.5 5.5 3.5 5.5 S 1.5 3.5 1.5 2 Z" fill="#FF69B4"/>
           </g>
-          <g transform="translate(12, 13)">
+          <g transform="translate(2, 1)">
             <path d="M 1.5 2 C 1.5 0.8 2.5 0 3.5 1 C 4.5 0 5.5 0.8 5.5 2 C 5.5 3.5 3.5 5.5 3.5 5.5 S 1.5 3.5 1.5 2 Z" fill="#FF1493"/>
           </g>
           {/* Sparkles - bigger */}
-          <polygon points="2,2 2.5,3.5 4,4 2.5,4.5 2,6 1.5,4.5 0,4 1.5,3.5" fill="#FFD700" opacity="0.9"/>
-          <polygon points="17,2 17.3,3 18,3 17.5,3.5 17.7,4.3 17,4 16.3,4.3 16.5,3.5 16,3 16.7,3" fill="#FF69B4" opacity="0.8"/>
+          <polygon points="-10,-10 -9.5,-8.5 -8,-8 -9.5,-7.5 -10,-6 -10.5,-7.5 -12,-8 -10.5,-8.5" fill="#FFD700" opacity="0.9"/>
+          <polygon points="7,-10 7.3,-9 8,-9 7.5,-8.5 7.7,-7.7 7,-8 6.3,-7.7 6.5,-8.5 6,-9 6.7,-9" fill="#FF69B4" opacity="0.8"/>
         </g>
       </svg>
     </div>
@@ -235,22 +235,22 @@ const CategoryIcons = {
   'sports-fitness': ({ className }) => (
     <div className={`${className} relative bg-gradient-to-br from-orange-500 to-yellow-600 rounded-full flex items-center justify-center`}>
       <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none">
-        <g transform="translate(1, 1)">
-          {/* Basketball - more recognizable sport icon */}
-          <circle cx="10" cy="10" r="6" fill="#FFA500" stroke="#FF8C00" strokeWidth="1"/>
-          {/* Basketball lines */}
-          <path d="M 4 10 Q 10 6 16 10" stroke="#FF8C00" strokeWidth="1.5" fill="none"/>
-          <path d="M 4 10 Q 10 14 16 10" stroke="#FF8C00" strokeWidth="1.5" fill="none"/>
-          <line x1="10" y1="4" x2="10" y2="16" stroke="#FF8C00" strokeWidth="1.5"/>
+        <g transform="translate(12, 12)">
+          {/* Basketball - WHITE for contrast against orange background */}
+          <circle cx="0" cy="0" r="6" fill="#FFFFFF" stroke="#333333" strokeWidth="1.5"/>
+          {/* Basketball lines - dark for visibility */}
+          <path d="M -6 0 Q 0 -4 6 0" stroke="#333333" strokeWidth="1.5" fill="none"/>
+          <path d="M -6 0 Q 0 4 6 0" stroke="#333333" strokeWidth="1.5" fill="none"/>
+          <line x1="0" y1="-6" x2="0" y2="6" stroke="#333333" strokeWidth="1.5"/>
           {/* Motion lines */}
-          <path d="M 2 8 Q 3 7 4 8" stroke="#FFD700" strokeWidth="1.5" fill="none" opacity="0.8"/>
-          <path d="M 2 12 Q 3 11 4 12" stroke="#FFA500" strokeWidth="1.5" fill="none" opacity="0.8"/>
-          <path d="M 16 8 Q 17 7 18 8" stroke="#FFD700" strokeWidth="1.5" fill="none" opacity="0.8"/>
-          <path d="M 16 12 Q 17 11 18 12" stroke="#FFA500" strokeWidth="1.5" fill="none" opacity="0.8"/>
+          <path d="M -10 -2 Q -9 -3 -8 -2" stroke="#FFD700" strokeWidth="1.5" fill="none" opacity="0.8"/>
+          <path d="M -10 2 Q -9 1 -8 2" stroke="#FFA500" strokeWidth="1.5" fill="none" opacity="0.8"/>
+          <path d="M 8 -2 Q 9 -3 10 -2" stroke="#FFD700" strokeWidth="1.5" fill="none" opacity="0.8"/>
+          <path d="M 8 2 Q 9 1 10 2" stroke="#FFA500" strokeWidth="1.5" fill="none" opacity="0.8"/>
           {/* Energy sparkles */}
-          <polygon points="18,5 18.5,6 19,6 18.7,6.3 18.8,7 18,6.7 17.2,7 17.3,6.3 17,6 17.5,6" fill="#FFD700" opacity="0.9"/>
-          <circle cx="2" cy="5" r="0.8" fill="#FF4500" opacity="0.8"/>
-          <circle cx="18" cy="15" r="0.6" fill="#FFA500" opacity="0.8"/>
+          <polygon points="6,-7 6.5,-6 7,-6 6.7,-5.7 6.8,-5 6,-5.3 5.2,-5 5.3,-5.7 5,-6 5.5,-6" fill="#FFD700" opacity="0.9"/>
+          <circle cx="-10" cy="-7" r="0.8" fill="#FF4500" opacity="0.8"/>
+          <circle cx="6" cy="7" r="0.6" fill="#FFA500" opacity="0.8"/>
         </g>
       </svg>
     </div>
@@ -258,27 +258,27 @@ const CategoryIcons = {
   'cooking': ({ className }) => (
     <div className={`${className} relative bg-gradient-to-br from-yellow-500 to-orange-600 rounded-full flex items-center justify-center`}>
       <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none">
-        <g transform="translate(1, 1)">
-          {/* Pizza slice - more fun and recognizable */}
-          <path d="M 10 2 L 18 16 Q 18 17 17 17 L 3 17 Q 2 17 2 16 Z" fill="#FFE4E1" stroke="#D2691E" strokeWidth="0.8"/>
-          {/* Pizza crust */}
-          <path d="M 2 16 Q 10 15 18 16" fill="#DEB887" stroke="#CD853F" strokeWidth="0.5"/>
-          {/* Pizza toppings */}
-          <circle cx="8" cy="10" r="1" fill="#FF6347" opacity="0.9"/>
-          <circle cx="12" cy="8" r="0.8" fill="#32CD32" opacity="0.8"/>
-          <circle cx="14" cy="12" r="0.9" fill="#FFD700" opacity="0.9"/>
-          <circle cx="6" cy="13" r="0.7" fill="#FF69B4" opacity="0.8"/>
-          <circle cx="10" cy="14" r="0.6" fill="#9370DB" opacity="0.7"/>
-          {/* Cheese strings */}
-          <path d="M 8 9 Q 12 8 14 11" stroke="#FFFF99" strokeWidth="1" fill="none" opacity="0.8"/>
-          <path d="M 6 12 Q 10 11 12 13" stroke="#FFFF99" strokeWidth="0.8" fill="none" opacity="0.7"/>
+        <g transform="translate(12, 12)">
+          {/* Pizza slice - WHITE base for contrast against yellow/orange background */}
+          <path d="M 0 -10 L 8 4 Q 8 5 7 5 L -7 5 Q -8 5 -8 4 Z" fill="#FFFFFF" stroke="#8B4513" strokeWidth="1"/>
+          {/* Pizza crust - brown for visibility */}
+          <path d="M -8 4 Q 0 3 8 4" fill="#DEB887" stroke="#8B4513" strokeWidth="0.8"/>
+          {/* Pizza toppings - bright colors for contrast */}
+          <circle cx="-2" cy="-2" r="1" fill="#DC143C" opacity="0.9"/>
+          <circle cx="2" cy="-4" r="0.8" fill="#228B22" opacity="0.9"/>
+          <circle cx="4" cy="0" r="0.9" fill="#9370DB" opacity="0.9"/>
+          <circle cx="-4" cy="1" r="0.7" fill="#FF1493" opacity="0.9"/>
+          <circle cx="0" cy="2" r="0.6" fill="#FF8C00" opacity="0.9"/>
+          {/* Cheese strings - visible yellow */}
+          <path d="M -2 -3 Q 2 -4 4 -1" stroke="#FFD700" strokeWidth="1.2" fill="none" opacity="0.9"/>
+          <path d="M -4 0 Q 0 -1 2 1" stroke="#FFD700" strokeWidth="1" fill="none" opacity="0.8"/>
           {/* Steam/heat */}
-          <path d="M 7 6 Q 7.5 4 8 6" stroke="#E0E0E0" strokeWidth="1" fill="none" opacity="0.7"/>
-          <path d="M 10 5 Q 10.5 3 11 5" stroke="#E0E0E0" strokeWidth="1" fill="none" opacity="0.7"/>
-          <path d="M 13 7 Q 13.5 5 14 7" stroke="#E0E0E0" strokeWidth="1" fill="none" opacity="0.7"/>
+          <path d="M -3 -6 Q -2.5 -8 -2 -6" stroke="#E0E0E0" strokeWidth="1" fill="none" opacity="0.8"/>
+          <path d="M 0 -7 Q 0.5 -9 1 -7" stroke="#E0E0E0" strokeWidth="1" fill="none" opacity="0.8"/>
+          <path d="M 3 -5 Q 3.5 -7 4 -5" stroke="#E0E0E0" strokeWidth="1" fill="none" opacity="0.8"/>
           {/* Sparkles */}
-          <polygon points="4,3 4.3,4 5,4 4.5,4.3 4.7,5 4,4.7 3.3,5 3.5,4.3 3,4 3.7,4" fill="#FFD700" opacity="0.8"/>
-          <polygon points="16,4 16.2,4.8 17,4.8 16.6,5.2 16.8,6 16,5.7 15.2,6 15.4,5.2 15,4.8 15.8,4.8" fill="#FFA500" opacity="0.7"/>
+          <polygon points="-8,-9 -7.7,-8 -7,-8 -7.5,-7.7 -7.3,-7 -8,-7.3 -8.7,-7 -8.5,-7.7 -9,-8 -8.3,-8" fill="#FFD700" opacity="0.9"/>
+          <polygon points="4,-8 4.2,-7.2 5,-7.2 4.6,-6.8 4.8,-6 4,-6.3 3.2,-6 3.4,-6.8 3,-7.2 3.8,-7.2" fill="#FF69B4" opacity="0.8"/>
         </g>
       </svg>
     </div>
