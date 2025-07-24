@@ -67,18 +67,20 @@ const ThemeToggleIcon = ({ isDark, className }) => {
   }
 };
 
-// Category Icon Components - Using real ChatGPT images
+// Category Icon Components - Correctly assigned ChatGPT images, larger size, no text overlap
 const CategoryIcons = {
   'makeup': ({ className }) => (
     <img 
       className={className} 
-      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/if5vsfmk_ChatGPT%20Image%2023%20juil.%202025%2C%2012_18_04.png"
+      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/rjyms4zw_ChatGPT%20Image%2023%20juil.%202025%2C%2012_41_59.png"
       alt="MAKEUP & BEAUTY"
       style={{ 
         width: '100%', 
         height: '100%', 
         objectFit: 'cover',
-        borderRadius: '50%'
+        borderRadius: '50%',
+        transform: 'scale(1.2)',
+        objectPosition: 'center 30%'
       }}
     />
   ),
@@ -91,7 +93,9 @@ const CategoryIcons = {
         width: '100%', 
         height: '100%', 
         objectFit: 'cover',
-        borderRadius: '50%'
+        borderRadius: '50%',
+        transform: 'scale(1.2)',
+        objectPosition: 'center 30%'
       }}
     />
   ),
@@ -104,7 +108,9 @@ const CategoryIcons = {
         width: '100%', 
         height: '100%', 
         objectFit: 'cover',
-        borderRadius: '50%'
+        borderRadius: '50%',
+        transform: 'scale(1.2)',
+        objectPosition: 'center 30%'
       }}
     />
   ),
@@ -117,33 +123,39 @@ const CategoryIcons = {
         width: '100%', 
         height: '100%', 
         objectFit: 'cover',
-        borderRadius: '50%'
+        borderRadius: '50%',
+        transform: 'scale(1.2)',
+        objectPosition: 'center 30%'
       }}
     />
   ),
   'home-living': ({ className }) => (
     <img 
       className={className} 
-      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/rjyms4zw_ChatGPT%20Image%2023%20juil.%202025%2C%2012_41_59.png"
+      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/6msne2wv_ChatGPT%20Image%2023%20juil.%202025%2C%2012_15_25.png"
       alt="HOME & LIVING"
       style={{ 
         width: '100%', 
         height: '100%', 
         objectFit: 'cover',
-        borderRadius: '50%'
+        borderRadius: '50%',
+        transform: 'scale(1.2)',
+        objectPosition: 'center 30%'
       }}
     />
   ),
   'outdoor-garden': ({ className }) => (
     <img 
       className={className} 
-      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/6msne2wv_ChatGPT%20Image%2023%20juil.%202025%2C%2012_15_25.png"
+      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/frgu6ypv_ChatGPT%20Image%2023%20juil.%202025%2C%2012_09_45.png"
       alt="OUTDOOR & GARDEN"
       style={{ 
         width: '100%', 
         height: '100%', 
         objectFit: 'cover',
-        borderRadius: '50%'
+        borderRadius: '50%',
+        transform: 'scale(1.2)',
+        objectPosition: 'center 30%'
       }}
     />
   ),
@@ -156,33 +168,39 @@ const CategoryIcons = {
         width: '100%', 
         height: '100%', 
         objectFit: 'cover',
-        borderRadius: '50%'
+        borderRadius: '50%',
+        transform: 'scale(1.2)',
+        objectPosition: 'center 30%'
       }}
     />
   ),
   'sports-fitness': ({ className }) => (
     <img 
       className={className} 
-      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/frgu6ypv_ChatGPT%20Image%2023%20juil.%202025%2C%2012_09_45.png"
+      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/2r9bu705_ChatGPT%20Image%2023%20juil.%202025%2C%2012_08_47.png"
       alt="SPORTS & FITNESS"
       style={{ 
         width: '100%', 
         height: '100%', 
         objectFit: 'cover',
-        borderRadius: '50%'
+        borderRadius: '50%',
+        transform: 'scale(1.2)',
+        objectPosition: 'center 30%'
       }}
     />
   ),
   'cooking': ({ className }) => (
     <img 
       className={className} 
-      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/2r9bu705_ChatGPT%20Image%2023%20juil.%202025%2C%2012_08_47.png"
+      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/if5vsfmk_ChatGPT%20Image%2023%20juil.%202025%2C%2012_18_04.png"
       alt="COOKING"
       style={{ 
         width: '100%', 
         height: '100%', 
         objectFit: 'cover',
-        borderRadius: '50%'
+        borderRadius: '50%',
+        transform: 'scale(1.2)',
+        objectPosition: 'center 30%'
       }}
     />
   )
