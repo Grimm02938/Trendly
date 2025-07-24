@@ -155,9 +155,18 @@ const CategoryIcons = {
     </div>
   ),
   'cooking': ({ className }) => (
-    <div className={`${className} flex items-center justify-center text-4xl bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full`}>
-      🍳
-    </div>
+    <img 
+      className={className} 
+      src="https://drive.google.com/uc?id=1fhtZPa1ug73avzbFrxj4EKQMqWMnNE1P"
+      alt="COOKING"
+      style={{ 
+        width: '100%', 
+        height: '100%', 
+        objectFit: 'cover',
+        borderRadius: '50%',
+        transform: 'scale(1.1)'
+      }}
+    />
   )
 };
 
