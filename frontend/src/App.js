@@ -67,51 +67,91 @@ const ThemeToggleIcon = ({ isDark, className }) => {
   }
 };
 
-// Category Icon Components - Colorful emoji icons with gradients
+// Category Icon Components - Modern geometric/stylized icons
 const CategoryIcons = {
   'makeup': ({ className }) => (
-    <div className={`${className} flex items-center justify-center text-4xl bg-gradient-to-br from-pink-400 to-purple-500 rounded-full`}>
-      💄
+    <div className={`${className} relative bg-gradient-to-br from-pink-400 to-purple-500 rounded-full flex items-center justify-center`}>
+      <div className="w-6 h-6 bg-white rounded-full relative">
+        <div className="absolute top-1 left-1 w-4 h-4 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full"></div>
+        <div className="absolute bottom-0 right-0 w-2 h-2 bg-white rounded-full"></div>
+      </div>
     </div>
   ),
   'high-tech': ({ className }) => (
-    <div className={`${className} flex items-center justify-center text-4xl bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full`}>
-      📱
+    <div className={`${className} relative bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full flex items-center justify-center`}>
+      <div className="w-8 h-12 bg-white rounded-sm relative">
+        <div className="absolute top-1 left-1 right-1 h-8 bg-gradient-to-b from-blue-400 to-cyan-500 rounded-sm"></div>
+        <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-4 h-1 bg-gray-300 rounded"></div>
+      </div>
     </div>
   ),
   'tiktok-trends': ({ className }) => (
-    <div className={`${className} flex items-center justify-center text-4xl bg-gradient-to-br from-purple-400 to-pink-500 rounded-full`}>
-      🎵
+    <div className={`${className} relative bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center`}>
+      <div className="relative">
+        <div className="w-3 h-3 bg-white rounded-full"></div>
+        <div className="absolute -top-1 -right-1 w-2 h-6 bg-white rounded-full transform rotate-12"></div>
+        <div className="absolute -top-1 -left-1 w-2 h-6 bg-white rounded-full transform -rotate-12"></div>
+        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-4 h-1 bg-white rounded"></div>
+      </div>
     </div>
   ),
   'fashion': ({ className }) => (
-    <div className={`${className} flex items-center justify-center text-4xl bg-gradient-to-br from-orange-400 to-red-500 rounded-full`}>
-      👗
+    <div className={`${className} relative bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center`}>
+      <div className="relative">
+        <div className="w-6 h-4 bg-white rounded-t-full"></div>
+        <div className="w-8 h-6 bg-white rounded-b-full -mt-1"></div>
+        <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-1 h-2 bg-gradient-to-b from-orange-500 to-red-600"></div>
+      </div>
     </div>
   ),
   'home-living': ({ className }) => (
-    <div className={`${className} flex items-center justify-center text-4xl bg-gradient-to-br from-green-400 to-blue-500 rounded-full`}>
-      🏠
+    <div className={`${className} relative bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center`}>
+      <div className="relative">
+        <div className="w-8 h-6 bg-white relative">
+          <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-b-4 border-transparent border-b-white"></div>
+          <div className="absolute top-2 left-1 w-2 h-3 bg-gradient-to-b from-green-500 to-blue-600"></div>
+          <div className="absolute top-1 right-1 w-1.5 h-1.5 bg-gradient-to-br from-green-400 to-blue-500"></div>
+        </div>
+      </div>
     </div>
   ),
   'outdoor-garden': ({ className }) => (
-    <div className={`${className} flex items-center justify-center text-4xl bg-gradient-to-br from-green-400 to-teal-500 rounded-full`}>
-      🌿
+    <div className={`${className} relative bg-gradient-to-br from-green-400 to-teal-500 rounded-full flex items-center justify-center`}>
+      <div className="relative">
+        <div className="w-1 h-6 bg-white"></div>
+        <div className="absolute -top-1 -left-2 w-4 h-3 bg-white rounded-full transform -rotate-12"></div>
+        <div className="absolute -top-1 -right-2 w-4 h-3 bg-white rounded-full transform rotate-12"></div>
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-2 bg-white rounded-t-full"></div>
+      </div>
     </div>
   ),
   'health-wellness': ({ className }) => (
-    <div className={`${className} flex items-center justify-center text-4xl bg-gradient-to-br from-red-400 to-pink-500 rounded-full`}>
-      💊
+    <div className={`${className} relative bg-gradient-to-br from-red-400 to-pink-500 rounded-full flex items-center justify-center`}>
+      <div className="relative">
+        <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+          <div className="w-4 h-1 bg-gradient-to-r from-red-500 to-pink-600"></div>
+          <div className="absolute w-1 h-4 bg-gradient-to-b from-red-500 to-pink-600"></div>
+        </div>
+      </div>
     </div>
   ),
   'sports-fitness': ({ className }) => (
-    <div className={`${className} flex items-center justify-center text-4xl bg-gradient-to-br from-orange-400 to-yellow-500 rounded-full`}>
-      ⚽
+    <div className={`${className} relative bg-gradient-to-br from-orange-400 to-yellow-500 rounded-full flex items-center justify-center`}>
+      <div className="w-6 h-6 bg-white rounded-full relative">
+        <div className="absolute top-1 left-1 w-2 h-2 bg-gradient-to-br from-orange-500 to-yellow-600 rounded-full"></div>
+        <div className="absolute top-1 right-1 w-2 h-2 bg-gradient-to-br from-orange-500 to-yellow-600 rounded-full"></div>
+        <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-3 h-2 bg-gradient-to-b from-orange-500 to-yellow-600 rounded-b-full"></div>
+      </div>
     </div>
   ),
   'cooking': ({ className }) => (
-    <div className={`${className} flex items-center justify-center text-4xl bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full`}>
-      🍳
+    <div className={`${className} relative bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center`}>
+      <div className="relative">
+        <div className="w-8 h-4 bg-white rounded-full"></div>
+        <div className="absolute top-0 right-0 w-2 h-2 bg-white rounded-full"></div>
+        <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-0.5 h-2 bg-white"></div>
+        <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 translate-x-0.5 w-0.5 h-1 bg-white"></div>
+      </div>
     </div>
   )
 };
