@@ -67,142 +67,52 @@ const ThemeToggleIcon = ({ isDark, className }) => {
   }
 };
 
-// Category Icon Components - Using your custom icons from Google Drive
+// Category Icon Components - Temporary colorful icons (easily replaceable with your custom ones)
 const CategoryIcons = {
   'makeup': ({ className }) => (
-    <img 
-      className={className} 
-      src="https://drive.google.com/uc?id=1N3uZGdg-y5smgjWS5i6Vo-y3DHenbIej"
-      alt="MAKEUP & BEAUTY"
-      style={{ 
-        width: '100%', 
-        height: '100%', 
-        objectFit: 'cover',
-        borderRadius: '50%',
-        transform: 'scale(1.2)',
-        objectPosition: 'center 30%'
-      }}
-    />
+    <div className={`${className} flex items-center justify-center text-4xl bg-gradient-to-br from-pink-400 to-purple-500 rounded-full`}>
+      💄
+    </div>
   ),
   'high-tech': ({ className }) => (
-    <img 
-      className={className} 
-      src="https://drive.google.com/uc?id=13DTAuUXl9k_OzRoAC7PTr5Q2hgeopKnr"
-      alt="HIGH TECH"
-      style={{ 
-        width: '100%', 
-        height: '100%', 
-        objectFit: 'cover',
-        borderRadius: '50%',
-        transform: 'scale(1.2)',
-        objectPosition: 'center 30%'
-      }}
-    />
+    <div className={`${className} flex items-center justify-center text-4xl bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full`}>
+      📱
+    </div>
   ),
   'tiktok-trends': ({ className }) => (
-    <img 
-      className={className} 
-      src="https://drive.google.com/uc?id=1GYqd3gI55T3vgjSgBiljCN6DFLknXdL7"
-      alt="TIKTOK TRENDS"
-      style={{ 
-        width: '100%', 
-        height: '100%', 
-        objectFit: 'cover',
-        borderRadius: '50%',
-        transform: 'scale(1.2)',
-        objectPosition: 'center 30%'
-      }}
-    />
+    <div className={`${className} flex items-center justify-center text-4xl bg-gradient-to-br from-red-400 to-pink-500 rounded-full`}>
+      📱
+    </div>
   ),
   'fashion': ({ className }) => (
-    <img 
-      className={className} 
-      src="https://drive.google.com/uc?id=1htnVQ9Nk5EQRltDpMqRWPRZ2Q6N7Cx_f"
-      alt="FASHION"
-      style={{ 
-        width: '100%', 
-        height: '100%', 
-        objectFit: 'cover',
-        borderRadius: '50%',
-        transform: 'scale(1.2)',
-        objectPosition: 'center 30%'
-      }}
-    />
+    <div className={`${className} flex items-center justify-center text-4xl bg-gradient-to-br from-orange-400 to-red-500 rounded-full`}>
+      👗
+    </div>
   ),
   'home-living': ({ className }) => (
-    <img 
-      className={className} 
-      src="https://drive.google.com/uc?id=1cdTpPxHPnbAQ7aBHjyR8gsPM_J_jYF4q"
-      alt="HOME & LIVING"
-      style={{ 
-        width: '100%', 
-        height: '100%', 
-        objectFit: 'cover',
-        borderRadius: '50%',
-        transform: 'scale(1.2)',
-        objectPosition: 'center 30%'
-      }}
-    />
+    <div className={`${className} flex items-center justify-center text-4xl bg-gradient-to-br from-green-400 to-blue-500 rounded-full`}>
+      🏠
+    </div>
   ),
   'outdoor-garden': ({ className }) => (
-    <img 
-      className={className} 
-      src="https://drive.google.com/uc?id=1cSTLsABsyl1BtNlADGMZ_bJMhBQzVKFQ"
-      alt="OUTDOOR & GARDEN"
-      style={{ 
-        width: '100%', 
-        height: '100%', 
-        objectFit: 'cover',
-        borderRadius: '50%',
-        transform: 'scale(1.2)',
-        objectPosition: 'center 30%'
-      }}
-    />
+    <div className={`${className} flex items-center justify-center text-4xl bg-gradient-to-br from-green-400 to-teal-500 rounded-full`}>
+      🌿
+    </div>
   ),
   'health-wellness': ({ className }) => (
-    <img 
-      className={className} 
-      src="https://drive.google.com/uc?id=1PhSk3yrXkDfhIZJCs10nMwB_jIl-kC4W"
-      alt="HEALTH & WELLNESS"
-      style={{ 
-        width: '100%', 
-        height: '100%', 
-        objectFit: 'cover',
-        borderRadius: '50%',
-        transform: 'scale(1.2)',
-        objectPosition: 'center 30%'
-      }}
-    />
+    <div className={`${className} flex items-center justify-center text-4xl bg-gradient-to-br from-red-400 to-pink-500 rounded-full`}>
+      💊
+    </div>
   ),
   'sports-fitness': ({ className }) => (
-    <img 
-      className={className} 
-      src="https://drive.google.com/uc?id=1zfhXpzTfJtm-obtGjkuVPe3FoxkedjUx"
-      alt="SPORTS & FITNESS"
-      style={{ 
-        width: '100%', 
-        height: '100%', 
-        objectFit: 'cover',
-        borderRadius: '50%',
-        transform: 'scale(1.2)',
-        objectPosition: 'center 30%'
-      }}
-    />
+    <div className={`${className} flex items-center justify-center text-4xl bg-gradient-to-br from-orange-400 to-yellow-500 rounded-full`}>
+      ⚽
+    </div>
   ),
   'cooking': ({ className }) => (
-    <img 
-      className={className} 
-      src="https://drive.google.com/uc?id=1fhtZPa1ug73avzbFrxj4EKQMqWMnNE1P"
-      alt="COOKING"
-      style={{ 
-        width: '100%', 
-        height: '100%', 
-        objectFit: 'cover',
-        borderRadius: '50%',
-        transform: 'scale(1.2)',
-        objectPosition: 'center 30%'
-      }}
-    />
+    <div className={`${className} flex items-center justify-center text-4xl bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full`}>
+      🍳
+    </div>
   )
 };
 
