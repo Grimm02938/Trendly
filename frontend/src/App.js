@@ -72,7 +72,7 @@ const CategoryIcons = {
   'makeup': ({ className }) => (
     <img 
       className={className} 
-      src="https://drive.google.com/thumbnail?id=1o3i63Hw9fdqtbSOVkZyKrwKfSSYOmHiA&sz=w400-h400"
+      src="https://drive.google.com/uc?id=1N3uZGdg-y5smgjWS5i6Vo-y3DHenbIej"
       alt="MAKEUP & BEAUTY"
       style={{ 
         width: '100%', 
