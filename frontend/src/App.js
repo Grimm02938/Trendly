@@ -67,12 +67,12 @@ const ThemeToggleIcon = ({ isDark, className }) => {
   }
 };
 
-// Category Icon Components - Correctly assigned ChatGPT images, larger size, no text overlap
+// Category Icon Components - Using your custom icons from Google Drive
 const CategoryIcons = {
   'makeup': ({ className }) => (
     <img 
       className={className} 
-      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/rjyms4zw_ChatGPT%20Image%2023%20juil.%202025%2C%2012_41_59.png"
+      src="https://drive.google.com/thumbnail?id=1o3i63Hw9fdqtbSOVkZyKrwKfSSYOmHiA&sz=w400-h400"
       alt="MAKEUP & BEAUTY"
       style={{ 
         width: '100%', 
@@ -87,7 +87,7 @@ const CategoryIcons = {
   'high-tech': ({ className }) => (
     <img 
       className={className} 
-      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/gf7tiuh0_ChatGPT%20Image%2023%20juil.%202025%2C%2012_26_35.png"
+      src="https://drive.google.com/thumbnail?id=1o3i63Hw9fdqtbSOVkZyKrwKfSSYOmHiA&sz=w400-h400"
       alt="HIGH TECH"
       style={{ 
         width: '100%', 
@@ -102,7 +102,7 @@ const CategoryIcons = {
   'tiktok-trends': ({ className }) => (
     <img 
       className={className} 
-      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/q1d4pya7_ChatGPT%20Image%2023%20juil.%202025%2C%2012_27_16.png"
+      src="https://drive.google.com/thumbnail?id=1o3i63Hw9fdqtbSOVkZyKrwKfSSYOmHiA&sz=w400-h400"
       alt="TIKTOK TRENDS"
       style={{ 
         width: '100%', 
@@ -117,7 +117,7 @@ const CategoryIcons = {
   'fashion': ({ className }) => (
     <img 
       className={className} 
-      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/iany69vf_ChatGPT%20Image%2023%20juil.%202025%2C%2012_30_08.png"
+      src="https://drive.google.com/thumbnail?id=1o3i63Hw9fdqtbSOVkZyKrwKfSSYOmHiA&sz=w400-h400"
       alt="FASHION"
       style={{ 
         width: '100%', 
@@ -132,7 +132,7 @@ const CategoryIcons = {
   'home-living': ({ className }) => (
     <img 
       className={className} 
-      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/6msne2wv_ChatGPT%20Image%2023%20juil.%202025%2C%2012_15_25.png"
+      src="https://drive.google.com/thumbnail?id=1o3i63Hw9fdqtbSOVkZyKrwKfSSYOmHiA&sz=w400-h400"
       alt="HOME & LIVING"
       style={{ 
         width: '100%', 
@@ -147,7 +147,7 @@ const CategoryIcons = {
   'outdoor-garden': ({ className }) => (
     <img 
       className={className} 
-      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/frgu6ypv_ChatGPT%20Image%2023%20juil.%202025%2C%2012_09_45.png"
+      src="https://drive.google.com/thumbnail?id=1o3i63Hw9fdqtbSOVkZyKrwKfSSYOmHiA&sz=w400-h400"
       alt="OUTDOOR & GARDEN"
       style={{ 
         width: '100%', 
@@ -162,7 +162,7 @@ const CategoryIcons = {
   'health-wellness': ({ className }) => (
     <img 
       className={className} 
-      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/5toar1u1_ChatGPT%20Image%2023%20juil.%202025%2C%2012_11_03.png"
+      src="https://drive.google.com/thumbnail?id=1o3i63Hw9fdqtbSOVkZyKrwKfSSYOmHiA&sz=w400-h400"
       alt="HEALTH & WELLNESS"
       style={{ 
         width: '100%', 
@@ -177,7 +177,7 @@ const CategoryIcons = {
   'sports-fitness': ({ className }) => (
     <img 
       className={className} 
-      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/2r9bu705_ChatGPT%20Image%2023%20juil.%202025%2C%2012_08_47.png"
+      src="https://drive.google.com/thumbnail?id=1o3i63Hw9fdqtbSOVkZyKrwKfSSYOmHiA&sz=w400-h400"
       alt="SPORTS & FITNESS"
       style={{ 
         width: '100%', 
@@ -192,7 +192,7 @@ const CategoryIcons = {
   'cooking': ({ className }) => (
     <img 
       className={className} 
-      src="https://customer-assets.emergentagent.com/job_dark-theme-update-2/artifacts/if5vsfmk_ChatGPT%20Image%2023%20juil.%202025%2C%2012_18_04.png"
+      src="https://drive.google.com/thumbnail?id=1o3i63Hw9fdqtbSOVkZyKrwKfSSYOmHiA&sz=w400-h400"
       alt="COOKING"
       style={{ 
         width: '100%', 
