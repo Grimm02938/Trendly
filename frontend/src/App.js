@@ -67,96 +67,84 @@ const ThemeToggleIcon = ({ isDark, className }) => {
   }
 };
 
-// Category Icon Components - Improved with ChatGPT style icons + beautiful circular backgrounds
+// Category Icon Components - Simple and clear icons (restored)
 const CategoryIcons = {
   'makeup': ({ className }) => (
     <svg className={className} viewBox="0 0 200 200" fill="none">
       <circle cx="100" cy="100" r="100" fill="#FF6B6B"/>
-      {/* Lipstick icon inspired by ChatGPT image */}
-      <rect x="85" y="60" width="30" height="80" rx="15" fill="#000" stroke="#000" strokeWidth="3"/>
-      <rect x="85" y="60" width="30" height="45" rx="15" fill="#E53E3E"/>
-      <ellipse cx="100" cy="50" rx="8" ry="12" fill="#000"/>
+      {/* Simple lipstick */}
+      <rect x="85" y="70" width="30" height="80" rx="15" fill="#000" stroke="#000" strokeWidth="3"/>
+      <rect x="85" y="70" width="30" height="50" rx="15" fill="#E53E3E"/>
+      <rect x="92" y="60" width="16" height="15" rx="8" fill="#000"/>
     </svg>
   ),
   'high-tech': ({ className }) => (
     <svg className={className} viewBox="0 0 200 200" fill="none">
       <circle cx="100" cy="100" r="100" fill="#4DABF7"/>
-      {/* Smartphone icon inspired by ChatGPT image */}
-      <rect x="75" y="45" width="50" height="110" rx="12" fill="#000" stroke="#000" strokeWidth="3"/>
-      <rect x="80" y="55" width="40" height="75" rx="4" fill="#4DABF7"/>
-      <circle cx="100" cy="145" r="6" fill="#4DABF7"/>
-      <rect x="90" y="38" width="20" height="4" rx="2" fill="#4DABF7"/>
+      {/* Simple smartphone */}
+      <rect x="75" y="50" width="50" height="100" rx="8" fill="#000" stroke="#000" strokeWidth="3"/>
+      <rect x="80" y="60" width="40" height="70" rx="3" fill="#4DABF7"/>
+      <circle cx="100" cy="140" r="4" fill="#4DABF7"/>
     </svg>
   ),
   'tiktok-trends': ({ className }) => (
     <svg className={className} viewBox="0 0 200 200" fill="none">
       <circle cx="100" cy="100" r="100" fill="#B794F6"/>
-      {/* Musical note icon inspired by ChatGPT image */}
-      <circle cx="85" cy="130" r="15" fill="#000"/>
-      <rect x="98" y="70" width="4" height="60" fill="#000"/>
-      <path d="M102 70 Q130 60 130 80 L130 110 Q130 120 120 120 Q110 120 110 110 L110 100 Q115 95 120 95 Q125 95 130 100 L130 80 Q125 85 102 90 Z" fill="#000"/>
+      {/* TikTok logo style */}
+      <path d="M115 65v50c8-5 15-5 20 0v-15c-5-8-15-8-20 0V75c0-8-8-15-15-15v15c8 0 15 7 15 15v25c0 8-7 15-15 15s-15-7-15-15c0-5 2-10 8-12v-15c-12 3-20 15-20 27 0 17 13 30 30 30s30-13 30-30V65h-18z" fill="#000"/>
     </svg>
   ),
   'fashion': ({ className }) => (
     <svg className={className} viewBox="0 0 200 200" fill="none">
       <circle cx="100" cy="100" r="100" fill="#FF9500"/>
-      {/* Dress icon inspired by ChatGPT image */}
-      <path d="M100 40 L85 65 L85 160 L115 160 L115 65 Z" fill="#000" stroke="#000" strokeWidth="3"/>
-      <path d="M85 60 Q100 45 115 60" stroke="#000" strokeWidth="3" fill="none"/>
-      <circle cx="100" cy="52" r="3" fill="#FF9500"/>
+      {/* Simple dress */}
+      <path d="M100 50l-20 25v75h40V75l-20-25z" fill="#000" stroke="#000" strokeWidth="3"/>
+      <path d="M80 70c0-8 9-15 20-15s20 7 20 15" stroke="#000" strokeWidth="3" fill="none"/>
     </svg>
   ),
   'home-living': ({ className }) => (
     <svg className={className} viewBox="0 0 200 200" fill="none">
       <circle cx="100" cy="100" r="100" fill="#17C3B2"/>
-      {/* House icon inspired by ChatGPT image */}
-      <path d="M100 45 L65 75 L65 155 L135 155 L135 75 Z" fill="#000" stroke="#000" strokeWidth="3"/>
-      <path d="M100 45 L60 80 L140 80 Z" fill="#000"/>
-      <rect x="85" y="130" width="15" height="25" fill="#17C3B2"/>
-      <rect x="110" y="110" width="15" height="15" fill="#17C3B2"/>
+      {/* Simple house */}
+      <path d="M100 50l-40 35v60h80V85l-40-35z" fill="#000" stroke="#000" strokeWidth="3"/>
+      <rect x="85" y="125" width="15" height="20" fill="#17C3B2"/>
+      <rect x="110" y="105" width="12" height="12" fill="#17C3B2"/>
     </svg>
   ),
   'outdoor-garden': ({ className }) => (
     <svg className={className} viewBox="0 0 200 200" fill="none">
       <circle cx="100" cy="100" r="100" fill="#95D5B2"/>
-      {/* Tree/plant icon inspired by ChatGPT image */}
-      <rect x="95" y="130" width="10" height="25" fill="#8B4513"/>
-      <circle cx="100" cy="85" r="30" fill="#22C55E" stroke="#000" strokeWidth="3"/>
-      <circle cx="80" cy="80" r="20" fill="#22C55E" stroke="#000" strokeWidth="2"/>
-      <circle cx="120" cy="80" r="20" fill="#22C55E" stroke="#000" strokeWidth="2"/>
-      <circle cx="100" cy="60" r="18" fill="#22C55E" stroke="#000" strokeWidth="2"/>
+      {/* Simple tree */}
+      <rect x="95" y="120" width="10" height="30" fill="#8B4513"/>
+      <circle cx="100" cy="90" r="25" fill="#22C55E" stroke="#000" strokeWidth="3"/>
+      <circle cx="85" cy="85" r="18" fill="#22C55E" stroke="#000" strokeWidth="2"/>
+      <circle cx="115" cy="85" r="18" fill="#22C55E" stroke="#000" strokeWidth="2"/>
     </svg>
   ),
   'health-wellness': ({ className }) => (
     <svg className={className} viewBox="0 0 200 200" fill="none">
       <circle cx="100" cy="100" r="100" fill="#FF6B9D"/>
-      {/* Medical cross icon inspired by ChatGPT image */}
-      <rect x="85" y="65" width="30" height="70" rx="15" fill="#000"/>
-      <rect x="65" y="85" width="70" height="30" rx="15" fill="#000"/>
-      <rect x="90" y="70" width="20" height="60" rx="10" fill="#FF6B9D"/>
-      <rect x="70" y="90" width="60" height="20" rx="10" fill="#FF6B9D"/>
+      {/* Medical cross */}
+      <rect x="90" y="70" width="20" height="60" rx="10" fill="#000"/>
+      <rect x="70" y="90" width="60" height="20" rx="10" fill="#000"/>
     </svg>
   ),
   'sports-fitness': ({ className }) => (
     <svg className={className} viewBox="0 0 200 200" fill="none">
       <circle cx="100" cy="100" r="100" fill="#FFB74D"/>
-      {/* Dumbbell icon inspired by ChatGPT image */}
-      <rect x="50" y="95" width="100" height="10" rx="5" fill="#000"/>
-      <rect x="45" y="85" width="20" height="30" rx="10" fill="#000"/>
-      <rect x="135" y="85" width="20" height="30" rx="10" fill="#000"/>
-      <rect x="40" y="80" width="10" height="40" rx="5" fill="#000"/>
-      <rect x="150" y="80" width="10" height="40" rx="5" fill="#000"/>
+      {/* Simple dumbbell */}
+      <rect x="60" y="95" width="80" height="10" rx="5" fill="#000"/>
+      <rect x="50" y="85" width="20" height="30" rx="10" fill="#000"/>
+      <rect x="130" y="85" width="20" height="30" rx="10" fill="#000"/>
     </svg>
   ),
   'cooking': ({ className }) => (
     <svg className={className} viewBox="0 0 200 200" fill="none">
       <circle cx="100" cy="100" r="100" fill="#FFCE56"/>
-      {/* Chef hat icon inspired by ChatGPT image */}
-      <ellipse cx="100" cy="120" rx="45" ry="30" fill="#FFF" stroke="#000" strokeWidth="3"/>
-      <circle cx="100" cy="75" r="35" fill="#FFF" stroke="#000" strokeWidth="3"/>
-      <circle cx="85" cy="65" r="12" fill="#FFF" stroke="#000" strokeWidth="2"/>
-      <circle cx="115" cy="65" r="12" fill="#FFF" stroke="#000" strokeWidth="2"/>
-      <circle cx="100" cy="50" r="15" fill="#FFF" stroke="#000" strokeWidth="2"/>
+      {/* Chef's hat */}
+      <ellipse cx="100" cy="110" rx="35" ry="25" fill="#000" stroke="#000" strokeWidth="3"/>
+      <circle cx="100" cy="85" r="30" fill="#FFF" stroke="#000" strokeWidth="3"/>
+      <rect x="70" y="85" width="60" height="8" rx="4" fill="#000"/>
     </svg>
   )
 };
