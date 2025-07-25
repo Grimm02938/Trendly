@@ -1,0 +1,215 @@
+{% comment %}
+  Hero Section - Modern gradient design
+{% endcomment %}
+
+<div class="hero-section bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50 dark-mode:from-gray-900 dark-mode:via-gray-800 dark-mode:to-gray-900 py-20 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      
+      {% comment %} Hero Title {% endcomment %}
+      <h1 class="text-5xl md:text-7xl font-black bg-gradient-to-r from-rose-600 via-pink-500 to-purple-600 bg-clip-text text-transparent mb-6 trendly-logo tracking-tighter leading-tight">
+        {{ section.settings.hero_title | default: shop.name | default: 'Trendly' }}
+      </h1>
+      
+      {% comment %} Hero Subtitle {% endcomment %}
+      <p class="text-xl md:text-2xl text-gray-700 dark-mode:text-gray-300 mb-8 max-w-3xl mx-auto trendly-font leading-relaxed">
+        {{ section.settings.hero_subtitle | default: 'Your one-stop shop for trending products worldwide' }}
+      </p>
+      
+      {% comment %} Hero Description {% endcomment %}
+      {% if section.settings.hero_description != blank %}
+        <p class="text-lg text-gray-600 dark-mode:text-gray-400 mb-10 max-w-2xl mx-auto trendly-font">
+          {{ section.settings.hero_description }}
+        </p>
+      {% endif %}
+      
+      {% comment %} Call-to-Action Buttons {% endcomment %}
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        {% if section.settings.primary_button_text != blank %}
+          <a 
+            href="{{ section.settings.primary_button_link | default: '/collections/all' }}" 
+            class="px-8 py-4 bg-gradient-to-r from-rose-500 to-pink-400 text-white rounded-xl hover:from-rose-600 hover:to-pink-500 transition-all text-lg font-bold shadow-xl hover:shadow-2xl transform hover:-translate-y-1 trendly-font"
+          >
+            {{ section.settings.primary_button_text | default: 'Shop Now' }}
+          </a>
+        {% endif %}
+        
+        {% if section.settings.secondary_button_text != blank %}
+          <a 
+            href="{{ section.settings.secondary_button_link | default: '/collections/featured' }}" 
+            class="px-8 py-4 border-2 border-rose-500 text-rose-500 dark-mode:text-rose-400 dark-mode:border-rose-400 rounded-xl hover:bg-rose-500 hover:text-white dark-mode:hover:bg-rose-400 transition-all text-lg font-bold trendly-font"
+          >
+            {{ section.settings.secondary_button_text | default: 'View Trending' }}
+          </a>
+        {% endif %}
+      </div>
+      
+      {% comment %} Trust Indicators {% endcomment %}
+      {% if section.settings.show_trust_indicators %}
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div class="flex items-center justify-center space-x-3 text-gray-600 dark-mode:text-gray-400">
+            <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span class="font-semibold trendly-font">{{ 'general.hero.free_shipping' | t | default: 'Free Shipping' }}</span>
+          </div>
+          
+          <div class="flex items-center justify-center space-x-3 text-gray-600 dark-mode:text-gray-400">
+            <svg class="w-8 h-8 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span class="font-semibold trendly-font">{{ 'general.hero.secure_payment' | t | default: 'Secure Payment' }}</span>
+          </div>
+          
+          <div class="flex items-center justify-center space-x-3 text-gray-600 dark-mode:text-gray-400">
+            <svg class="w-8 h-8 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span class="font-semibold trendly-font">{{ 'general.hero.satisfaction' | t | default: '100% Satisfaction' }}</span>
+          </div>
+        </div>
+      {% endif %}
+      
+      {% comment %} Hero Stats {% endcomment %}
+      {% if section.settings.show_stats %}
+        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-rose-500 trendly-font">10K+</div>
+            <div class="text-sm text-gray-600 dark-mode:text-gray-400 trendly-font">{{ 'general.hero.happy_customers' | t | default: 'Happy Customers' }}</div>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-3xl font-bold text-pink-500 trendly-font">500+</div>
+            <div class="text-sm text-gray-600 dark-mode:text-gray-400 trendly-font">{{ 'general.hero.products' | t | default: 'Products' }}</div>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-3xl font-bold text-purple-500 trendly-font">50+</div>
+            <div class="text-sm text-gray-600 dark-mode:text-gray-400 trendly-font">{{ 'general.hero.countries' | t | default: 'Countries' }}</div>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-3xl font-bold text-orange-500 trendly-font">99%</div>
+            <div class="text-sm text-gray-600 dark-mode:text-gray-400 trendly-font">{{ 'general.hero.satisfaction_rate' | t | default: 'Satisfaction Rate' }}</div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  
+  {% comment %} Background Animation (CSS-only) {% endcomment %}
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-rose-300 to-pink-300 rounded-full opacity-20 animate-pulse"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-purple-300 to-indigo-300 rounded-full opacity-20 animate-pulse" style="animation-delay: 1s;"></div>
+  </div>
+</div>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  .hero-section {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 80%, rgba(239, 68, 68, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .animate-pulse {
+      animation: none;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Trendly"
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Your one-stop shop for trending products worldwide"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_description",
+      "label": "Hero Description (optional)",
+      "info": "Additional description text below the subtitle"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_text",
+      "label": "Primary Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_link",
+      "label": "Primary Button Link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_text",
+      "label": "Secondary Button Text",
+      "default": "View Trending"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_link",
+      "label": "Secondary Button Link",
+      "default": "/collections/featured"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_indicators",
+      "label": "Show trust indicators",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stats",
+      "label": "Show statistics",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Section",
+      "settings": {
+        "hero_title": "Trendly",
+        "hero_subtitle": "Your one-stop shop for trending products worldwide",
+        "primary_button_text": "Shop Now",
+        "primary_button_link": "/collections/all",
+        "secondary_button_text": "View Trending",
+        "secondary_button_link": "/collections/featured",
+        "show_trust_indicators": true,
+        "show_stats": true
+      }
+    }
+  ]
+}
+{% endschema %}
