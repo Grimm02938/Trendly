@@ -1,0 +1,190 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.color_primary }}">
+    
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    {%- unless settings.font_heading.system? -%}
+      <link rel="preload" as="font" href="{{ settings.font_heading | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+    {%- unless settings.font_body.system? -%}
+      <link rel="preload" as="font" href="{{ settings.font_body | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; {{ 'general.meta.tags' | t: tags: current_tags | join: ', ' }}{% endif -%}
+      {%- if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {% render 'meta-tags' %}
+
+    {{ content_for_header }}
+
+    {%- liquid
+      assign body_font_bold = settings.font_body | font_modify: 'weight', 'bold'
+      assign body_font_italic = settings.font_body | font_modify: 'style', 'italic'
+      assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+    %}
+
+    {% style %}
+      {{ settings.font_heading | font_face: font_display: 'swap' }}
+      {{ settings.font_body | font_face: font_display: 'swap' }}
+      {{ body_font_bold | font_face: font_display: 'swap' }}
+      {{ body_font_italic | font_face: font_display: 'swap' }}
+      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+
+      :root {
+        --color-primary: {{ settings.color_primary }};
+        --color-secondary: {{ settings.color_secondary }};
+        --color-background: {{ settings.color_background }};
+        --color-text: {{ settings.color_text }};
+        --font-heading: {{ settings.font_heading.family }}, {{ settings.font_heading.fallback_families }};
+        --font-body: {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};
+      }
+
+      .trendly-font {
+        font-family: var(--font-body);
+        font-weight: 600;
+        letter-spacing: -0.015em;
+      }
+
+      .trendly-logo {
+        font-family: var(--font-heading);
+        font-weight: 900;
+        letter-spacing: -0.05em;
+        text-transform: uppercase;
+      }
+
+      .trendly-category-title {
+        font-family: var(--font-heading);
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        line-height: 1.2;
+        text-transform: uppercase;
+      }
+
+      /* Dark mode styles */
+      .dark-mode {
+        --color-background: #111827;
+        --color-text: #f9fafb;
+      }
+
+      body.dark-mode {
+        background-color: var(--color-background);
+        color: var(--color-text);
+      }
+    {% endstyle %}
+
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+      if (Shopify.designMode) {
+        document.documentElement.classList.add('shopify-design-mode');
+      }
+    </script>
+  </head>
+
+  <body class="template-{{ template | replace: '.', ' template-' | handle }}{% if settings.enable_dark_mode %} theme-toggle-enabled{% endif %}">
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+
+    {% sections 'header-group' %}
+
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+      <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
+    </ul>
+
+    <script>
+      window.shopUrl = '{{ request.origin }}';
+      window.routes = {
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}',
+        cart_url: '{{ routes.cart_url }}',
+        predictive_search_url: '{{ routes.predictive_search_url }}'
+      };
+
+      window.cartStrings = {
+        error: `{{ 'sections.cart.cart_error' | t }}`,
+        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t: quantity: '[quantity]' }}`
+      }
+
+      window.variantStrings = {
+        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+        soldOut: `{{ 'products.product.sold_out' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`,
+        unavailable_with_option: `{{ 'products.product.value_unavailable' | t: option_value: '[value]' }}`,
+      }
+    </script>
+
+    {% if settings.enable_dark_mode %}
+      <script>
+        // Dark mode toggle functionality
+        const darkModeToggle = () => {
+          const body = document.body;
+          const isDark = body.classList.contains('dark-mode');
+          
+          if (isDark) {
+            body.classList.remove('dark-mode');
+            localStorage.setItem('trendly-theme', 'light');
+          } else {
+            body.classList.add('dark-mode');
+            localStorage.setItem('trendly-theme', 'dark');
+          }
+        };
+
+        // Initialize dark mode from localStorage
+        const savedTheme = localStorage.getItem('trendly-theme');
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.body.classList.add('dark-mode');
+        }
+
+        // Add event listener to dark mode toggle button
+        document.addEventListener('DOMContentLoaded', function() {
+          const toggleButton = document.querySelector('.theme-toggle');
+          if (toggleButton) {
+            toggleButton.addEventListener('click', darkModeToggle);
+          }
+        });
+      </script>
+    {% endif %}
+
+    {{ 'theme.js' | asset_url | script_tag }}
+
+    {% comment %}
+      Floating theme toggle button
+    {% endcomment %}
+    {% if settings.enable_dark_mode %}
+      <button class="theme-toggle fixed bottom-6 left-6 w-14 h-14 rounded-full bg-gradient-to-br from-slate-600 to-slate-800 hover:from-slate-500 hover:to-slate-700 dark-mode:from-gray-100 dark-mode:to-gray-300 dark-mode:hover:from-white dark-mode:hover:to-gray-200 shadow-xl hover:shadow-2xl transition-all z-50 flex items-center justify-center group border-2 border-slate-500/30 dark-mode:border-gray-300/50" title="Toggle theme">
+        <svg class="w-6 h-6 text-white dark-mode:text-gray-700 group-hover:scale-110 transition-transform duration-200 theme-icon-light" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/>
+        </svg>
+        <svg class="w-6 h-6 text-white dark-mode:text-gray-700 group-hover:scale-110 transition-transform duration-200 theme-icon-dark hidden" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"/>
+        </svg>
+      </button>
+    {% endif %}
+  </body>
+</html>
