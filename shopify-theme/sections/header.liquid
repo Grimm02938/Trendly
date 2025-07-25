@@ -1,0 +1,225 @@
+{% comment %}
+  Header section with search, navigation, and cart
+{% endcomment %}
+
+<header class="header bg-white dark-mode:bg-gray-900 border-gray-200 dark-mode:border-gray-700 shadow-sm border-b transition-all duration-300 sticky top-0 z-30">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      
+      {% comment %} Mobile Menu Button {% endcomment %}
+      <button 
+        onclick="toggleMobileMenu()"
+        class="md:hidden p-2 rounded-lg text-gray-600 dark-mode:text-gray-300 hover:bg-gray-100 dark-mode:hover:bg-gray-800 transition-colors mobile-menu-toggle"
+      >
+        <div class="w-5 h-5 flex flex-col justify-between">
+          <span class="w-full h-0.5 bg-current"></span>
+          <span class="w-full h-0.5 bg-current"></span>
+          <span class="w-full h-0.5 bg-current"></span>
+        </div>
+      </button>
+
+      {% comment %} Logo - Centered on all screen sizes {% endcomment %}
+      <div class="flex items-center flex-1 justify-center">
+        <a href="{{ routes.root_url }}" class="text-2xl font-black bg-gradient-to-r from-rose-600 to-rose-500 bg-clip-text text-transparent trendly-logo tracking-tighter">
+          {{ settings.site_title | default: 'Trendly' }}
+        </a>
+      </div>
+
+      {% comment %} Search Bar - Hidden on mobile, visible on tablet+ {% endcomment %}
+      {% if settings.show_search %}
+        <div class="hidden sm:flex flex-1 max-w-2xl mx-8">
+          <form action="{{ routes.search_url }}" method="get" class="relative w-full search-form">
+            <input
+              type="search"
+              name="q"
+              value="{{ search.terms | escape }}"
+              placeholder="{{ 'general.search.placeholder' | t | default: 'Search trending products...' }}"
+              class="w-full pl-4 pr-12 py-3 border border-gray-300 dark-mode:border-gray-600 bg-white dark-mode:bg-gray-800 text-gray-800 dark-mode:text-white placeholder-gray-500 dark-mode:placeholder-gray-400 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all trendly-font"
+            />
+            <button
+              type="submit"
+              class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-rose-600 dark-mode:text-gray-400 dark-mode:hover:text-rose-400 transition-colors"
+            >
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3S3 5.91 3 9.5S5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14Z"/>
+              </svg>
+            </button>
+            <input type="hidden" name="type" value="product">
+          </form>
+        </div>
+      {% endif %}
+
+      {% comment %} Right side {% endcomment %}
+      <div class="flex items-center space-x-2 sm:space-x-4">
+        
+        {% comment %} Notifications {% endcomment %}
+        <div class="relative">
+          <button class="p-2 rounded-lg text-gray-600 dark-mode:text-gray-300 hover:bg-gray-100 dark-mode:hover:bg-gray-800 transition-colors relative">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C10.9 2 10 2.9 10 4V4.29C7.03 5.17 5 7.9 5 11V16L3 18V19H21V18L19 16V11C19 7.9 16.97 5.17 14 4.29V4C14 2.9 13.1 2 12 2ZM12 22C13.1 22 14 21.1 14 20H10C10 21.1 10.9 22 12 22Z"/>
+            </svg>
+            <span class="absolute -top-1 -right-1 bg-rose-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
+              {{ cart.item_count | default: 0 }}
+            </span>
+          </button>
+        </div>
+
+        {% comment %} Cart {% endcomment %}
+        {% if settings.show_cart_icon %}
+          <a href="{{ routes.cart_url }}" class="flex items-center space-x-2 px-3 py-2 border-2 text-gray-600 dark-mode:text-gray-300 hover:text-rose-600 dark-mode:hover:text-rose-400 border-gray-300 dark-mode:border-gray-600 hover:border-rose-500 dark-mode:hover:border-rose-400 transition-all rounded-lg cart-link">
+            <div class="relative">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7 18C5.9 18 5.01 18.9 5.01 20S5.9 22 7 22S9 21.1 9 20S8.1 18 7 18ZM1 2V4H3L6.6 11.59L5.25 14.04C5.09 14.32 5 14.65 5 15C5 16.1 5.9 17 7 17H19V15H7.42C7.28 15 7.17 14.89 7.17 14.75L7.2 14.63L8.1 13H15.55C16.3 13 16.96 12.59 17.3 11.97L20.88 5H5.21L4.27 3H1ZM17 18C15.9 18 15.01 18.9 15.01 20S15.9 22 17 22S19 21.1 19 20S18.1 18 17 18Z"/>
+              </svg>
+              {% if cart.item_count > 0 %}
+                <span class="absolute -top-2 -right-2 bg-rose-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
+                  {{ cart.item_count }}
+                </span>
+              {% endif %}
+            </div>
+            <span class="hidden sm:inline text-sm font-medium trendly-font">
+              {{ 'general.cart.title' | t | default: 'Cart' }}
+            </span>
+          </a>
+        {% endif %}
+
+        {% comment %} Auth buttons {% endcomment %}
+        <div class="hidden md:flex space-x-2">
+          {% if customer %}
+            <a href="{{ routes.account_url }}" class="px-4 py-2 text-sm text-rose-400 dark-mode:text-rose-300 hover:bg-rose-50 dark-mode:hover:bg-gray-800 border-rose-400 dark-mode:border-rose-300 rounded-xl transition-colors border-2 trendly-font font-medium">
+              {{ 'customer.account.title' | t | default: 'Account' }}
+            </a>
+            <a href="{{ routes.account_logout_url }}" class="px-4 py-2 text-sm bg-gradient-to-r from-rose-400 to-pink-300 text-white rounded-xl hover:from-rose-500 hover:to-pink-400 transition-all shadow-lg trendly-font font-medium">
+              {{ 'customer.log_out' | t | default: 'Log Out' }}
+            </a>
+          {% else %}
+            <a href="{{ routes.account_login_url }}" class="px-4 py-2 text-sm text-rose-400 dark-mode:text-rose-300 hover:bg-rose-50 dark-mode:hover:bg-gray-800 border-rose-400 dark-mode:border-rose-300 rounded-xl transition-colors border-2 trendly-font font-medium">
+              {{ 'customer.login_page.title' | t | default: 'Login' }}
+            </a>
+            <a href="{{ routes.account_register_url }}" class="px-4 py-2 text-sm bg-gradient-to-r from-rose-400 to-pink-300 text-white rounded-xl hover:from-rose-500 hover:to-pink-400 transition-all shadow-lg trendly-font font-medium">
+              {{ 'customer.register.title' | t | default: 'Sign Up' }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    {% comment %} Mobile Search Bar {% endcomment %}
+    {% if settings.show_search %}
+      <div class="sm:hidden pb-3">
+        <form action="{{ routes.search_url }}" method="get" class="relative mobile-search-form">
+          <input
+            type="search"
+            name="q"
+            value="{{ search.terms | escape }}"
+            placeholder="{{ 'general.search.placeholder' | t | default: 'Search trending products...' }}"
+            class="w-full pl-4 pr-12 py-3 border border-gray-300 dark-mode:border-gray-600 bg-white dark-mode:bg-gray-800 text-gray-800 dark-mode:text-white placeholder-gray-500 dark-mode:placeholder-gray-400 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all trendly-font"
+          />
+          <button
+            type="submit"
+            class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-rose-600 dark-mode:text-gray-400 dark-mode:hover:text-rose-400 transition-colors"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3S3 5.91 3 9.5S5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14Z"/>
+            </svg>
+          </button>
+          <input type="hidden" name="type" value="product">
+        </form>
+      </div>
+    {% endif %}
+  </div>
+
+  {% comment %} Mobile Menu Panel {% endcomment %}
+  <div class="mobile-menu fixed top-0 left-0 h-full w-80 bg-white dark-mode:bg-gray-900 z-50 transform -translate-x-full transition-transform duration-300 ease-out md:hidden shadow-2xl flex flex-col">
+    {% comment %} Header {% endcomment %}
+    <div class="p-6 border-b border-gray-200 dark-mode:border-gray-700 flex-shrink-0">
+      <div class="flex justify-between items-center">
+        <h2 class="text-2xl font-bold text-gray-800 dark-mode:text-white trendly-font">Browse</h2>
+        <button 
+          onclick="toggleMobileMenu()"
+          class="p-2 rounded-lg text-gray-600 dark-mode:text-gray-400 hover:text-gray-800 dark-mode:hover:text-white hover:bg-gray-100 dark-mode:hover:bg-gray-800 transition-colors"
+        >
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    {% comment %} Navigation Links {% endcomment %}
+    <div class="flex-1 overflow-y-auto px-6 py-4">
+      <div class="space-y-4">
+        {% for link in linklists.main-menu.links %}
+          <a href="{{ link.url }}" class="flex items-center space-x-4 p-4 rounded-xl cursor-pointer transition-all duration-200 text-gray-800 dark-mode:text-white hover:bg-gray-50 dark-mode:hover:bg-gray-800 group">
+            <span class="font-bold trendly-font text-base tracking-wide">{{ link.title }}</span>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    {% comment %} Bottom Buttons {% endcomment %}
+    <div class="p-6 border-t border-gray-200 dark-mode:border-gray-700 space-y-3 flex-shrink-0">
+      {% if customer %}
+        <a href="{{ routes.account_url }}" class="w-full py-3 px-4 border-2 border-rose-400 dark-mode:border-rose-300 text-rose-400 dark-mode:text-rose-300 hover:bg-rose-400 dark-mode:hover:bg-rose-300 hover:text-white rounded-xl transition-all duration-200 font-medium trendly-font text-center block">
+          {{ 'customer.account.title' | t | default: 'My Account' }}
+        </a>
+        <a href="{{ routes.account_logout_url }}" class="w-full py-3 px-4 bg-gradient-to-r from-rose-400 to-pink-300 text-white rounded-xl hover:from-rose-500 hover:to-pink-400 transition-all duration-200 font-medium shadow-lg trendly-font text-center block">
+          {{ 'customer.log_out' | t | default: 'Log Out' }}
+        </a>
+      {% else %}
+        <a href="{{ routes.account_login_url }}" class="w-full py-3 px-4 border-2 border-rose-400 dark-mode:border-rose-300 text-rose-400 dark-mode:text-rose-300 hover:bg-rose-400 dark-mode:hover:bg-rose-300 hover:text-white rounded-xl transition-all duration-200 font-medium trendly-font text-center block">
+          {{ 'customer.login_page.title' | t | default: 'Log In' }}
+        </a>
+        <a href="{{ routes.account_register_url }}" class="w-full py-3 px-4 bg-gradient-to-r from-rose-400 to-pink-300 text-white rounded-xl hover:from-rose-500 hover:to-pink-400 transition-all duration-200 font-medium shadow-lg trendly-font text-center block">
+          {{ 'customer.register.title' | t | default: 'Sign Up' }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  {% comment %} Mobile Menu Overlay {% endcomment %}
+  <div class="mobile-menu-overlay fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleMobileMenu()"></div>
+</header>
+
+<script>
+function toggleMobileMenu() {
+  const menu = document.querySelector('.mobile-menu');
+  const overlay = document.querySelector('.mobile-menu-overlay');
+  
+  if (menu.classList.contains('-translate-x-full')) {
+    // Show menu
+    menu.classList.remove('-translate-x-full');
+    menu.classList.add('translate-x-0');
+    overlay.classList.remove('opacity-0', 'pointer-events-none');
+    overlay.classList.add('opacity-100');
+    document.body.style.overflow = 'hidden';
+  } else {
+    // Hide menu
+    menu.classList.add('-translate-x-full');
+    menu.classList.remove('translate-x-0');
+    overlay.classList.add('opacity-0', 'pointer-events-none');
+    overlay.classList.remove('opacity-100');
+    document.body.style.overflow = '';
+  }
+}
+</script>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search bar",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart_icon",
+      "label": "Show cart icon",
+      "default": true
+    }
+  ]
+}
+{% endschema %}
