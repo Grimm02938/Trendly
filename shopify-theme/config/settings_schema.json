@@ -1,0 +1,142 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Trendly",
+    "theme_version": "1.0.0",
+    "theme_author": "Trendly",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary Color",
+        "default": "#e11d48"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary Color",
+        "default": "#ec4899"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text Color",
+        "default": "#1f2937"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Heading Font",
+        "default": "inter_n7"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Body Font",
+        "default": "inter_n4"
+      }
+    ]
+  },
+  {
+    "name": "Theme Settings",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_dark_mode",
+        "label": "Enable Dark Mode Toggle",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "site_title",
+        "label": "Site Title",
+        "default": "Trendly"
+      },
+      {
+        "type": "textarea",
+        "id": "site_description",
+        "label": "Site Description",
+        "default": "Your one-stop shop for trending products worldwide"
+      }
+    ]
+  },
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_search",
+        "label": "Show Search Bar",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_cart_icon",
+        "label": "Show Cart Icon",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Categories",
+    "settings": [
+      {
+        "type": "text",
+        "id": "categories_title",
+        "label": "Categories Section Title",
+        "default": "Shop by Category"
+      },
+      {
+        "type": "range",
+        "id": "categories_per_row",
+        "min": 3,
+        "max": 6,
+        "step": 1,
+        "label": "Categories per row (desktop)",
+        "default": 6
+      }
+    ]
+  },
+  {
+    "name": "Products",
+    "settings": [
+      {
+        "type": "text",
+        "id": "trending_title",
+        "label": "Trending Products Title",
+        "default": "Trending Now"
+      },
+      {
+        "type": "textarea",
+        "id": "trending_description",
+        "label": "Trending Products Description",
+        "default": "Discover the hottest products everyone's talking about"
+      },
+      {
+        "type": "range",
+        "id": "trending_products_count",
+        "min": 4,
+        "max": 20,
+        "step": 4,
+        "label": "Number of trending products to show",
+        "default": 12
+      }
+    ]
+  }
+]

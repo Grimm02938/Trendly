@@ -1,0 +1,37 @@
+{
+  "current": {
+    "color_primary": "#e11d48",
+    "color_secondary": "#ec4899",
+    "color_background": "#ffffff",
+    "color_text": "#1f2937",
+    "font_heading": "inter_n7",
+    "font_body": "inter_n4",
+    "enable_dark_mode": true,
+    "site_title": "Trendly",
+    "site_description": "Your one-stop shop for trending products worldwide",
+    "show_search": true,
+    "show_cart_icon": true,
+    "categories_title": "Shop by Category",
+    "categories_per_row": 6,
+    "trending_title": "Trending Now",
+    "trending_description": "Discover the hottest products everyone's talking about",
+    "trending_products_count": 12,
+    "sections": {
+      "header": {
+        "type": "header"
+      },
+      "hero": {
+        "type": "hero"
+      },
+      "categories": {
+        "type": "categories"
+      },
+      "trending-products": {
+        "type": "trending-products"
+      },
+      "footer": {
+        "type": "footer"
+      }
+    }
+  }
+}
