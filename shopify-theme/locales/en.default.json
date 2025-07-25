@@ -1,0 +1,137 @@
+{
+  "general": {
+    "meta": {
+      "tags": "Tagged \"{{ tags }}\"",
+      "page": "Page {{ page }}"
+    },
+    "404": {
+      "title": "Page not found",
+      "subtext": "The page you were looking for does not exist."
+    },
+    "breadcrumbs": {
+      "home": "Home",
+      "back_to_home": "Back to Home"
+    },
+    "search": {
+      "title": "Search",
+      "placeholder": "Search trending products...",
+      "submit": "Search"
+    },
+    "cart": {
+      "title": "Cart"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "hero": {
+      "free_shipping": "Free Shipping",
+      "secure_payment": "Secure Payment",
+      "satisfaction": "100% Satisfaction",
+      "happy_customers": "Happy Customers",
+      "products": "Products",
+      "countries": "Countries",
+      "satisfaction_rate": "Satisfaction Rate"
+    }
+  },
+  "layout": {
+    "header": {
+      "menu": "Menu"
+    },
+    "footer": {
+      "quick_links": "Quick Links",
+      "customer_service": "Customer Service",
+      "newsletter": "Stay Updated",
+      "newsletter_text": "Subscribe to get special offers, free giveaways, and updates on trending products.",
+      "newsletter_email": "Enter your email",
+      "newsletter_submit": "Subscribe",
+      "about": "About Us",
+      "shipping_returns": "Shipping & Returns",
+      "size_guide": "Size Guide",
+      "faq": "FAQ",
+      "privacy_policy": "Privacy Policy",
+      "terms_of_service": "Terms of Service",
+      "refund_policy": "Refund Policy",
+      "copyright": "All rights reserved."
+    }
+  },
+  "collections": {
+    "general": {
+      "title": "Collections",
+      "view_all": "View All Products",
+      "items_with_count": "{{ count }}",
+      "products": "products",
+      "no_matches": "No products found",
+      "no_matches_message": "We couldn't find any products matching your criteria."
+    },
+    "sorting": {
+      "title": "Sort by:",
+      "featured": "Featured",
+      "best_selling": "Best selling",
+      "az": "Alphabetically, A-Z",
+      "za": "Alphabetically, Z-A",
+      "price_ascending": "Price, low to high",
+      "price_descending": "Price, high to low",
+      "date_ascending": "Date, old to new",
+      "date_descending": "Date, new to old"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "choose_options": "Choose Options",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "unavailable_with_option": "{{ option_value }} - Unavailable",
+      "quantity": "Quantity",
+      "buy_now": "Buy It Now",
+      "view_details": "View Details",
+      "trending": "Trending",
+      "free_shipping": "Free shipping worldwide",
+      "secure_payment": "Secure payment guaranteed",
+      "money_back": "30-day money back guarantee"
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "My Account"
+    },
+    "login_page": {
+      "title": "Login"
+    },
+    "register": {
+      "title": "Create Account"
+    },
+    "addresses": {
+      "title": "Addresses"
+    },
+    "log_out": "Log Out"
+  },
+  "templates": {
+    "contact": {
+      "form": {
+        "title": "Get in Touch",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone Number",
+        "message": "Message",
+        "send": "Send Message",
+        "post_success": "Thanks for contacting us. We'll get back to you as soon as possible.",
+        "error_heading": "Please correct the following errors:"
+      }
+    }
+  },
+  "sections": {
+    "cart": {
+      "cart_error": "There was an error adding the product to your cart. Please try again.",
+      "cart_quantity_error": "You can only add [quantity] of this item to your cart."
+    }
+  },
+  "accessibility": {
+    "skip_to_text": "Skip to content",
+    "refresh_page": "Choosing a selection results in a full page refresh.",
+    "link_messages": {
+      "new_window": "Opens in a new window."
+    }
+  }
+}
