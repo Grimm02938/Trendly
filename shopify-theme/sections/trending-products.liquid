@@ -1,0 +1,192 @@
+{% comment %}
+  Trending Products Section
+{% endcomment %}
+
+<div class="trending-products py-16 bg-white dark-mode:bg-gray-900 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    {% comment %} Section Header {% endcomment %}
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-semibold text-gray-900 dark-mode:text-white mb-4 trendly-category-title tracking-wide">
+        {{ section.settings.trending_title | default: 'Trending Now' }}
+      </h2>
+      <p class="text-lg text-gray-600 dark-mode:text-gray-300 trendly-font">
+        {{ section.settings.trending_description | default: 'Discover the hottest products everyone\'s talking about' }}
+      </p>
+    </div>
+    
+    {% comment %} Products Grid {% endcomment %}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      
+      {% comment %} Get trending products - prioritize featured or tagged products {% endcomment %}
+      {% assign trending_products = collections.featured-products.products | default: collections.frontpage.products %}
+      {% if trending_products.size == 0 %}
+        {% assign trending_products = collections.all.products %}
+      {% endif %}
+      
+      {% comment %} Show specified number of products {% endcomment %}
+      {% assign products_count = section.settings.trending_products_count | default: 12 %}
+      
+      {% for product in trending_products limit: products_count %}
+        {% render 'product-card', product: product %}
+      {% endfor %}
+      
+      {% comment %} If no products exist, show placeholder cards {% endcomment %}
+      {% if trending_products.size == 0 %}
+        {% for i in (1..8) %}
+          <div class="bg-white dark-mode:bg-gray-800 rounded-2xl shadow-sm overflow-hidden">
+            <div class="w-full h-48 bg-gradient-to-br from-gray-200 to-gray-300 dark-mode:from-gray-700 dark-mode:to-gray-600 flex items-center justify-center">
+              <svg class="w-16 h-16 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-gray-800 dark-mode:text-white mb-2 trendly-font">
+                Sample Product {{ i }}
+              </h3>
+              <p class="text-sm text-gray-600 dark-mode:text-gray-300 mb-3 trendly-font">
+                This is a placeholder for your trending products. Add products to your store to see them here.
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-lg font-bold bg-gradient-to-r from-rose-500 to-pink-400 bg-clip-text text-transparent trendly-font">
+                  $29.99
+                </span>
+                <button class="bg-gradient-to-r from-rose-500 to-pink-400 text-white px-4 py-2 rounded-xl text-sm font-medium shadow-lg trendly-font opacity-50 cursor-not-allowed">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    
+    {% comment %} View All Button {% endcomment %}
+    {% if collections.featured-products.products.size > products_count or collections.frontpage.products.size > products_count or collections.all.products.size > products_count %}
+      <div class="text-center mt-12">
+        {% assign view_all_collection = collections.featured-products | default: collections.frontpage | default: collections.all %}
+        <a 
+          href="{{ view_all_collection.url | default: '/collections/all' }}" 
+          class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-rose-500 to-pink-400 text-white rounded-xl hover:from-rose-600 hover:to-pink-500 transition-all text-lg font-medium shadow-lg trendly-font"
+        >
+          {{ 'collections.general.view_all' | t | default: 'View All Products' }}
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% comment %} Optional: Add to Cart AJAX functionality {% endcomment %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Add to cart functionality
+  const addToCartForms = document.querySelectorAll('.add-to-cart-form');
+  
+  addToCartForms.forEach(form => {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const button = form.querySelector('.add-to-cart-btn');
+      const originalText = button.textContent;
+      
+      // Show loading state
+      button.textContent = 'Adding...';
+      button.disabled = true;
+      
+      // Get form data
+      const formData = new FormData(form);
+      
+      // Add to cart via AJAX
+      fetch(window.Shopify.routes.root + 'cart/add.js', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Success - update cart count and show success message
+        button.textContent = 'Added!';
+        button.classList.remove('from-rose-500', 'to-pink-400');
+        button.classList.add('from-green-500', 'to-green-600');
+        
+        // Update cart count if cart icon exists
+        const cartCount = document.querySelector('.cart-link span');
+        if (cartCount) {
+          fetch(window.Shopify.routes.root + 'cart.js')
+            .then(response => response.json())
+            .then(cart => {
+              cartCount.textContent = cart.item_count;
+              if (cart.item_count > 0) {
+                cartCount.style.display = 'flex';
+              }
+            });
+        }
+        
+        // Reset button after 2 seconds
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.disabled = false;
+          button.classList.remove('from-green-500', 'to-green-600');
+          button.classList.add('from-rose-500', 'to-pink-400');
+        }, 2000);
+      })
+      .catch(error => {
+        console.error('Error adding to cart:', error);
+        button.textContent = 'Error';
+        button.classList.remove('from-rose-500', 'to-pink-400');
+        button.classList.add('from-red-500', 'to-red-600');
+        
+        // Reset button after 2 seconds
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.disabled = false;
+          button.classList.remove('from-red-500', 'to-red-600');
+          button.classList.add('from-rose-500', 'to-pink-400');
+        }, 2000);
+      });
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Trending Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "trending_title",
+      "label": "Section Title",
+      "default": "Trending Now"
+    },
+    {
+      "type": "textarea",
+      "id": "trending_description",
+      "label": "Section Description",
+      "default": "Discover the hottest products everyone's talking about"
+    },
+    {
+      "type": "range",
+      "id": "trending_products_count",
+      "min": 4,
+      "max": 20,
+      "step": 4,
+      "label": "Number of products to show",
+      "default": 12,
+      "info": "Products will be pulled from Featured Products collection, then Frontpage collection, then all products"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trending Products",
+      "settings": {
+        "trending_title": "Trending Now",
+        "trending_description": "Discover the hottest products everyone's talking about",
+        "trending_products_count": 12
+      }
+    }
+  ]
+}
+{% endschema %}
