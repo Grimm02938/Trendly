@@ -1,0 +1,165 @@
+{% comment %}
+  Collection Template
+{% endcomment %}
+
+<div class="collection-page bg-gray-50 dark-mode:bg-gray-900 transition-all duration-300 min-h-screen">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+    {% comment %} Collection Header {% endcomment %}
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 dark-mode:text-white mb-4 trendly-category-title tracking-wide">
+        {{ collection.title }}
+      </h1>
+      {% if collection.description != blank %}
+        <div class="text-lg text-gray-600 dark-mode:text-gray-300 max-w-3xl mx-auto trendly-font">
+          {{ collection.description }}
+        </div>
+      {% endif %}
+    </div>
+    
+    {% comment %} Collection Info Bar {% endcomment %}
+    <div class="flex flex-col sm:flex-row justify-between items-center mb-8 space-y-4 sm:space-y-0">
+      <div class="text-sm text-gray-600 dark-mode:text-gray-400 trendly-font">
+        {{ 'collections.general.items_with_count' | t: count: collection.products_count | default: collection.products_count }} 
+        {{ 'collections.general.products' | t | default: 'products' }}
+      </div>
+      
+      {% comment %} Sort Options {% endcomment %}
+      <div class="flex items-center space-x-4">
+        <label for="sort-by" class="text-sm font-medium text-gray-700 dark-mode:text-gray-300 trendly-font">
+          {{ 'collections.sorting.title' | t | default: 'Sort by:' }}
+        </label>
+        <select 
+          id="sort-by" 
+          name="sort_by"
+          class="px-4 py-2 border border-gray-300 dark-mode:border-gray-600 bg-white dark-mode:bg-gray-800 text-gray-900 dark-mode:text-white rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent trendly-font text-sm"
+          onchange="window.location.href = updateUrlParameter(window.location.href, 'sort_by', this.value);"
+        >
+          <option value="manual" {% if collection.sort_by == 'manual' %}selected{% endif %}>
+            {{ 'collections.sorting.featured' | t | default: 'Featured' }}
+          </option>
+          <option value="best-selling" {% if collection.sort_by == 'best-selling' %}selected{% endif %}>
+            {{ 'collections.sorting.best_selling' | t | default: 'Best selling' }}
+          </option>
+          <option value="title-ascending" {% if collection.sort_by == 'title-ascending' %}selected{% endif %}>
+            {{ 'collections.sorting.az' | t | default: 'Alphabetically, A-Z' }}
+          </option>
+          <option value="title-descending" {% if collection.sort_by == 'title-descending' %}selected{% endif %}>
+            {{ 'collections.sorting.za' | t | default: 'Alphabetically, Z-A' }}
+          </option>
+          <option value="price-ascending" {% if collection.sort_by == 'price-ascending' %}selected{% endif %}>
+            {{ 'collections.sorting.price_ascending' | t | default: 'Price, low to high' }}
+          </option>
+          <option value="price-descending" {% if collection.sort_by == 'price-descending' %}selected{% endif %}>
+            {{ 'collections.sorting.price_descending' | t | default: 'Price, high to low' }}
+          </option>
+          <option value="created-ascending" {% if collection.sort_by == 'created-ascending' %}selected{% endif %}>
+            {{ 'collections.sorting.date_ascending' | t | default: 'Date, old to new' }}
+          </option>
+          <option value="created-descending" {% if collection.sort_by == 'created-descending' %}selected{% endif %}>
+            {{ 'collections.sorting.date_descending' | t | default: 'Date, new to old' }}
+          </option>
+        </select>
+      </div>
+    </div>
+    
+    {% comment %} Products Grid {% endcomment %}
+    {% if collection.products.size > 0 %}
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12">
+        {% for product in collection.products %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+      </div>
+      
+      {% comment %} Pagination {% endcomment %}
+      {% if paginate.pages > 1 %}
+        <nav class="flex justify-center" aria-label="Pagination">
+          <div class="flex items-center space-x-2">
+            {% if paginate.previous %}
+              <a 
+                href="{{ paginate.previous.url }}" 
+                class="px-4 py-2 border border-gray-300 dark-mode:border-gray-600 text-gray-700 dark-mode:text-gray-300 rounded-lg hover:bg-gray-50 dark-mode:hover:bg-gray-800 transition-colors trendly-font"
+              >
+                {{ 'general.pagination.previous' | t | default: 'Previous' }}
+              </a>
+            {% endif %}
+            
+            {% for part in paginate.parts %}
+              {% if part.is_link %}
+                <a 
+                  href="{{ part.url }}" 
+                  class="px-4 py-2 border border-gray-300 dark-mode:border-gray-600 text-gray-700 dark-mode:text-gray-300 rounded-lg hover:bg-gray-50 dark-mode:hover:bg-gray-800 transition-colors trendly-font"
+                >
+                  {{ part.title }}
+                </a>
+              {% else %}
+                {% if part.title == paginate.current_page %}
+                  <span class="px-4 py-2 bg-gradient-to-r from-rose-500 to-pink-400 text-white rounded-lg font-bold trendly-font">
+                    {{ part.title }}
+                  </span>
+                {% else %}
+                  <span class="px-4 py-2 text-gray-500 dark-mode:text-gray-400 trendly-font">
+                    {{ part.title }}
+                  </span>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            
+            {% if paginate.next %}
+              <a 
+                href="{{ paginate.next.url }}" 
+                class="px-4 py-2 border border-gray-300 dark-mode:border-gray-600 text-gray-700 dark-mode:text-gray-300 rounded-lg hover:bg-gray-50 dark-mode:hover:bg-gray-800 transition-colors trendly-font"
+              >
+                {{ 'general.pagination.next' | t | default: 'Next' }}
+              </a>
+            {% endif %}
+          </div>
+        </nav>
+      {% endif %}
+      
+    {% else %}
+      {% comment %} Empty Collection {% endcomment %}
+      <div class="text-center py-16">
+        <svg class="w-24 h-24 text-gray-400 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+        </svg>
+        <h2 class="text-2xl font-bold text-gray-900 dark-mode:text-white mb-4 trendly-font">
+          {{ 'collections.general.no_matches' | t | default: 'No products found' }}
+        </h2>
+        <p class="text-gray-600 dark-mode:text-gray-400 mb-8 trendly-font">
+          {{ 'collections.general.no_matches_message' | t | default: 'We couldn\'t find any products matching your criteria.' }}
+        </p>
+        <a 
+          href="{{ routes.collections_url }}" 
+          class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-rose-500 to-pink-400 text-white rounded-xl hover:from-rose-600 hover:to-pink-500 transition-all font-medium shadow-lg trendly-font"
+        >
+          {{ 'collections.general.view_all' | t | default: 'View All Collections' }}
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+function updateUrlParameter(url, param, paramVal) {
+  var newAdditionalURL = "";
+  var tempArray = url.split("?");
+  var baseURL = tempArray[0];
+  var additionalURL = tempArray[1];
+  var temp = "";
+  if (additionalURL) {
+    tempArray = additionalURL.split("&");
+    for (var i = 0; i < tempArray.length; i++) {
+      if (tempArray[i].split('=')[0] != param) {
+        newAdditionalURL += temp + tempArray[i];
+        temp = "&";
+      }
+    }
+  }
+  var rows_txt = temp + "" + param + "=" + paramVal;
+  return baseURL + "?" + newAdditionalURL + rows_txt;
+}
+</script>
