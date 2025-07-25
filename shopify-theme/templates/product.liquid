@@ -1,0 +1,325 @@
+{% comment %}
+  Product Template
+{% endcomment %}
+
+<div class="product-page bg-white dark-mode:bg-gray-900 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+    {% comment %} Breadcrumb {% endcomment %}
+    <nav class="flex mb-8" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+          <a href="{{ routes.root_url }}" class="inline-flex items-center text-sm font-medium text-gray-700 dark-mode:text-gray-300 hover:text-rose-600 trendly-font">
+            {{ 'general.breadcrumbs.home' | t | default: 'Home' }}
+          </a>
+        </li>
+        {% if collection %}
+          <li>
+            <div class="flex items-center">
+              <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+              </svg>
+              <a href="{{ collection.url }}" class="ml-1 text-sm font-medium text-gray-700 dark-mode:text-gray-300 hover:text-rose-600 md:ml-2 trendly-font">
+                {{ collection.title }}
+              </a>
+            </div>
+          </li>
+        {% endif %}
+        <li aria-current="page">
+          <div class="flex items-center">
+            <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+            </svg>
+            <span class="ml-1 text-sm font-medium text-gray-500 dark-mode:text-gray-400 md:ml-2 trendly-font">
+              {{ product.title }}
+            </span>
+          </div>
+        </li>
+      </ol>
+    </nav>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      
+      {% comment %} Product Images {% endcomment %}
+      <div class="product-images">
+        {% if product.media.size > 0 %}
+          <div class="mb-4">
+            <img 
+              id="main-product-image"
+              src="{{ product.featured_media | image_url: width: 600 }}"
+              alt="{{ product.featured_media.alt | escape }}"
+              class="w-full rounded-2xl shadow-lg"
+            />
+          </div>
+          
+          {% if product.media.size > 1 %}
+            <div class="grid grid-cols-4 gap-4">
+              {% for media in product.media limit: 4 %}
+                <button 
+                  onclick="changeMainImage('{{ media | image_url: width: 600 }}')"
+                  class="aspect-square rounded-lg overflow-hidden border-2 border-transparent hover:border-rose-500 transition-colors"
+                >
+                  <img 
+                    src="{{ media | image_url: width: 150 }}"
+                    alt="{{ media.alt | escape }}"
+                    class="w-full h-full object-cover"
+                  />
+                </button>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% else %}
+          <div class="w-full aspect-square bg-gray-200 dark-mode:bg-gray-700 rounded-2xl flex items-center justify-center">
+            <svg class="w-24 h-24 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+            </svg>
+          </div>
+        {% endif %}
+      </div>
+      
+      {% comment %} Product Details {% endcomment %}
+      <div class="product-details">
+        <h1 class="text-3xl font-bold text-gray-900 dark-mode:text-white mb-4 trendly-font">
+          {{ product.title }}
+        </h1>
+        
+        {% comment %} Price {% endcomment %}
+        <div class="flex items-center space-x-4 mb-6">
+          <span class="text-3xl font-bold bg-gradient-to-r from-rose-500 to-pink-400 bg-clip-text text-transparent trendly-font">
+            {{ product.price | money }}
+          </span>
+          {% if product.compare_at_price > product.price %}
+            <span class="text-xl text-gray-500 dark-mode:text-gray-400 line-through trendly-font">
+              {{ product.compare_at_price | money }}
+            </span>
+            {% assign discount_percentage = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price %}
+            <span class="bg-gradient-to-r from-red-500 to-rose-400 text-white px-3 py-1 rounded-full text-sm font-bold">
+              -{{ discount_percentage }}% OFF
+            </span>
+          {% endif %}
+        </div>
+        
+        {% comment %} Product Description {% endcomment %}
+        {% if product.description != blank %}
+          <div class="prose prose-gray dark-mode:prose-invert max-w-none mb-8">
+            {{ product.description }}
+          </div>
+        {% endif %}
+        
+        {% comment %} Product Form {% endcomment %}
+        <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="product-form">
+          
+          {% comment %} Variants {% endcomment %}
+          {% unless product.has_only_default_variant %}
+            <div class="mb-6">
+              {% for option in product.options_with_values %}
+                <div class="mb-4">
+                  <label class="block text-sm font-medium text-gray-700 dark-mode:text-gray-300 mb-2 trendly-font">
+                    {{ option.name }}
+                  </label>
+                  
+                  {% if option.name == 'Size' %}
+                    <div class="flex flex-wrap gap-2">
+                      {% for value in option.values %}
+                        <input 
+                          type="radio" 
+                          id="option-{{ option.name | handle }}-{{ value | handle }}" 
+                          name="options[{{ option.name }}]" 
+                          value="{{ value | escape }}"
+                          class="sr-only variant-input"
+                          {% if forloop.first %}checked{% endif %}
+                        >
+                        <label 
+                          for="option-{{ option.name | handle }}-{{ value | handle }}"
+                          class="px-4 py-2 border-2 border-gray-300 dark-mode:border-gray-600 rounded-lg cursor-pointer hover:border-rose-500 transition-colors text-sm font-medium trendly-font variant-label"
+                        >
+                          {{ value }}
+                        </label>
+                      {% endfor %}
+                    </div>
+                  {% elsif option.name == 'Color' %}
+                    <div class="flex flex-wrap gap-3">
+                      {% for value in option.values %}
+                        <input 
+                          type="radio" 
+                          id="option-{{ option.name | handle }}-{{ value | handle }}" 
+                          name="options[{{ option.name }}]" 
+                          value="{{ value | escape }}"
+                          class="sr-only variant-input"
+                          {% if forloop.first %}checked{% endif %}
+                        >
+                        <label 
+                          for="option-{{ option.name | handle }}-{{ value | handle }}"
+                          class="w-8 h-8 rounded-full border-2 border-gray-300 cursor-pointer hover:scale-110 transition-transform variant-color"
+                          style="background-color: {{ value | handle }};"
+                          title="{{ value }}"
+                        ></label>
+                      {% endfor %}
+                    </div>
+                  {% else %}
+                    <select 
+                      name="options[{{ option.name }}]"
+                      class="w-full p-3 border border-gray-300 dark-mode:border-gray-600 bg-white dark-mode:bg-gray-800 text-gray-900 dark-mode:text-white rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent trendly-font variant-select"
+                    >
+                      {% for value in option.values %}
+                        <option value="{{ value | escape }}">{{ value }}</option>
+                      {% endfor %}
+                    </select>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          {% endunless %}
+          
+          {% comment %} Quantity {% endcomment %}
+          <div class="flex items-center space-x-4 mb-8">
+            <label class="text-sm font-medium text-gray-700 dark-mode:text-gray-300 trendly-font">
+              {{ 'products.product.quantity' | t | default: 'Quantity' }}:
+            </label>
+            <div class="flex items-center border border-gray-300 dark-mode:border-gray-600 rounded-lg">
+              <button 
+                type="button" 
+                onclick="changeQuantity(-1)"
+                class="px-3 py-2 text-gray-600 dark-mode:text-gray-400 hover:text-rose-600 transition-colors"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                </svg>
+              </button>
+              <input 
+                type="number" 
+                id="quantity" 
+                name="quantity" 
+                value="1" 
+                min="1"
+                class="w-16 px-3 py-2 text-center border-0 bg-transparent text-gray-900 dark-mode:text-white focus:ring-0 trendly-font"
+              />
+              <button 
+                type="button" 
+                onclick="changeQuantity(1)"
+                class="px-3 py-2 text-gray-600 dark-mode:text-gray-400 hover:text-rose-600 transition-colors"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          
+          {% comment %} Add to Cart Button {% endcomment %}
+          <div class="space-y-4">
+            {% if product.available %}
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" class="variant-id">
+              <button 
+                type="submit" 
+                class="w-full py-4 bg-gradient-to-r from-rose-500 to-pink-400 text-white rounded-xl hover:from-rose-600 hover:to-pink-500 transition-all text-lg font-bold shadow-lg trendly-font add-to-cart-btn"
+                {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}
+              >
+                <span class="add-to-cart-text">
+                  {% if product.selected_or_first_available_variant.available %}
+                    {{ 'products.product.add_to_cart' | t | default: 'Add to Cart' }} - {{ product.selected_or_first_available_variant.price | money }}
+                  {% else %}
+                    {{ 'products.product.sold_out' | t | default: 'Sold Out' }}
+                  {% endif %}
+                </span>
+              </button>
+            {% else %}
+              <button 
+                class="w-full py-4 bg-gray-400 text-white rounded-xl text-lg font-bold trendly-font cursor-not-allowed" 
+                disabled
+              >
+                {{ 'products.product.sold_out' | t | default: 'Sold Out' }}
+              </button>
+            {% endif %}
+            
+            <button 
+              type="button"
+              class="w-full py-4 border-2 border-rose-500 text-rose-500 dark-mode:text-rose-400 rounded-xl hover:bg-rose-500 hover:text-white transition-all text-lg font-bold trendly-font"
+            >
+              {{ 'products.product.buy_now' | t | default: 'Buy It Now' }}
+            </button>
+          </div>
+        </form>
+        
+        {% comment %} Product Features/Trust Badges {% endcomment %}
+        <div class="mt-8 space-y-3">
+          <div class="flex items-center space-x-3 text-gray-600 dark-mode:text-gray-400">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-sm trendly-font">{{ 'products.product.free_shipping' | t | default: 'Free shipping worldwide' }}</span>
+          </div>
+          <div class="flex items-center space-x-3 text-gray-600 dark-mode:text-gray-400">
+            <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-sm trendly-font">{{ 'products.product.secure_payment' | t | default: 'Secure payment guaranteed' }}</span>
+          </div>
+          <div class="flex items-center space-x-3 text-gray-600 dark-mode:text-gray-400">
+            <svg class="w-5 h-5 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span class="text-sm trendly-font">{{ 'products.product.money_back' | t | default: '30-day money back guarantee' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Product page functionality
+function changeMainImage(src) {
+  document.getElementById('main-product-image').src = src;
+}
+
+function changeQuantity(delta) {
+  const quantityInput = document.getElementById('quantity');
+  const currentValue = parseInt(quantityInput.value);
+  const newValue = Math.max(1, currentValue + delta);
+  quantityInput.value = newValue;
+}
+
+// Variant selection functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const variantInputs = document.querySelectorAll('.variant-input, .variant-select');
+  const addToCartBtn = document.querySelector('.add-to-cart-btn');
+  const addToCartText = document.querySelector('.add-to-cart-text');
+  const variantIdInput = document.querySelector('.variant-id');
+  
+  // Update button styles for selected variants
+  variantInputs.forEach(input => {
+    input.addEventListener('change', function() {
+      if (input.type === 'radio') {
+        // Update radio button labels
+        const labels = document.querySelectorAll(`label[for^="option-${input.name.replace('options[', '').replace(']', '')}-"]`);
+        labels.forEach(label => {
+          label.classList.remove('border-rose-500', 'bg-rose-500', 'text-white');
+          label.classList.add('border-gray-300', 'dark-mode:border-gray-600');
+        });
+        
+        const selectedLabel = document.querySelector(`label[for="${input.id}"]`);
+        if (selectedLabel) {
+          selectedLabel.classList.remove('border-gray-300', 'dark-mode:border-gray-600');
+          selectedLabel.classList.add('border-rose-500', 'bg-rose-500', 'text-white');
+        }
+      }
+      
+      // Update variant and price (simplified - in a real implementation, you'd need Shopify's variant JavaScript)
+      updateVariant();
+    });
+  });
+  
+  function updateVariant() {
+    // In a real Shopify theme, this would use Shopify's variant selection JavaScript
+    // For now, we'll keep the basic functionality
+    console.log('Variant updated');
+  }
+  
+  // Initialize first variant selection
+  document.querySelectorAll('.variant-input:checked').forEach(input => {
+    const event = new Event('change');
+    input.dispatchEvent(event);
+  });
+});
+</script>

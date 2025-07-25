@@ -1,0 +1,19 @@
+{% comment %}
+  Homepage Template
+{% endcomment %}
+
+{% comment %} Hero Section {% endcomment %}
+{% section 'hero' %}
+
+{% comment %} Categories Section {% endcomment %}
+{% section 'categories' %}
+
+{% comment %} Trending Products Section {% endcomment %}
+{% section 'trending-products' %}
+
+{% comment %} Additional sections can be added here {% endcomment %}
+{% for section in section_groups.index.sections %}
+  {% unless section.type == 'hero' or section.type == 'categories' or section.type == 'trending-products' %}
+    {% render 'section', section: section %}
+  {% endunless %}
+{% endfor %}
