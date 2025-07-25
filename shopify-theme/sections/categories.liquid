@@ -1,0 +1,213 @@
+{% comment %}
+  Categories section with OddityMall-style icons
+{% endcomment %}
+
+<div class="categories-section bg-gray-50 dark-mode:bg-gray-900 py-12 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    {% comment %} Section Title {% endcomment %}
+    <h2 class="text-3xl font-bold text-gray-900 dark-mode:text-white mb-8 text-center trendly-category-title tracking-wide">
+      {{ section.settings.categories_title | default: 'Shop by Category' }}
+    </h2>
+    
+    {% comment %} Categories Grid {% endcomment %}
+    <div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-{{ section.settings.categories_per_row | default: 6 }} gap-6 md:gap-8">
+      
+      {% comment %} Makeup & Beauty {% endcomment %}
+      {% if collections['makeup'] %}
+        <div class="text-center cursor-pointer group">
+          <a href="{{ collections['makeup'].url }}" class="block">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg mx-auto hover:shadow-xl">
+              {% render 'category-icon', category: 'makeup', class: 'w-16 h-16' %}
+            </div>
+            <div class="text-sm font-bold text-gray-700 dark-mode:text-gray-200 leading-relaxed max-w-24 mx-auto trendly-font tracking-wide">
+              {{ collections['makeup'].title | default: 'Makeup & Beauty' }}
+            </div>
+          </a>
+        </div>
+      {% endif %}
+
+      {% comment %} High Tech {% endcomment %}
+      {% if collections['tech'] or collections['electronics'] or collections['high-tech'] %}
+        {% assign tech_collection = collections['tech'] | default: collections['electronics'] | default: collections['high-tech'] %}
+        <div class="text-center cursor-pointer group">
+          <a href="{{ tech_collection.url }}" class="block">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg mx-auto hover:shadow-xl">
+              {% render 'category-icon', category: 'high-tech', class: 'w-16 h-16' %}
+            </div>
+            <div class="text-sm font-bold text-gray-700 dark-mode:text-gray-200 leading-relaxed max-w-24 mx-auto trendly-font tracking-wide">
+              {{ tech_collection.title | default: 'High Tech' }}
+            </div>
+          </a>
+        </div>
+      {% endif %}
+
+      {% comment %} TikTok Trends {% endcomment %}
+      {% if collections['trending'] or collections['tiktok'] or collections['viral'] %}
+        {% assign trending_collection = collections['trending'] | default: collections['tiktok'] | default: collections['viral'] %}
+        <div class="text-center cursor-pointer group">
+          <a href="{{ trending_collection.url }}" class="block">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg mx-auto hover:shadow-xl">
+              {% render 'category-icon', category: 'tiktok-trends', class: 'w-16 h-16' %}
+            </div>
+            <div class="text-sm font-bold text-gray-700 dark-mode:text-gray-200 leading-relaxed max-w-24 mx-auto trendly-font tracking-wide">
+              {{ trending_collection.title | default: 'TikTok Trends' }}
+            </div>
+          </a>
+        </div>
+      {% endif %}
+
+      {% comment %} Fashion {% endcomment %}
+      {% if collections['fashion'] or collections['clothing'] %}
+        {% assign fashion_collection = collections['fashion'] | default: collections['clothing'] %}
+        <div class="text-center cursor-pointer group">
+          <a href="{{ fashion_collection.url }}" class="block">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg mx-auto hover:shadow-xl">
+              {% render 'category-icon', category: 'fashion', class: 'w-16 h-16' %}
+            </div>
+            <div class="text-sm font-bold text-gray-700 dark-mode:text-gray-200 leading-relaxed max-w-24 mx-auto trendly-font tracking-wide">
+              {{ fashion_collection.title | default: 'Fashion' }}
+            </div>
+          </a>
+        </div>
+      {% endif %}
+
+      {% comment %} Home & Living {% endcomment %}
+      {% if collections['home'] or collections['home-living'] or collections['decor'] %}
+        {% assign home_collection = collections['home'] | default: collections['home-living'] | default: collections['decor'] %}
+        <div class="text-center cursor-pointer group">
+          <a href="{{ home_collection.url }}" class="block">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg mx-auto hover:shadow-xl">
+              {% render 'category-icon', category: 'home-living', class: 'w-16 h-16' %}
+            </div>
+            <div class="text-sm font-bold text-gray-700 dark-mode:text-gray-200 leading-relaxed max-w-24 mx-auto trendly-font tracking-wide">
+              {{ home_collection.title | default: 'Home & Living' }}
+            </div>
+          </a>
+        </div>
+      {% endif %}
+
+      {% comment %} Outdoor & Garden {% endcomment %}
+      {% if collections['outdoor'] or collections['garden'] or collections['outdoor-garden'] %}
+        {% assign outdoor_collection = collections['outdoor'] | default: collections['garden'] | default: collections['outdoor-garden'] %}
+        <div class="text-center cursor-pointer group">
+          <a href="{{ outdoor_collection.url }}" class="block">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg mx-auto hover:shadow-xl">
+              {% render 'category-icon', category: 'outdoor-garden', class: 'w-16 h-16' %}
+            </div>
+            <div class="text-sm font-bold text-gray-700 dark-mode:text-gray-200 leading-relaxed max-w-24 mx-auto trendly-font tracking-wide">
+              {{ outdoor_collection.title | default: 'Outdoor & Garden' }}
+            </div>
+          </a>
+        </div>
+      {% endif %}
+
+      {% comment %} Health & Wellness {% endcomment %}
+      {% if collections['health'] or collections['wellness'] or collections['health-wellness'] %}
+        {% assign health_collection = collections['health'] | default: collections['wellness'] | default: collections['health-wellness'] %}
+        <div class="text-center cursor-pointer group">
+          <a href="{{ health_collection.url }}" class="block">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg mx-auto hover:shadow-xl">
+              {% render 'category-icon', category: 'health-wellness', class: 'w-16 h-16' %}
+            </div>
+            <div class="text-sm font-bold text-gray-700 dark-mode:text-gray-200 leading-relaxed max-w-24 mx-auto trendly-font tracking-wide">
+              {{ health_collection.title | default: 'Health & Wellness' }}
+            </div>
+          </a>
+        </div>
+      {% endif %}
+
+      {% comment %} Sports & Fitness {% endcomment %}
+      {% if collections['sports'] or collections['fitness'] or collections['sports-fitness'] %}
+        {% assign sports_collection = collections['sports'] | default: collections['fitness'] | default: collections['sports-fitness'] %}
+        <div class="text-center cursor-pointer group">
+          <a href="{{ sports_collection.url }}" class="block">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg mx-auto hover:shadow-xl">
+              {% render 'category-icon', category: 'sports-fitness', class: 'w-16 h-16' %}
+            </div>
+            <div class="text-sm font-bold text-gray-700 dark-mode:text-gray-200 leading-relaxed max-w-24 mx-auto trendly-font tracking-wide">
+              {{ sports_collection.title | default: 'Sports & Fitness' }}
+            </div>
+          </a>
+        </div>
+      {% endif %}
+
+      {% comment %} Cooking {% endcomment %}
+      {% if collections['cooking'] or collections['kitchen'] or collections['food'] %}
+        {% assign cooking_collection = collections['cooking'] | default: collections['kitchen'] | default: collections['food'] %}
+        <div class="text-center cursor-pointer group">
+          <a href="{{ cooking_collection.url }}" class="block">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg mx-auto hover:shadow-xl">
+              {% render 'category-icon', category: 'cooking', class: 'w-16 h-16' %}
+            </div>
+            <div class="text-sm font-bold text-gray-700 dark-mode:text-gray-200 leading-relaxed max-w-24 mx-auto trendly-font tracking-wide">
+              {{ cooking_collection.title | default: 'Cooking' }}
+            </div>
+          </a>
+        </div>
+      {% endif %}
+
+      {% comment %} If no specific collections exist, show default categories {% endcomment %}
+      {% unless collections['makeup'] or collections['tech'] or collections['electronics'] or collections['high-tech'] or collections['trending'] or collections['tiktok'] or collections['viral'] or collections['fashion'] or collections['clothing'] or collections['home'] or collections['home-living'] or collections['decor'] or collections['outdoor'] or collections['garden'] or collections['outdoor-garden'] or collections['health'] or collections['wellness'] or collections['health-wellness'] or collections['sports'] or collections['fitness'] or collections['sports-fitness'] or collections['cooking'] or collections['kitchen'] or collections['food'] %}
+        
+        {% comment %} Show first 9 collections if no specific category collections exist {% endcomment %}
+        {% assign category_names = 'makeup,high-tech,tiktok-trends,fashion,home-living,outdoor-garden,health-wellness,sports-fitness,cooking' | split: ',' %}
+        {% assign category_titles = 'Makeup & Beauty,High Tech,TikTok Trends,Fashion,Home & Living,Outdoor & Garden,Health & Wellness,Sports & Fitness,Cooking' | split: ',' %}
+        
+        {% for collection in collections limit: 9 %}
+          {% if forloop.index <= 9 %}
+            {% assign category_index = forloop.index0 %}
+            {% assign category_id = category_names[category_index] %}
+            {% assign category_title = category_titles[category_index] %}
+            
+            <div class="text-center cursor-pointer group">
+              <a href="{{ collection.url }}" class="block">
+                <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg mx-auto hover:shadow-xl">
+                  {% render 'category-icon', category: category_id, class: 'w-16 h-16' %}
+                </div>
+                <div class="text-sm font-bold text-gray-700 dark-mode:text-gray-200 leading-relaxed max-w-24 mx-auto trendly-font tracking-wide">
+                  {{ collection.title | default: category_title }}
+                </div>
+              </a>
+            </div>
+          {% endif %}
+        {% endfor %}
+        
+      {% endunless %}
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Categories",
+  "settings": [
+    {
+      "type": "text",
+      "id": "categories_title",
+      "label": "Section Title",
+      "default": "Shop by Category"
+    },
+    {
+      "type": "range",
+      "id": "categories_per_row",
+      "min": 3,
+      "max": 6,
+      "step": 1,
+      "label": "Categories per row (desktop)",
+      "default": 6,
+      "info": "Number of categories to show per row on desktop screens"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Categories",
+      "settings": {
+        "categories_title": "Shop by Category",
+        "categories_per_row": 6
+      }
+    }
+  ]
+}
+{% endschema %}
