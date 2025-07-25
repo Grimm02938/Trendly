@@ -1,0 +1,228 @@
+{% comment %}
+  Category Icon Snippet - OddityMall inspired playful & quirky icons
+  Usage: {% render 'category-icon', category: 'makeup', class: 'w-16 h-16' %}
+{% endcomment %}
+
+{% case category %}
+  {% when 'makeup' %}
+    <div class="{{ class | default: 'w-16 h-16' }} relative bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
+      <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none">
+        <g transform="translate(12, 12)">
+          <!-- Lipstick tube -->
+          <rect x="-2.5" y="0" width="5" height="9" rx="2.5" fill="#FFB6C1" stroke="#FF69B4" stroke-width="0.8"/>
+          <!-- Lipstick tip -->
+          <ellipse cx="0" cy="-3" rx="2.5" ry="4" fill="#DC143C"/>
+          <!-- Lipstick highlight -->
+          <ellipse cx="-0.5" cy="-4" rx="0.8" ry="2" fill="#FF69B4" opacity="0.9"/>
+          <!-- Sparkles -->
+          <circle cx="-7" cy="-7" r="1.2" fill="#FFD700" opacity="0.9"/>
+          <circle cx="2" cy="-8" r="1" fill="#FF69B4" opacity="0.8"/>
+          <circle cx="-9" cy="2" r="0.8" fill="#FFB6C1" opacity="0.7"/>
+          <circle cx="4" cy="4" r="0.9" fill="#FF1493" opacity="0.8"/>
+        </g>
+      </svg>
+    </div>
+
+  {% when 'high-tech' %}
+    <div class="{{ class | default: 'w-16 h-16' }} relative bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center">
+      <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none">
+        <g transform="translate(12, 12)">
+          <!-- Phone body -->
+          <rect x="-5" y="-8" width="10" height="16" rx="2.5" fill="#E8F4F8" stroke="#1E90FF" stroke-width="0.8"/>
+          <!-- Screen -->
+          <rect x="-4" y="-5" width="8" height="11" rx="1.5" fill="#87CEEB"/>
+          <!-- Home button -->
+          <circle cx="0" cy="4" r="1" fill="#4169E1"/>
+          <!-- Signal bars -->
+          <rect x="-2.5" y="-2.5" width="1" height="2.5" fill="#32CD32"/>
+          <rect x="-1" y="-3" width="1" height="3" fill="#32CD32"/>
+          <rect x="0.5" y="-3.5" width="1" height="3.5" fill="#32CD32"/>
+          <rect x="2" y="-4" width="1" height="4" fill="#32CD32"/>
+          <!-- Sparkles -->
+          <circle cx="-9" cy="-9" r="1" fill="#00BFFF" opacity="0.8"/>
+          <circle cx="5" cy="-7" r="0.8" fill="#1E90FF" opacity="0.9"/>
+        </g>
+      </svg>
+    </div>
+
+  {% when 'tiktok-trends' %}
+    <div class="{{ class | default: 'w-16 h-16' }} relative bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center">
+      <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none">
+        <g transform="translate(12, 12)">
+          <!-- Musical note -->
+          <circle cx="-4" cy="3" r="3" fill="#FFFFFF" stroke="#20B2AA" stroke-width="1"/>
+          <rect x="-1.5" y="-7" width="2" height="10" fill="#FFFFFF" stroke="#20B2AA" stroke-width="0.5"/>
+          <path d="M -1 -7 Q 3 -9 5 -5.5" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+          <!-- Effects -->
+          <circle cx="-8" cy="-5" r="1.5" fill="#FFD700" opacity="0.9"/>
+          <circle cx="4" cy="-3" r="1.2" fill="#FF69B4" opacity="0.9"/>
+          <circle cx="2" cy="4" r="1" fill="#FFFFFF" opacity="0.8"/>
+          <!-- Sparkles -->
+          <polygon points="-7,-9 -6.2,-7 -5,-6.5 -6.2,-6 -7,-4 -7.8,-6 -9,-6.5 -7.8,-7" fill="#FFD700"/>
+          <polygon points="4,-9 4.5,-7.5 6,-7 4.5,-6.5 4,-5 3.5,-6.5 2,-7 3.5,-7.5" fill="#FF69B4"/>
+        </g>
+      </svg>
+    </div>
+
+  {% when 'fashion' %}
+    <div class="{{ class | default: 'w-16 h-16' }} relative bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center">
+      <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none">
+        <g transform="translate(12, 12)">
+          <!-- Dress -->
+          <path d="M -1.5 -8 L -1.5 -10 Q -1.5 -11 0 -11 Q 1.5 -11 1.5 -10 L 1.5 -8 L 3.5 -6 Q 5.5 -4 5.5 -2 L 5.5 6 Q 5.5 7 4.5 7 L -4.5 7 Q -5.5 7 -5.5 6 L -5.5 -2 Q -5.5 -4 -3.5 -6 Z" fill="#FFE4E1" stroke="#FF6347" stroke-width="0.8"/>
+          <!-- Waist -->
+          <ellipse cx="0" cy="-2" rx="5.5" ry="1" fill="#FFA07A" opacity="0.8"/>
+          <!-- Pattern -->
+          <circle cx="-2" cy="1" r="0.8" fill="#FF69B4" opacity="0.9"/>
+          <circle cx="3" cy="0" r="0.6" fill="#FFD700" opacity="0.8"/>
+          <circle cx="0" cy="3" r="0.7" fill="#FF1493" opacity="0.8"/>
+          <!-- Sparkles -->
+          <circle cx="-8" cy="-8" r="0.8" fill="#FF1493" opacity="0.8"/>
+          <circle cx="5" cy="-9" r="1" fill="#FF69B4" opacity="0.7"/>
+          <circle cx="-9" cy="4" r="0.6" fill="#FFD700" opacity="0.9"/>
+        </g>
+      </svg>
+    </div>
+
+  {% when 'home-living' %}
+    <div class="{{ class | default: 'w-16 h-16' }} relative bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center">
+      <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none">
+        <g transform="translate(12, 12)">
+          <!-- House -->
+          <polygon points="0,-11 -7,-4 -7,6 7,6 7,-4" fill="#FFE4E1" stroke="#228B22" stroke-width="0.8"/>
+          <!-- Roof -->
+          <polygon points="0,-11 -8,-2.5 8,-2.5" fill="#FF6347"/>
+          <!-- Door -->
+          <rect x="-2" y="0" width="4" height="6" rx="0.8" fill="#8B4513"/>
+          <circle cx="1" cy="3" r="0.4" fill="#FFD700"/>
+          <!-- Windows -->
+          <rect x="-5.5" y="-2" width="3" height="3" rx="0.5" fill="#87CEEB" stroke="#4169E1" stroke-width="0.4"/>
+          <rect x="2.5" y="-2" width="3" height="3" rx="0.5" fill="#87CEEB" stroke="#4169E1" stroke-width="0.4"/>
+          <!-- Window crosses -->
+          <line x1="-4" y1="-2" x2="-4" y2="1" stroke="#4169E1" stroke-width="0.3"/>
+          <line x1="-5.5" y1="-0.5" x2="-2.5" y2="-0.5" stroke="#4169E1" stroke-width="0.3"/>
+          <line x1="4" y1="-2" x2="4" y2="1" stroke="#4169E1" stroke-width="0.3"/>
+          <line x1="2.5" y1="-0.5" x2="5.5" y2="-0.5" stroke="#4169E1" stroke-width="0.3"/>
+          <!-- Chimney -->
+          <rect x="3.5" y="-9" width="2.5" height="5" fill="#8B4513"/>
+          <!-- Smoke -->
+          <circle cx="5" cy="-10" r="0.6" fill="#D3D3D3" opacity="0.8"/>
+          <circle cx="5.8" cy="-11" r="0.5" fill="#D3D3D3" opacity="0.7"/>
+        </g>
+      </svg>
+    </div>
+
+  {% when 'outdoor-garden' %}
+    <div class="{{ class | default: 'w-16 h-16' }} relative bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center">
+      <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none">
+        <g transform="translate(12, 12)">
+          <!-- Tree trunk -->
+          <rect x="-1.25" y="1" width="2.5" height="7" rx="1.25" fill="#8B4513"/>
+          <!-- Tree crown -->
+          <circle cx="0" cy="-3" r="5" fill="#32CD32"/>
+          <circle cx="-2.5" cy="-5" r="3" fill="#228B22" opacity="0.8"/>
+          <circle cx="3" cy="-3.5" r="3.5" fill="#90EE90" opacity="0.9"/>
+          <!-- Flowers -->
+          <g transform="translate(-9, 4)">
+            <circle cx="0" cy="0" r="1" fill="#FF69B4"/>
+            <circle cx="0" cy="0" r="0.5" fill="#FFD700"/>
+          </g>
+          <g transform="translate(3, 5)">
+            <circle cx="0" cy="0" r="0.8" fill="#FF1493"/>
+            <circle cx="0" cy="0" r="0.4" fill="#FFA500"/>
+          </g>
+          <g transform="translate(-7, 6)">
+            <circle cx="0" cy="0" r="0.6" fill="#9370DB"/>
+            <circle cx="0" cy="0" r="0.3" fill="#FFD700"/>
+          </g>
+          <!-- Grass -->
+          <path d="M -11 7 Q -10 5 -9 7" stroke="#228B22" stroke-width="1" fill="none"/>
+          <path d="M -8 7 Q -7 5 -6 7" stroke="#32CD32" stroke-width="1" fill="none"/>
+          <path d="M 2 7 Q 3 5 4 7" stroke="#228B22" stroke-width="1" fill="none"/>
+          <path d="M 5 7 Q 6 5 7 7" stroke="#32CD32" stroke-width="1" fill="none"/>
+        </g>
+      </svg>
+    </div>
+
+  {% when 'health-wellness' %}
+    <div class="{{ class | default: 'w-16 h-16' }} relative bg-gradient-to-br from-red-500 to-pink-600 rounded-full flex items-center justify-center">
+      <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none">
+        <g transform="translate(12, 12)">
+          <!-- Background circle -->
+          <circle cx="0" cy="0" r="9" fill="#FFE4E1" opacity="0.9"/>
+          <!-- Medical cross -->
+          <rect x="-2" y="-6" width="4" height="12" rx="1.5" fill="#DC143C"/>
+          <rect x="-6" y="-2" width="12" height="4" rx="1.5" fill="#DC143C"/>
+          <!-- Hearts -->
+          <g transform="translate(-6, -5)">
+            <path d="M 1.5 2 C 1.5 0.8 2.5 0 3.5 1 C 4.5 0 5.5 0.8 5.5 2 C 5.5 3.5 3.5 5.5 3.5 5.5 S 1.5 3.5 1.5 2 Z" fill="#FF69B4"/>
+          </g>
+          <g transform="translate(2, 1)">
+            <path d="M 1.5 2 C 1.5 0.8 2.5 0 3.5 1 C 4.5 0 5.5 0.8 5.5 2 C 5.5 3.5 3.5 5.5 3.5 5.5 S 1.5 3.5 1.5 2 Z" fill="#FF1493"/>
+          </g>
+          <!-- Sparkles -->
+          <polygon points="-10,-10 -9.5,-8.5 -8,-8 -9.5,-7.5 -10,-6 -10.5,-7.5 -12,-8 -10.5,-8.5" fill="#FFD700" opacity="0.9"/>
+          <polygon points="7,-10 7.3,-9 8,-9 7.5,-8.5 7.7,-7.7 7,-8 6.3,-7.7 6.5,-8.5 6,-9 6.7,-9" fill="#FF69B4" opacity="0.8"/>
+        </g>
+      </svg>
+    </div>
+
+  {% when 'sports-fitness' %}
+    <div class="{{ class | default: 'w-16 h-16' }} relative bg-gradient-to-br from-orange-500 to-yellow-600 rounded-full flex items-center justify-center">
+      <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none">
+        <g transform="translate(12, 12)">
+          <!-- Basketball -->
+          <circle cx="0" cy="0" r="6" fill="#FFFFFF" stroke="#333333" stroke-width="1.5"/>
+          <!-- Basketball lines -->
+          <path d="M -6 0 Q 0 -4 6 0" stroke="#333333" stroke-width="1.5" fill="none"/>
+          <path d="M -6 0 Q 0 4 6 0" stroke="#333333" stroke-width="1.5" fill="none"/>
+          <line x1="0" y1="-6" x2="0" y2="6" stroke="#333333" stroke-width="1.5"/>
+          <!-- Motion lines -->
+          <path d="M -10 -2 Q -9 -3 -8 -2" stroke="#FFD700" stroke-width="1.5" fill="none" opacity="0.8"/>
+          <path d="M -10 2 Q -9 1 -8 2" stroke="#FFA500" stroke-width="1.5" fill="none" opacity="0.8"/>
+          <path d="M 8 -2 Q 9 -3 10 -2" stroke="#FFD700" stroke-width="1.5" fill="none" opacity="0.8"/>
+          <path d="M 8 2 Q 9 1 10 2" stroke="#FFA500" stroke-width="1.5" fill="none" opacity="0.8"/>
+          <!-- Sparkles -->
+          <polygon points="6,-7 6.5,-6 7,-6 6.7,-5.7 6.8,-5 6,-5.3 5.2,-5 5.3,-5.7 5,-6 5.5,-6" fill="#FFD700" opacity="0.9"/>
+          <circle cx="-10" cy="-7" r="0.8" fill="#FF4500" opacity="0.8"/>
+          <circle cx="6" cy="7" r="0.6" fill="#FFA500" opacity="0.8"/>
+        </g>
+      </svg>
+    </div>
+
+  {% when 'cooking' %}
+    <div class="{{ class | default: 'w-16 h-16' }} relative bg-gradient-to-br from-yellow-500 to-orange-600 rounded-full flex items-center justify-center">
+      <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none">
+        <g transform="translate(12, 12)">
+          <!-- Pizza slice -->
+          <path d="M 0 -10 L 8 4 Q 8 5 7 5 L -7 5 Q -8 5 -8 4 Z" fill="#FFFFFF" stroke="#8B4513" stroke-width="1"/>
+          <!-- Pizza crust -->
+          <path d="M -8 4 Q 0 3 8 4" fill="#DEB887" stroke="#8B4513" stroke-width="0.8"/>
+          <!-- Toppings -->
+          <circle cx="-2" cy="-2" r="1" fill="#DC143C" opacity="0.9"/>
+          <circle cx="2" cy="-4" r="0.8" fill="#228B22" opacity="0.9"/>
+          <circle cx="4" cy="0" r="0.9" fill="#9370DB" opacity="0.9"/>
+          <circle cx="-4" cy="1" r="0.7" fill="#FF1493" opacity="0.9"/>
+          <circle cx="0" cy="2" r="0.6" fill="#FF8C00" opacity="0.9"/>
+          <!-- Cheese strings -->
+          <path d="M -2 -3 Q 2 -4 4 -1" stroke="#FFD700" stroke-width="1.2" fill="none" opacity="0.9"/>
+          <path d="M -4 0 Q 0 -1 2 1" stroke="#FFD700" stroke-width="1" fill="none" opacity="0.8"/>
+          <!-- Steam -->
+          <path d="M -3 -6 Q -2.5 -8 -2 -6" stroke="#E0E0E0" stroke-width="1" fill="none" opacity="0.8"/>
+          <path d="M 0 -7 Q 0.5 -9 1 -7" stroke="#E0E0E0" stroke-width="1" fill="none" opacity="0.8"/>
+          <path d="M 3 -5 Q 3.5 -7 4 -5" stroke="#E0E0E0" stroke-width="1" fill="none" opacity="0.8"/>
+          <!-- Sparkles -->
+          <polygon points="-8,-9 -7.7,-8 -7,-8 -7.5,-7.7 -7.3,-7 -8,-7.3 -8.7,-7 -8.5,-7.7 -9,-8 -8.3,-8" fill="#FFD700" opacity="0.9"/>
+          <polygon points="4,-8 4.2,-7.2 5,-7.2 4.6,-6.8 4.8,-6 4,-6.3 3.2,-6 3.4,-6.8 3,-7.2 3.8,-7.2" fill="#FF69B4" opacity="0.8"/>
+        </g>
+      </svg>
+    </div>
+
+  {% else %}
+    <div class="{{ class | default: 'w-16 h-16' }} relative bg-gradient-to-br from-gray-400 to-gray-600 rounded-full flex items-center justify-center">
+      <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="8" fill="#ffffff"/>
+        <path d="M8 12h8M12 8v8" stroke="#666666" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+{% endcase %}
